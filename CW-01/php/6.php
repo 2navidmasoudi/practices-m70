@@ -11,3 +11,18 @@ foreach ($number as $n) {
     }
     echo "\n";
 }
+
+// or
+
+// $n = strrev(readline());
+// $t = 0;
+// while ($n) {
+//     $t = floor($n) % 10;
+//     echo "$t: ";
+//     for ($i = 0; $i < $t; $i++) {
+//         echo $t;
+//     }
+//     echo "\n";
+//     $n = floor($n) / 10;
+//     if ($n == 0) break;
+// }
