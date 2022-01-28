@@ -2,14 +2,11 @@
 
 # https://quera.org/problemset/10230/
 
-$x = 0;
+$x = readline();
+$y = readline();
+$z = readline();
 
-for ($i = 0; $i < 3; $i++) {
-    // Input 3 numbers and sum eachtime
-    $x += readline();
-}
-
-if ($x == 180) {
+if ($x != 0 && $y != 0 && $z != 0 && $x + $y + $z == 180) {
     echo "yes";
 } else {
     echo "no";
