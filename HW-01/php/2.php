@@ -1,5 +1,7 @@
 <?php
 
+# https://quera.org/problemset/280/
+
 // input 3 numbers in array
 for ($i = 0; $i < 3; $i++) {
     $len[] = readline();

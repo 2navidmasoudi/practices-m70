@@ -1,5 +1,7 @@
 <?php
 
+# https://quera.org/problemset/3429/
+
 $t = readline();
 
 if ($t > 100) {
