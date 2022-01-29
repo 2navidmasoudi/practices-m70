@@ -36,11 +36,11 @@
     <?php
 
     // We get color, text and size by post method in form and output in php :)
-    $color ??= $_POST['clr'];
-    $text ??= $_POST['txt'];
-    $size ??= $_POST['size'] . 'px';
+    $myColor ??= $_POST['clr'];
+    $myText ??= $_POST['txt'];
+    $myNumber ??= $_POST['size'] . 'px';
 
-    echo "<p style='font-size: $size;color: $color'>$text<p/>";
+    echo "<p style='font-size: $myNumber;color: $myColor'>$myText<p/>";
 
     ?>
 
