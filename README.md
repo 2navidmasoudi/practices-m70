@@ -1,19 +1,28 @@
 # MaktabSharif70
 
-CW = Class Work
+[Maktab_M70_HW1_Navid_Masoudi](HW-01)
 
-HW = Home Work
+- CW = ClassWork
+- HW = HomeWork
 
 ---
 
-## Change apache root
+#### todo:
 
-You can relocate it by editing the DocumentRoot setting in XAMPP\apache\conf\httpd.conf.
+- [x] [Complete php homeworks for HW1](HW-01/php)
+- [x] [Complete html homeworks](HW-01/html)
+- [ ] [Complete web homeworks](HW-01/html)
+
+---
+
+### Change apache root
+
+You can relocate it by editing the **DocumentRoot** setting in _XAMPP\apache\conf\httpd.conf_ .
 
 It should currently be:
 
-C:/xampp/htdocs
+> C:/xampp/htdocs
 
 Change it to:
 
-C:/Users/Navid/Desktop/M70/PHP01
+> C:/Users/PATH/TO/YOUR/DIRECTORY
