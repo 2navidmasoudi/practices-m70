@@ -1,7 +1,11 @@
 /* global styles */
 body {
-  /* top left bottom right */
-  padding: 0px 50px 0x 50px;
+  /* top & bottom then left & right */
+  padding: 0px 50px;
+  /* or
+  padding: 0px 50px 0px 50px;
+           top right bottom left
+  */
 }
 h1 {
   text-align: center;
