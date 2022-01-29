@@ -1,7 +1,8 @@
 # MaktabSharif70
 
-[#CW1](CW-01)
-[Maktab_M70_HW1_Navid_Masoudi](HW-01)
+## [#CW1](CW-01)
+
+## [Maktab_M70_HW1_Navid_Masoudi](HW-01)
 
 - CW = ClassWork
 - HW = HomeWork
