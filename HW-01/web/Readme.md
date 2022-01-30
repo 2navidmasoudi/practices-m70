@@ -69,7 +69,7 @@ Note that the query string (name/value pairs) is sent in the URL of a GET reques
 
 ---
 
-## The POST Method
+### The POST Method
 
 POST is used to send data to a server to create/update a resource.
 
@@ -93,6 +93,4 @@ name1=value1&name2=value2
 
 ---
 
-### Source
-
-- [w3schools](https://www.w3schools.com/tags/ref_httpmethods.asp)
+[Source](https://www.w3schools.com/tags/ref_httpmethods.asp)
