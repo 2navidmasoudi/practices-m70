@@ -1,6 +1,6 @@
 # 3. What is Hashing?
 
-> Hashing is the process of converting any input of any length into a fixed sized string of text using a mathematical function.
+**Hashing is the process of converting any input of any length into a fixed sized string of text using a mathematical function.**
 
 > This means any text, no matter how long it is can be converted into an array of numbers and letters through an algoythm.
 
