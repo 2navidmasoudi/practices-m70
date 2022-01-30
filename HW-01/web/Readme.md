@@ -16,19 +16,19 @@
 
 ## Hash functions
 
+| Original text  | Hello World!                                                     |
 | -------------- | ---------------------------------------------------------------- |
-| Original text | Hello World! |
-| Original bytes | 48:65:6c:6c:6f:20:57:6f:72:6c:64:21 (length=12) |
-| Adler32 | 1c49043e |
-| CRC32 | 1c291ca3 |
-| Haval | 2242f559aa860d68c6de6d025e65d32e |
-| MD2 | 315f7c67223f01fb7cab4b95100e872e |
-| MD4 | b2a5cc34fc21a764ae2fad94d56fadf6 |
-| MD5 | ed076287532e86365e841e92bfc50d8c |
-| RipeMD128 | 24e23e5c25bc06c8aa43b696c1e11669 |
-| RipeMD160 | 8476ee4631b9b30ac2754b0ee0c47e161d3f724c |
-| SHA-1 | 2ef7bde608ce5404e97d5f042f95f89f1c232871 |
-| SHA-256 | 7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069 |
+| Original bytes | 48:65:6c:6c:6f:20:57:6f:72:6c:64:21 (length=12)                  |
+| Adler32        | 1c49043e                                                         |
+| CRC32          | 1c291ca3                                                         |
+| Haval          | 2242f559aa860d68c6de6d025e65d32e                                 |
+| MD2            | 315f7c67223f01fb7cab4b95100e872e                                 |
+| MD4            | b2a5cc34fc21a764ae2fad94d56fadf6                                 |
+| MD5            | ed076287532e86365e841e92bfc50d8c                                 |
+| RipeMD128      | 24e23e5c25bc06c8aa43b696c1e11669                                 |
+| RipeMD160      | 8476ee4631b9b30ac2754b0ee0c47e161d3f724c                         |
+| SHA-1          | 2ef7bde608ce5404e97d5f042f95f89f1c232871                         |
+| SHA-256        | 7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069 |
 
 [Try it yourself - See more hash functions](https://www.fileformat.info/tool/hash.htm)
 
