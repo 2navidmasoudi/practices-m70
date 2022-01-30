@@ -12,8 +12,8 @@
 #### todo:
 
 - [x] [Complete php homeworks for HW1](HW-01/php)
-- [x] [Complete html homeworks](HW-01/html)
-- [ ] [Complete web homeworks](HW-01/web)
+- [x] [Complete html homeworks for HW1](HW-01/html)
+- [x] [Complete web homeworks for HW1](HW-01/web)
 
 ---
 

@@ -1,10 +1,51 @@
+# 1. What Happens When Your Browser Requests a Web Page?
+
+There are a handful of general steps that occur between the time you request a web page and the time it displays in your browser.
+
+1. DNS Lookup
+2. Browser sends an HTTP request
+3. Server responds and sends back the requested HTML file
+4. Browser begins to render HTML
+5. Browser sends additional requests for objects embedded in the html file (CSS files, images, javascript, etc.)
+
+DNS Lookup means it search the domain you requested for IP address from:
+
+- Browser cache
+- Operating system cache
+- Router cache
+- ISP DNS cache
+
+[Source and read more](https://vanseodesign.com/web-design/browser-requests/)
+
+# 2. Common Encryption Algorithms
+
+1. **Triple DES**
+
+   [Triple DES](https://www.tutorialspoint.com/cryptography/triple_des.htm) was designed to replace the original Data Encryption Standard (DES) algorithm, which hackers eventually learned to defeat with relative ease. At one time, Triple DES was the recommended standard and the most widely used symmetric algorithm in the industry.
+
+   Triple DES uses three individual keys with 56 bits each. The total key length adds up to 168 bits, but experts would argue that 112-bits in key strength is more accurate. Despite slowly being phased out, Triple DES has, for the most part, been replaced by the Advanced Encryption Standard (AES).
+
+2. **AES**
+
+   The [Advanced Encryption Standard (AES)](https://www.tutorialspoint.com/advanced-encryption-standard-aes) is the algorithm trusted as the standard by the U.S. Government and numerous organizations. Although it is highly efficient in 128-bit form, AES also uses keys of 192 and 256 bits for heavy-duty encryption purposes.
+
+   AES is largely considered impervious to all attacks, except for brute force, which attempts to decipher messages using all possible combinations in the 128, 192, or 256-bit cipher.
+
+3. **RSA Security**
+
+   [RSA](https://www.geeksforgeeks.org/advanced-encryption-standard-aes/) is a public-key encryption algorithm and the standard for encrypting data sent over the internet. It also happens to be one of the methods used in PGP and GPG programs. Unlike Triple DES, RSA is considered an asymmetric algorithm due to its use of a pair of keys. You’ve got your public key to encrypt the message and a private key to decrypt it. The result of RSA encryption is a huge batch of mumbo jumbo that takes attackers a lot of time and processing power to break.
+
+[Source and more...](https://blog.storagecraft.com/5-common-encryption-algorithms/)
+
+---
+
 # 3. What is Hashing?
 
 **Hashing is the process of converting any input of any length into a fixed sized string of text using a mathematical function.**
 
 > This means any text, no matter how long it is can be converted into an array of numbers and letters through an algoythm.
 
-[Source and Watch more...](https://www.youtube.com/watch?v=2BldESGZKB8)
+[Source and learn more...](https://www.youtube.com/watch?v=2BldESGZKB8)
 
 ## diffrence between _Hashing_ and _Encoding_ and _Encryption_:
 
@@ -90,7 +131,5 @@ name1=value1&name2=value2
 - POST requests do not remain in the browser history
 - POST requests cannot be bookmarked
 - POST requests have no restrictions on data length
-
----
 
 [Source](https://www.w3schools.com/tags/ref_httpmethods.asp)
