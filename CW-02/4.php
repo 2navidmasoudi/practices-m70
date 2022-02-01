@@ -21,12 +21,14 @@ $m = rand(1, 10);
 <body>
     <table>
         <?php
-        for ($i = 0; $i < $n; $i++) {
-            echo "<tr>";
-            for ($j = 0; $j < $m; $j++) {
-                echo "<td>" . rand(10, 99) . "</td>";
-            }
-            echo "</tr>";
+        for ($i = 0; $i < $n; $i++) { ?>
+            <tr>
+                <?php
+                for ($j = 0; $j < $m; $j++) {
+                    echo "<td>" . rand(10, 99) . "</td>";
+                } ?>
+            </tr>
+        <?php
         }
         ?>
     </table>
