@@ -33,7 +33,7 @@ DNS Lookup means it search the domain you requested for IP address from:
 
 3. **RSA Security**
 
-   [RSA](https://www.geeksforgeeks.org/advanced-encryption-standard-aes/) is a public-key encryption algorithm and the standard for encrypting data sent over the internet. It also happens to be one of the methods used in PGP and GPG programs. Unlike Triple DES, RSA is considered an asymmetric algorithm due to its use of a pair of keys. You’ve got your public key to encrypt the message and a private key to decrypt it. The result of RSA encryption is a huge batch of mumbo jumbo that takes attackers a lot of time and processing power to break.
+   [RSA](https://www.comparitech.com/blog/information-security/rsa-encryption/) is a public-key encryption algorithm and the standard for encrypting data sent over the internet. It also happens to be one of the methods used in PGP and GPG programs. Unlike Triple DES, RSA is considered an asymmetric algorithm due to its use of a pair of keys. You’ve got your public key to encrypt the message and a private key to decrypt it. The result of RSA encryption is a huge batch of mumbo jumbo that takes attackers a lot of time and processing power to break.
 
 [Source and more...](https://blog.storagecraft.com/5-common-encryption-algorithms/)
 
