@@ -20,7 +20,7 @@
         <input type="phone" name="Phone" pattern="[A-Z][a-z]+">
         <br>
         <label for="Password">Password</label>
-        <input type="password" name="Password" pattern="^(?=.\w?[A-Z])\w{8,}$">
+        <input type="password" name="Password" pattern="^(?=.*[A-Z])\w{8,}$">
         <br>
         <input type="submit" value="Submit">
     </form>
