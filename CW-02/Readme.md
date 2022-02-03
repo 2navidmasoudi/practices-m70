@@ -74,9 +74,10 @@
 
 19. Write a pattern to RGB hex colors.(like: #800000)
 
-> `^#(?:[0-9a-fA-F]{3}){1,2}$`
+`^#(?:[0-9a-fA-F]{3}){1,2}$`
 
-[Document](https://docs.google.com/document/d/1cfL30jfFlPEGPHf9AymxC_obSmQJoDDax1leNfH6zOo/edit)
+## [23](23.php)
 
-[23](23.php)
-[24](24.php)
+## [24](24.php)
+
+### [Document](https://docs.google.com/document/d/1cfL30jfFlPEGPHf9AymxC_obSmQJoDDax1leNfH6zOo/edit)
