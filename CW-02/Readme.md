@@ -44,7 +44,7 @@
 
 12. Write a pattern to Date in format dd/mm/yyyy
 
-`([0-2][0-9]|30|31)\/(1[0-2]|0?[0-9])\/\d{4}`
+`^([0-2][0-9]|3[0-1])\/(0[0-9]|1[0-2])\/([0-9]{4})$`
 
 13. Write a pattern to match valid URL slugs.
 
@@ -52,7 +52,7 @@
 
 14. Write a pattern to match URL with optional protocol.
 
-`(https?:\/\/)?(www\.)?\w{2,256}\.[a-z]{2,6}(\w*)`
+`(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#()?&//=]*)`
 
 15. Write a pattern to match IP v4 addresses
 
