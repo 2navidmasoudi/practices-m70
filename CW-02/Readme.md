@@ -8,7 +8,7 @@
 
 3. Write a pattern that matches a string that has an a followed by zero or one 'b'.
 
-`ab\?`
+`ab?`
 
 4. Write a pattern that matches a string that has an a followed by three 'b'.
 
