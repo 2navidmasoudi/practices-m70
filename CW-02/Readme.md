@@ -52,7 +52,7 @@
 
 14. Write a pattern to match URL with optional protocol.
 
-`(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#()?&//=]*)`
+`(https?:\/\/)?(www\.)?\w{2,256}\.[a-z]{2,6}(\w*)`
 
 15. Write a pattern to match IP v4 addresses
 
