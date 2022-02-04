@@ -10,8 +10,10 @@
 */
 
 // $str = "naser erfani is so optimistic";
-$str = readline();
+$str = "Sample ple please sade bashe";
+$str = str_replace(" ", "", $str);
+// $str = readline();
+$pattern = "/(.+)\\1+/";
+$str = preg_replace($pattern, "$1", $str);
 
-foreach (explode(" ", $str) as $word) {
-    echo $word;
-}
+echo $str;
