@@ -17,7 +17,7 @@
         <input type="email" name="Email" pattern="\w+@\w+\.\w+">
         <br>
         <label for="Phone">Phone: </label>
-        <input type="phone" name="Phone" pattern="[A-Z][a-z]+">
+        <input type="phone" name="Phone" pattern="(?:\+98|0)9\d{9}">
         <br>
         <label for="Password">Password</label>
         <input type="password" name="Password" pattern="^(?=.\w?[A-Z])\w{8,}$">
