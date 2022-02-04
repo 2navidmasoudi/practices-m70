@@ -1,7 +1,7 @@
 <?php
 /*
  1.Write a PHP script to show how many times an expression repeated in a sentence.
-	Sample string : 'Life is beautiful depending on how you look at life';  
+    Sample string : 'Life is beautiful depending on how you look at life';  
     expression: life
     Expected Output : 2
 */
