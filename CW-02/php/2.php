@@ -2,7 +2,7 @@
 
 /*
 2. Write a PHP script that removes the last word from a string.
-	Sample string : 'The quick brown fox'
+    Sample string : 'The quick brown fox'
     Expected Output : The quick brown
 */
 

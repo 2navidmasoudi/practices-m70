@@ -2,8 +2,8 @@
 
 /*
 4. Write a PHP script to split a date in to component (use preg_split).
-	Sample string : ‘2020-01-01 00:00:00’
-	Expected Output : Array(
+    Sample string : ‘2020-01-01 00:00:00’
+    Expected Output : Array(
                         [0] => 2020
                         [1] => 01
                         [2] => 01
