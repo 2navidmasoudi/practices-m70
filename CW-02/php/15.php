@@ -81,21 +81,21 @@ foreach ($arr as $key => &$value) {
 
 print_r($arr);
 
-function array_flatter($array)
+function flat_array($array)
 {
     $flat = array();
     foreach ($array as $value) {
         if (is_array($value))
-            $flat = array_merge($flat, array_flatter($value));
+            $flat = array_merge($flat, flat_array($value));
         else
             $flat[] = $value;
     }
     return $flat;
 }
 
-function group_arr($array)
+function group_array($array)
 {
-    $components = array_flatter($array);
+    $components = flat_array($array);
     // print_r($components);
     $result = [];
     foreach ($components as $value) {
@@ -127,6 +127,6 @@ function unique_array(&$array)
     return $array;
 }
 
-$arr = group_arr($arr);
+$arr = group_array($arr);
 $arr = unique_array($arr);
 print_r($arr);
