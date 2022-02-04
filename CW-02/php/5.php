@@ -8,7 +8,7 @@
 
 // $str = readline();
 $str = '$123,34.00A';
-$pattern = "/[^\d,.]*/";
+$pattern = "/[^\d,.]/";
 
 $str = preg_replace($pattern, '', $str);
 // or
