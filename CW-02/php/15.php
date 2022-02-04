@@ -1,7 +1,7 @@
 <?php
 /*
 
-$arr = [
+[
     "google.com",
     "Microsoft.com",
     [
@@ -18,37 +18,19 @@ $arr = [
     ],
 ];
 to
-$arr = [
+[
     "google.com" => [
         "cloud"
     ],
     "Microsoft.com" => [
         "office" => [
             "word",
-            "exel",
+            "exel"
         ],
-        "azure",
-    ],
-];
+        "azure"
+    ]
+]
 */
-
-
-// $arr = [
-//     "google.com",
-//     "microsoft.com",
-//     [
-//         "google.com" => "cloud",
-//         "microsoft.com" => "office",
-//     ],
-//     [
-//         "microsoft.com" => "azure",
-//     ],
-//     [
-//         "office" => [
-//             "word", "excel",
-//         ],
-//     ],
-// ];
 
 $arr = [
     "google.com",
