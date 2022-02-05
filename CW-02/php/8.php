@@ -21,9 +21,11 @@ foreach ($arr as $str) {
     $min = min($min, $len);
 }
 // echo "The shortest array length is $min. The longest array length is $max." . PHP_EOL;
+
 // or
 $lengths = array_map('strlen', $arr);
 // print_r($lengths) . PHP_EOL;
 $min = min($lengths);
 $max = max($lengths);
+
 echo "The shortest array length is $min. The longest array length is $max.";

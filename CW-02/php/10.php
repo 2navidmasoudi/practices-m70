@@ -7,17 +7,25 @@
 */
 
 $arr = array('c1' => 'Red', 'c2' => 'Green', 'c3' => 'White', 'c4' => 'Black');
-$filterArrray = array('Red', 'Green');
-$given_value = "Red";
-$fun = function ($var) use ($filterArrray) {
-    foreach ($filterArrray as $value) {
+
+// Simplest Way, Only filter out a specific value for eg: Red
+$filterValue = "Red";
+$newArray = array_filter($arr, fn ($var) => $var != $filterValue);
+print_r($newArray);
+
+// Second way, useing the function outside of array_filter, and call it in there
+// also filter an array instead of a specific value eg: Red and Green
+$filterArray = array('Red', 'Green');
+
+// filterArray is undefined inside the $filterFunc so we add it with 'use'
+$filterFunc = function ($var) use ($filterArray) {
+    foreach ($filterArray as $value) {
         if ($value == $var) {
             return false;
         }
     }
     return true;
 };
-// $filteredArray = array_filter($arr, 'filter');
-$filteredArray = array_filter($arr, fn ($var) => $var != "Red");
-$filteredArray = array_filter($arr, $fun);
-print_r($filteredArray);
+
+$newArray = array_filter($arr, $filterFunc);
+print_r($newArray);
