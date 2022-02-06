@@ -1,0 +1,67 @@
+body {
+  font-size: 18px;
+}
+span {
+  color: red;
+}
+label {
+  font-size: 18px;
+}
+input:not([type="submit"]):not([type="reset"]),
+select {
+  border: 2px solid #bbb;
+}
+select {
+  width: 150px;
+}
+.container {
+  position: relative;
+  margin-bottom: 5px;
+}
+.input-container {
+  display: inline;
+  position: absolute;
+  max-width: 200px;
+  left: 200px;
+}
+.error-text {
+  color: red;
+  position: absolute;
+  left: 400px;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+.error {
+  /* background-color: red; */
+  display: inline;
+  border: 2px solid red;
+  background-color: darkred;
+  color: white;
+  border-radius: 5px;
+}
+.success {
+  /* background-color: red; */
+  display: inline;
+  border: 2px solid green;
+  background-color: darkgreen;
+  color: white;
+  border-radius: 5px;
+}
+@media (max-width: 640px) {
+  .container {
+    position: inherit;
+    margin-bottom: 10px;
+  }
+  .input-container {
+    max-width: 200px;
+    display: block;
+    position: initial;
+  }
+  .error-text {
+    position: initial;
+    display: block;
+    color: red;
+  }
+}
