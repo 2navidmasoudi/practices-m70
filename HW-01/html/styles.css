@@ -17,7 +17,9 @@ td {
   /* border-width border-style border-color */
   border: 1px solid black;
 }
-
+.double {
+  border-bottom: 2px double black;
+}
 /* class styles */
 .table-style {
   width: 70%;
