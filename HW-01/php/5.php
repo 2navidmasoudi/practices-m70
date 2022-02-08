@@ -18,16 +18,16 @@
     <form action="" method="post">
         <p>
             Write your text here:
-            <input type="text" name="txt">
+            <input type="text" name="txt" value="<?php echo $_POST['txt']; ?>">
         </p>
         <p>
             Fontsize here:
-            <input type="number" name="size">
+            <input type="number" name="size" value="<?php echo $_POST['size']; ?>">
             px
         </p>
         <p>
             and the color:
-            <input type="color" name="clr">
+            <input type="color" name="clr" value="<?php echo $_POST['clr']; ?>">
         </p>
 
         <input type="submit" value="Show Me!">
