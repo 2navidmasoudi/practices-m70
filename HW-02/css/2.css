@@ -10,4 +10,76 @@
 
 * {
   font-family: "IranSans";
+  color: #777;
+}
+body {
+  width: 700px;
+}
+
+span {
+  color: red;
+}
+label {
+  display: block;
+  font-family: "IranSans-bold";
+}
+
+input {
+  width: 100%;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  height: 24px;
+}
+input:active,
+input:focus {
+  border: 2px solid #a3cced;
+  outline: none;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  /* margin-bottom: 20px; */
+}
+.input-container {
+  margin: 5px 5px 30px 10%;
+  flex: 1;
+}
+
+input[type="radio"] {
+  background-color: red;
+  width: auto;
+  position: absolute;
+  left: 10px;
+}
+
+.radio {
+  position: relative;
+  padding: 3px 0px;
+}
+.security-container {
+  margin-right: 20px;
+}
+label.security {
+  color: black;
+  padding-bottom: 10px;
+}
+input#security {
+  width: 60%;
+}
+img {
+  position: relative;
+  top: 15px;
+  right: 40px;
+}
+
+input[type="button"] {
+  height: auto;
+  border-radius: 5px;
+  padding: 5px 15px;
+  width: max-content;
+  color: white;
+  background-color: #337ab7;
+  font-size: 20px;
+  margin-top: 30px;
 }
