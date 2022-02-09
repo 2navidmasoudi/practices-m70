@@ -73,7 +73,7 @@ img {
   right: 40px;
 }
 
-input[type="button"] {
+input[type="submit"] {
   height: auto;
   border-radius: 5px;
   padding: 5px 15px;
@@ -82,4 +82,23 @@ input[type="button"] {
   background-color: #337ab7;
   font-size: 20px;
   margin-top: 30px;
+}
+.status {
+  margin-bottom: 10px;
+}
+.error {
+  /* background-color: red; */
+  display: inline;
+  border: 2px solid red;
+  background-color: darkred;
+  color: white;
+  border-radius: 5px;
+}
+.success {
+  /* background-color: red; */
+  display: inline;
+  border: 2px solid green;
+  background-color: darkgreen;
+  color: white;
+  border-radius: 5px;
 }
