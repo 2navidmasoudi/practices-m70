@@ -76,6 +76,31 @@
 
 `^#(?:[0-9a-fA-F]{3}){1,2}$`
 
+20. Write a pattern to validating youtube video.
+    Support:
+    http://youtu.be/cCnrX1w5luM  
+     http://youtube/cCnrX1w5luM  
+     www.youtube.com/cCnrX1w5luM  
+     youtube/cCnrX1w5luM  
+     youtu.be/cCnrX1w5luM
+
+`^(?:http:\/\/|www.)?you(?:tube\.com|tube|tu\.be)\/\w+$`
+
+21. What does this expression do?
+
+    /\d{1,3}(?=(\d{3})+(?!\d))/g
+
+`It Would translate to every third digit from the end of the last 3 digits in a numerical string and the last 3 digits of that numerical string. `
+
+```
+for example:
+$num = "1020304050";
+$num = preg_replace("/\d{1,3}(?=(\d{3})+(?!\d))/g", ",");
+echo $num; // output: 1,020,304,050
+```
+
+> [embeded expression](https://embed.ihateregex.io/make/JTVDJTVDZCU3QjElMkMzJTdEKCUzRiUzRCglNUMlNUNkJTdCMyU3RCklMkIoJTNGISU1QyU1Q2QpKQ)
+
 ## [23](23.php)
 
 ## [24](24.php)
