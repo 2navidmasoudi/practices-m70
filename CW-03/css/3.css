@@ -1,0 +1,81 @@
+* {
+  color: #444;
+}
+.container {
+  display: block;
+  width: 80%;
+  padding: 20px;
+  box-sizing: border-box;
+  margin: auto;
+  border: 1px solid #005276;
+}
+svg {
+  display: block;
+  margin: auto;
+  background-color: #005276;
+  padding: 10px;
+  border-radius: 50%;
+  margin-bottom: -10px;
+  fill: white;
+}
+p {
+  text-align: center;
+}
+img {
+  display: inline;
+  width: 100%;
+  height: auto;
+}
+.left {
+  width: 33%;
+  display: inline-block;
+}
+.right {
+  display: inline-block;
+  width: 66%;
+  vertical-align: top;
+}
+.detail-container {
+  display: inline-block;
+  width: 100%;
+}
+.detail1 {
+  display: inline-block;
+  width: 40%;
+}
+.detail2 {
+  display: inline-block;
+  width: 25%;
+}
+input {
+  width: 100%;
+  height: 20px;
+}
+textarea {
+  width: 100%;
+}
+label {
+  display: block;
+  margin-top: 20px;
+  color: #444;
+}
+p.before-submit {
+  display: inline;
+  /* height: 20px; */
+  /* vertical-align: middle; */
+}
+form {
+  position: relative;
+}
+button {
+  position: absolute;
+  right: 0px;
+  border: 1px solid #005276;
+  background-color: white;
+  color: #005276;
+  padding: 6px 25px;
+  border-radius: 3px;
+}
+.submit-container {
+  margin-top: 20px;
+}

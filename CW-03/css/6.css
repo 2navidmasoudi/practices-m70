@@ -1,0 +1,100 @@
+:root {
+  /* minimum 360 please :D */
+  --card-height: 400px;
+}
+
+body {
+  background-color: #d8cecc;
+}
+.container {
+  position: relative;
+  margin: auto;
+  height: var(--card-height);
+  width: 50%;
+  /* justify-self: auto; */
+  align-self: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}
+.left {
+  position: absolute;
+  width: 25px;
+  height: 100%;
+}
+.bg-gray {
+  height: 50%;
+  background-color: #5e5a5b;
+}
+.bg-sky {
+  height: 50%;
+  background-color: #a7bcd9;
+}
+
+.content {
+  position: absolute;
+  background-color: white;
+  width: calc(100% - 25px - 0.767388888889 * var(--card-height));
+  left: 25px;
+  height: 100%;
+}
+
+#home,
+#podcast,
+#contact {
+  display: inline-block;
+  width: 32%;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+}
+
+#home {
+  text-decoration-color: darkblue;
+  text-decoration-thickness: 2px;
+  text-align: left;
+}
+
+#podcast {
+  text-align: center;
+}
+
+#contact {
+  text-align: right;
+}
+.heading {
+  padding: 10px 30px;
+}
+.document {
+  position: absolute;
+  bottom: 5%;
+  padding: 20px 30px;
+}
+.title {
+  font-weight: bolder;
+  color: darkblue;
+  font-size: 30px;
+  height: 15px;
+}
+.under {
+  vertical-align: sub;
+  font-size: 16px;
+}
+.subtitle {
+  font-weight: bold;
+  font-size: 30px;
+  height: 10px;
+}
+.description {
+  height: 90px;
+  overflow: auto;
+}
+a {
+  text-decoration: none;
+}
+.image-container {
+  position: absolute;
+  right: 0;
+  height: 100%;
+}
+img {
+  height: 100%;
+}

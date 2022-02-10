@@ -1,0 +1,62 @@
+body {
+  background-color: #ddd;
+}
+
+.container {
+  position: relative;
+  width: 45%;
+  height: 500px;
+  margin: auto 45%;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+.image-container {
+  position: absolute;
+  top: 20%;
+}
+img {
+  width: 100%;
+  height: auto;
+  position: relative;
+  right: 50%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.text-container {
+  position: absolute;
+  width: 40%;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  right: 0;
+  margin: auto;
+}
+
+.hr {
+  position: absolute;
+  width: 100px;
+  height: 1px;
+  top: 13%;
+  background-color: #ccc;
+}
+
+.title {
+  font-weight: bolder;
+  font-size: 64px;
+  margin-bottom: 50px;
+}
+
+.describe {
+  color: #666;
+}
+
+button {
+  color: #444;
+  border: 1px solid #777;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: transparent;
+  margin-top: 80px;
+}
