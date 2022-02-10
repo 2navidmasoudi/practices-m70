@@ -207,6 +207,7 @@ function test_input($data)
         <div class="row">
             <div class="input-container">
                 <label for="education">وضعیت تحصیلی<span>*</span></label>
+                <!-- <i>دانشجو یا دانش آموخته دوره</i> -->
                 <div class="radio">
                     دانشجو کارشناسی
                     <input type="radio" name="education" id="education" value="1" <?php if (isset($education) && $education == "1") echo "checked"; ?>>

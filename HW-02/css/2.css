@@ -12,6 +12,7 @@
   font-family: "IranSans";
   color: #777;
 }
+
 body {
   width: 700px;
 }
@@ -19,6 +20,7 @@ body {
 span {
   color: red;
 }
+
 label {
   display: block;
   font-family: "IranSans-bold";
@@ -35,6 +37,16 @@ input:focus {
   border: 2px solid #a3cced;
   outline: none;
 }
+
+/* div i {
+  position: relative;
+}
+i {
+  position: fixed;
+  font-size: 14px;
+  top: -10px;
+  margin-right: 10px;
+} */
 
 .row {
   display: flex;
