@@ -10,8 +10,8 @@
 //     return $result;
 // }
 
-// $isPalin = fn ($str) => $str == reverse_string($str);
-$isPalin = fn ($str) => $str == strrev($str);
+// $is_palin = fn ($str) => $str == reverse_string($str);
+$is_palin = fn ($str) => $str == strrev($str);
 
 $input = readline();
 
