@@ -10,24 +10,11 @@ function isPrime($n)
     return true;
 }
 
-function primes($n)
-{
-    $pr = [];
-    for ($i = 2; $i < $n / 2 + 1; $i++) {
-        if (isPrime($i)) {
-            $pr[] = $i;
-        }
-    }
-    return $pr;
-}
-
 function findGoldbakh($n)
 {
-    $primeNumbers = primes($n);
-    foreach ($primeNumbers as $pr) {
-        if (isPrime($n - $pr)) {
-            echo $pr . " " . $n - $pr . "\n";
-        }
+    for ($i = 2; $i <= $n / 2; $i++) {
+        if (isPrime($i) && isPrime($n - $i))
+            echo $i . " " . $n - $i . "\n";
     }
 }
 
