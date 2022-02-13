@@ -12,13 +12,13 @@ body {
     rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 .image-container {
-  position: absolute;
+  position: relative;
   top: 20%;
 }
 img {
   width: 100%;
   height: auto;
-  position: relative;
+  position: absolute;
   right: 50%;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
     rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
