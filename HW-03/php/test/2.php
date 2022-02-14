@@ -1,6 +1,6 @@
 <?php
 
-require "../2.php";
+require __DIR__ . "/../2.php";
 
 $str = "Mary Had A Little Lamb and She LOVED It So";
 // $str = readline();

@@ -1,6 +1,6 @@
 <?php
 
-# To test this function, simply run "test/3.php"
+# To test this function, simply run "php test/3.php"
 
 function replace_maktab(&$str, $replace, $subject)
 {

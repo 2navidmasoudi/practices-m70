@@ -1,6 +1,7 @@
 <?php
 
-# To test this function, simply run "test/1.php"
+# To test this function, simply run "php test/1.php"
+# or run "phpunit test/SeoScoreSampleTest.php"
 
 function oddSeperator(...$nums)
 {

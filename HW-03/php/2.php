@@ -1,6 +1,6 @@
 <?php
 
-# To test this function, simply run "test/2.php"
+# To test this function, simply run "php test/2.php"
 
 function strToLowerMaktab($str)
 {
@@ -11,12 +11,12 @@ function strToLowerMaktab($str)
     return str_replace($from, $to, $str);
      ***********************************/
 
-    foreach ($str as $key => $value) {
+    for ($i = 0; $i < strlen($str); $i++) {
         // ord return the ASCII number of the charecter
-        $ASCII = ord($value);
+        $ASCII = ord($str[$i]);
         if ($ASCII >= 65 && $ASCII <= 90) {
             // chr takes ASCII value and return the charecter.
-            $str[$key] = chr($ASCII + 32);
+            $str[$i] = chr($ASCII + 32);
         }
     }
     return $str;
