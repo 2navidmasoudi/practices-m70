@@ -85,6 +85,5 @@ function seoScore(string $html): int
     $score += count($footer) ? 10 : 0;
     $score += count($section) ? 10 : 0;
 
-    var_dump($h2);
     return $score;
 }
