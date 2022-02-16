@@ -1,0 +1,254 @@
+@font-face {
+  font-family: IRANSans;
+  src: url(./assets/fonts/IRANSansWeb.woff2) format("woff2");
+}
+@font-face {
+  font-family: IRANSans;
+  src: url(./assets/fonts/IRANSansWeb_Bold.woff2) format("woff2");
+  font-weight: 700;
+}
+@font-face {
+  font-family: IRANSans;
+  src: url(./assets/fonts/IRANSansWeb_Bold.woff2) format("woff2");
+  font-weight: 900;
+}
+* {
+  font-family: IRANSans;
+}
+
+.wide-container {
+  width: 95%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.latest-challenge {
+  background: linear-gradient(
+    rgb(62, 84, 163) 0%,
+    rgb(62, 84, 163) 30rem,
+    transparent 30rem
+  );
+  margin-bottom: 5rem;
+  border-radius: 1rem;
+  padding: 7rem 0px;
+}
+
+.container {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0px auto;
+}
+
+.heading {
+  margin-bottom: 7rem;
+  color: rgb(255, 255, 255);
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 500px) {
+  .list {
+    width: 45rem;
+    margin: 0px auto;
+  }
+}
+@media (min-width: 768px) {
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+    width: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.card {
+  background: rgb(255, 255, 255);
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(219, 229, 230);
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.flag-container {
+  pointer-events: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+.flag-align {
+  display: inline-flex;
+  margin: 0px;
+  vertical-align: middle;
+  width: auto;
+  gap: 0.5rem;
+}
+
+.flag {
+  align-items: center;
+  border-radius: 5rem;
+  display: inline-flex;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  font-weight: 700;
+  padding: 0.25rem 1rem;
+  font-family: Barlow, sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  font-size: small;
+}
+
+.premium {
+  background-color: rgb(62, 84, 163);
+  color: rgb(255, 255, 255);
+}
+
+.free {
+  background-color: rgb(231, 235, 249);
+  color: rgb(62, 84, 163);
+}
+
+.new {
+  padding: 0.25rem 0.5rem;
+  background-color: rgb(229, 49, 66);
+  color: rgb(255, 255, 255);
+}
+
+.new::before {
+  content: "*";
+  color: rgb(229, 49, 66);
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  font-size: large;
+  line-height: 1.4rem;
+  width: 1rem;
+  height: 1rem;
+  margin-inline-end: 0.5rem;
+}
+
+.image-link {
+  display: block;
+  overflow: hidden;
+}
+
+img {
+  backface-visibility: hidden;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+  max-width: 100%;
+}
+
+.content {
+  padding: 0.5rem 1.5rem;
+}
+
+.subtitle {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  vertical-align: middle;
+  width: 100%;
+  padding-bottom: 1rem;
+}
+
+.category-list {
+  align-items: center;
+  display: inline-flex;
+  vertical-align: middle;
+  width: auto;
+  font-size: 1rem;
+  font-weight: 700;
+  gap: 0.5rem;
+}
+
+.HTML {
+  background-color: transparent;
+  color: rgb(106, 190, 205);
+  text-decoration: none;
+}
+
+.CSS {
+  background-color: transparent;
+  color: rgb(62, 84, 163);
+  text-decoration: none;
+}
+
+.JS {
+  background-color: transparent;
+  color: rgb(207, 99, 144);
+  text-decoration: none;
+}
+
+.difficulty-container {
+  justify-content: center;
+  border-radius: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-flex;
+  overflow: hidden;
+}
+
+.intermediate {
+  border: 1px solid rgb(241, 182, 4);
+  color: rgb(241, 182, 4);
+  background-color: rgb(241, 182, 4);
+}
+.junior {
+  border: 1px solid rgb(170, 215, 66);
+  color: rgb(170, 215, 66);
+  background-color: rgb(170, 215, 66);
+}
+.newbie {
+  border: 1px solid rgb(106, 190, 205);
+  color: rgb(106, 190, 205);
+  background-color: rgb(106, 190, 205);
+}
+
+.difficulty-level {
+  padding: 0 0.5rem;
+  padding-top: 0.2rem;
+  color: rgb(255, 255, 255);
+}
+
+.difficulty-text {
+  background-color: rgb(255, 255, 255);
+  padding: 0 0.5rem;
+  padding-top: 0.2rem;
+  text-transform: uppercase;
+}
+
+.text {
+  color: rgb(115, 115, 155);
+}
+
+button {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  border: 1px solid skyblue;
+  border-radius: 5px;
+}

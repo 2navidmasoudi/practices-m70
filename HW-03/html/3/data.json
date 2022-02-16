@@ -1,0 +1,114 @@
+{
+    "en": [
+        {
+            "id": 1,
+            "title": "QR code component",
+            "flags": ["new", "free"],
+            "categories": ["HTML", "CSS"],
+            "difficulty": 1,
+            "difficulty_name": "newbie",
+            "text": "A perfect first challenge if you're new to HTML and CSS. The card layout doesn't shift, so it's ideal if you haven't learned about building responsive layouts yet."
+        },
+        {
+            "id": 2,
+            "title": "Tic Tac Toe game",
+            "flags": ["premium"],
+            "categories": ["HTML", "CSS", "JS"],
+            "difficulty": 3,
+            "difficulty_name": "intermediate",
+            "text": "This classic practice project for web developers is a great exercise to complete. It will test your HTML semantics, your grid layout skill, as well as your JS logic."
+        },
+        {
+            "id": 3,
+            "title": "Interactive comments section",
+            "flags": ["free"],
+            "categories": ["HTML", "CSS", "JS"],
+            "difficulty": 3,
+            "difficulty_name": "intermediate",
+            "text": "This is project will put your JavaScript skills to the test. We provide a JSON file to pull the data, but it's also a perfect project to build as a full-stack CRUD app!"
+        },
+        {
+            "id": 4,
+            "title": "Art gallery website",
+            "flags": ["premium"],
+            "categories": ["HTML", "CSS"],
+            "difficulty": 2,
+            "difficulty_name": "junior",
+            "text": "This two-page art gallery project will be perfect if you're ready to branch out beyond single landing pages. There are some particularly interesting layout challenges!"
+        },
+        {
+            "id": 5,
+            "title": "NFT preview card component",
+            "flags": ["free"],
+            "categories": ["HTML", "CSS"],
+            "difficulty": 1,
+            "difficulty_name": "newbie",
+            "text": "This HTML & CSS only challenge is perfect for anyone just starting out or anyone wanting a small project to play around with."
+        },
+        {
+            "id": 6,
+            "title": "Equalizer landing page",
+            "flags": ["premium"],
+            "categories": ["HTML", "CSS"],
+            "difficulty": 1,
+            "difficulty_name": "newbie",
+            "text": "This challenge will be a perfect test of your HTML & CSS skills. If you're starting to get comfortable building smaller projects, this will be a great step up."
+        }
+    ],
+    "fa": [
+        {
+            "id": 1,
+            "title": "جزء کد QR",
+            "flags": ["new", "free"],
+            "categories": ["HTML", "CSS"],
+            "difficulty": 1,
+            "difficulty_name": "newbie",
+            "text": "اگر در HTML و CSS تازه کار هستید، اولین چالش عالی است. چیدمان کارت تغییر نمی‌کند، بنابراین اگر هنوز درباره ساخت طرح‌بندی‌های واکنش‌گرا یاد نگرفته‌اید، ایده‌آل است."
+        },
+        {
+            "id": 2,
+            "title": "بازی تیک تاک",
+            "flags": ["premium"],
+            "categories": ["HTML", "CSS", "JS"],
+            "difficulty": 3,
+            "difficulty_name": "intermediate",
+            "text": "این پروژه تمرینی کلاسیک برای توسعه دهندگان وب یک تمرین عالی برای تکمیل است. این معناشناسی HTML، مهارت طرح بندی شبکه و همچنین منطق JS شما را آزمایش می کند."
+        },
+        {
+            "id": 3,
+            "title": "بخش نظرات تعاملی",
+            "flags": ["free"],
+            "categories": ["HTML", "CSS", "JS"],
+            "difficulty": 3,
+            "difficulty_name": "intermediate",
+            "text": "این پروژه مهارت های جاوا اسکریپت شما را مورد آزمایش قرار می دهد. ما یک فایل JSON برای جمع‌آوری داده‌ها ارائه می‌کنیم، اما این یک پروژه عالی برای ساختن به عنوان یک برنامه CRUD تمام پشته است!"
+        },
+        {
+            "id": 4,
+            "title": "وب سایت گالری هنر",
+            "flags": ["premium"],
+            "categories": ["HTML", "CSS"],
+            "difficulty": 2,
+            "difficulty_name": "junior",
+            "text": "این پروژه گالری هنری دو صفحه ای عالی خواهد بود اگر آماده باشید فراتر از صفحات فرود منشعب شوید. چالش های طرح بندی به خصوص جالبی وجود دارد!"
+        },
+        {
+            "id": 5,
+            "title": "جزء کارت پیش نمایش NFT",
+            "flags": ["free"],
+            "categories": ["HTML", "CSS"],
+            "difficulty": 1,
+            "difficulty_name": "newbie",
+            "text": "این چالش فقط HTML و CSS برای هر کسی که تازه شروع به کار کرده است یا هرکسی که می‌خواهد یک پروژه کوچک با آن بازی کند عالی است."
+        },
+        {
+            "id": 6,
+            "title": "صفحه فرود اکولایزر",
+            "flags": ["premium"],
+            "categories": ["HTML", "CSS"],
+            "difficulty": 1,
+            "difficulty_name": "newbie",
+            "text": "این چالش آزمونی عالی برای مهارت های HTML و CSS شما خواهد بود. اگر شروع به ساختن پروژه های کوچکتر راحت کرده اید، این یک قدم عالی خواهد بود."
+        }
+    ]
+}
