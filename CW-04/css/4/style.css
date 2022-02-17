@@ -1,0 +1,88 @@
+html {
+  height: 100%;
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 1fr 4fr 1fr;
+  margin: 0;
+  grid-template-areas:
+    "header header"
+    "side main"
+    "side footer";
+  gap: 10px;
+  color: white;
+}
+
+.header {
+  grid-area: header;
+  background-color: #ff9b6d;
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+}
+
+.header .logo {
+  flex-basis: 20%;
+  padding: 20px;
+  background-color: #ffd37c;
+  text-align: center;
+}
+.header .nav {
+  flex-basis: 80%;
+  padding: 20px;
+  background-color: #ffd37c;
+}
+
+.sidebar {
+  grid-area: side;
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+  flex-direction: column;
+  text-align: center;
+  background-color: #ceea41;
+}
+
+.sidebar > div {
+  flex: 1;
+  padding: 20px;
+  background-color: #a9ba4f;
+}
+
+.main {
+  grid-area: main;
+  padding: 40px;
+  background-color: #7dbca9;
+  gap: 20px;
+  display: flex;
+}
+
+.main > div {
+  flex: 1;
+  background-color: #8de1ca;
+  padding: 20px;
+}
+
+.footer {
+  grid-area: footer;
+  padding: 20px;
+  display: flex;
+  background-color: #87ceeb;
+  gap: 20px;
+}
+
+.footer > div {
+  flex: 1;
+  padding: 20px;
+  flex-basis: 80%;
+  background-color: #8a9dc7;
+}
+.footer .logo {
+  flex-shrink: 1;
+  text-align: center;
+  flex-basis: 20%;
+}

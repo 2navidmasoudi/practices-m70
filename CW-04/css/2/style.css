@@ -1,0 +1,33 @@
+#parent {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+#parent div {
+  width: 40%;
+  background-color: #333;
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  border-radius: 5px;
+  display: flex;
+  padding: 40px;
+}
+
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px !important;
+}
+.box > div {
+  flex-grow: 1;
+  background-color: #777 !important;
+  padding: 20px 0px !important;
+  justify-content: center;
+}
+
+.box div:first-child {
+  flex: 0 0 100%;
+}

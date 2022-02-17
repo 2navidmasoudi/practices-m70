@@ -1,0 +1,113 @@
+html {
+  font-size: 16px;
+  font-size: 100%;
+  font-family: Open Sans, Arial, Helvetica, Sans-serif;
+  color: #222;
+}
+
+* {
+  text-decoration: none;
+  color: #222;
+}
+
+.container {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 1600px;
+}
+
+.grid-container > div {
+  background-color: cornflowerblue;
+  padding: 1rem;
+}
+
+/* WITHOUT AREA */
+/* .grid-container {
+  display: grid;
+  grid-column-gap: 2rem;
+  grid-template-columns: 1fr 1fr 1fr;
+} */
+
+/* .box1 {
+  grid-column: 1 / 2;
+}
+.box2 {
+  grid-column: auto / span 1;
+}
+.box3 {
+  grid-column: 1 / -1;
+}
+.box4 {
+  grid-column: auto / span 1;
+}
+.box5 {
+  grid-column: auto / span 1;
+}
+.box6 {
+  grid-column: auto / span 1;
+}
+.box7 {
+  grid-column: auto / span 2;
+}
+.box8 {
+  grid-column: auto / span 2;
+}
+.box9 {
+  grid-column: auto / span 1;
+}
+.box10 {
+  grid-column: auto / span 2;
+}
+.box11 {
+  grid-column: 1 / -1;
+} */
+
+/* WITH AREA */
+.grid-container {
+  display: grid;
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
+  grid-template-columns: 1.8fr 1fr 1fr;
+  /* grid-template-rows: 2fr 1fr 1fr 1fr 1fr 1fr; */
+  grid-template-areas:
+    "box1 box1 box2"
+    "box3 box3 box3"
+    "box4 box5 box5"
+    "box6 box6 box7"
+    "box8 box9 box10"
+    "box11 box11 box11";
+}
+
+.box1 {
+  grid-area: box1;
+}
+.box2 {
+  grid-area: box2;
+}
+.box3 {
+  grid-area: box3;
+}
+.box4 {
+  grid-area: box4;
+}
+.box5 {
+  grid-area: box5;
+}
+.box6 {
+  grid-area: box6;
+}
+.box7 {
+  grid-area: box7;
+}
+.box8 {
+  grid-area: box8;
+}
+.box9 {
+  grid-area: box9;
+}
+.box10 {
+  grid-area: box10;
+}
+.box11 {
+  grid-area: box11;
+}

@@ -1,0 +1,38 @@
+body {
+  background-color: #5b9eed;
+}
+
+.card {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 3px;
+  width: 400px;
+  margin: auto;
+}
+
+.contact {
+  display: flex;
+  padding: 20px;
+}
+
+hr {
+  margin: 0px 20px;
+  background-color: #aaa;
+  border: 1px solid #ddd;
+}
+
+img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+.info {
+  padding: 0px 20px;
+}
+.info p:first-child {
+  font-size: large;
+}
+.info p:last-child {
+  color: #aaa;
+}
