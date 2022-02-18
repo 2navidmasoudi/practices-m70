@@ -43,7 +43,7 @@ $transports = array_merge($transports, $more);
             <input type="hidden" name="more[]" value="<?php echo $in ?>">
         <?php } ?>
 
-        <input type="text" name="more[]" id="">
+        <input type="text" name="more[]" id="" require>
 
         <button type="submit">Go</button>
     </form>
