@@ -13,8 +13,8 @@
     </style>
 </head>
 <?php
-$transports = ["Automobile", "Jet", "Ferry", "Subway"];
 
+$transports = ["Automobile", "Jet", "Ferry", "Subway"];
 $more = [];
 if (isset($_GET['more'])) {
     $more = explode(',', $_GET['more']);
@@ -43,7 +43,7 @@ $transports = array_merge($transports, $more);
             <input type="hidden" name="more[]" value="<?php echo $in ?>">
         <?php } ?>
 
-        <input type="text" name="more[]" id="" require>
+        <input type="text" name="more[]" id="" required>
 
         <button type="submit">Go</button>
     </form>
