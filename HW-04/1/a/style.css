@@ -1,0 +1,44 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+
+div {
+  padding: 20px;
+}
+
+header,
+footer {
+  background-color: #eee;
+  flex: 1;
+  padding: 20px;
+}
+
+main {
+  flex-basis: 70%;
+  display: flex;
+}
+
+article {
+  flex-basis: 60%;
+  padding: 20px;
+}
+
+aside {
+  background-color: #f5f5dc;
+  padding: 20px;
+  flex: 1;
+}
+
+nav {
+  background-color: #d7e8d4;
+  padding: 20px;
+  flex: 1;
+}
