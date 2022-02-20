@@ -21,9 +21,9 @@ $max_page = ceil(count($data) / $entities);
 $num = 1 + ($page - 1) * $entities;
 
 $data = array_chunk($data, $entities);
-echo "<pre>";
-print_r($max_page);
-echo "</pre>";
+// echo "<pre>";
+// print_r($max_page);
+// echo "</pre>";
 
 ?>
 
