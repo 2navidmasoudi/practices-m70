@@ -17,7 +17,6 @@ $dir = "ltr";
 
 // we get data from server (here just local data)
 $file = file_get_contents("data.json");
-$data = json_decode($file, true)[$language];
 
 // multi language can be translated here
 $i18n = file_get_contents("i18n.json");
@@ -44,6 +43,10 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['lang'])) {
     }
     // other languages... (I just know farsi and a little english :( ))
 }
+
+$data = json_decode($file, true)[$language];
+
+
 ?>
 
 <body dir="<?php echo $dir ?>">
