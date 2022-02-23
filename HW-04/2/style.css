@@ -13,7 +13,7 @@ div {
   padding: 5px;
 }
 
-div:nth-child(1) {
+div:first-child {
   grid-column: 1 / -1;
 }
 
