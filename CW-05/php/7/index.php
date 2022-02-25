@@ -54,7 +54,20 @@ if (isset($_POST['submit'])) {
             $uploadOk = 0;
         } elseif (move_uploaded_file($_FILES['file']['tmp_name'], $file_path)) {
             $uploadOk = 1;
-            file_put_contents('log.txt', $file_name . " => " . $rand_str . $file_name . "\n", FILE_APPEND);
+
+            // log.txt
+            $log = $file_name . " => " . $rand_str . $file_name . "\n";
+            file_put_contents('log.txt', $log, FILE_APPEND);
+
+            // filename.txt for info
+            $file_info_path = $dir . "/" . $rand_str . $_POST['name'] . 'txt';
+            $info = "file_default_name = " . $_FILES['file']['name'] . "\n"
+                . "user_file_name    = " . $file_name . "\n"
+                . "new_file_name     = " . $rand_str . $file_name . "\n"
+                . "user_detail       = " . $_POST['detail'] . "\n"
+                . "file_size         = " . round($_FILES['file']['size'] / 1024, 2) . " KB" . "\n";
+
+            file_put_contents($file_info_path, $info);
         }
     } elseif (str_contains($_FILES['file']['type'], 'text')) {
         // Text
@@ -71,12 +84,25 @@ if (isset($_POST['submit'])) {
         $file_name = $_POST['name'] . $ext;
         $rand_str = rand_str(6) . "_";;
         $file_path = $dir . "/" . $rand_str . $file_name;
+
         if (file_exists($file_path)) {
             $error = "File is already uploaded";
             $uploadOk = 0;
         } elseif (move_uploaded_file($_FILES['file']['tmp_name'], $file_path)) {
             $uploadOk = 1;
-            file_put_contents('log.txt', $file_name . " => " . $rand_str . $file_name . "\n", FILE_APPEND);
+
+            // log.txt
+            $log = $file_name . " => " . $rand_str . $file_name . "\n";
+            file_put_contents('log.txt', $log, FILE_APPEND);
+
+            // filename.txt for info
+            $file_info_path = $dir . "/" . $rand_str . $_POST['name'] . '.txt';
+            $info = "file_default_name = " . $_FILES['file']['name'] . "\n"
+                . "user_file_name    = " . $file_name . "\n"
+                . "new_file_name     = " . $rand_str . $file_name . "\n"
+                . "user_detail       = " . $_POST['detail'] . "\n"
+                . "file_size         = " . round($_FILES['file']['size'] / 1024, 2) . " KB" . "\n";
+            file_put_contents($file_info_path, $info);
         }
     } else {
         // not text and image
