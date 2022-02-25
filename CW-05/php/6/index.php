@@ -18,12 +18,12 @@ $images_dir = "./images";
 
 function rand_str($n)
 {
-    $num = range(0, 9);
-    // $str = [...range('a', 'z'), ...range('A', 'Z'), ...range(0, 9)];
+    // $num = range(0, 9);
+    $str = [...range('a', 'z'), ...range('A', 'Z'), ...range(0, 9)];
     $rand_text = "";
     for ($i = 0; $i < $n; $i++) {
-        $rand_text .= $num[rand(0, 9)];
-        // $rand_text .= $str[rand(0, count($str))];
+        // $rand_text .= $num[rand(0, 9)];
+        $rand_text .= $str[rand(0, count($str))];
     }
     return $rand_text;
 }
@@ -33,7 +33,7 @@ rand_str(10);
 if (isset($_POST['submit'])) {
     $ext = "." . pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
 
-    if (strpos($_FILES['file']['type'], 'images')) {
+    if (getimagesize($_FILES["file"]["tmp_name"]) !== false) {
         // Image
         $dir = $images_dir;
 
@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
         } elseif (move_uploaded_file($_FILES['file']['tmp_name'], $file_path)) {
             $uploadOk = 1;
         }
-    } elseif (strpos($_FILES['file']['type'], 'text')) {
+    } elseif (str_contains($_FILES['file']['type'], 'text')) {
         // Text
         $dir = $text_dir;
 
