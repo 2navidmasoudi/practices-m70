@@ -33,7 +33,7 @@ rand_str(10);
 if (isset($_POST['submit'])) {
     $ext = "." . pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
 
-    if (strpos($_FILES['file']['type'], 'images')) {
+    if (strpos($_FILES['file']['type'], 'image') !== false) {
         // Image
         $dir = $images_dir;
 
@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
         } elseif (move_uploaded_file($_FILES['file']['tmp_name'], $file_path)) {
             $uploadOk = 1;
         }
-    } elseif (strpos($_FILES['file']['type'], 'text')) {
+    } elseif (strpos($_FILES['file']['type'], 'text') !== false) {
         // Text
         $dir = $text_dir;
 
