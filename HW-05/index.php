@@ -19,7 +19,11 @@
         }
     </style>
 </head>
-<?php header("location: /src/login/") ?>
+<?php
+
+header("location: /src/login/")
+
+?>
 
 <body>
     <iframe src="src/login/" frameborder="0"></iframe>

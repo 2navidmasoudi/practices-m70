@@ -1,6 +1,6 @@
 <?php
 
-function redError($text)
+function alert($text)
 {
     echo '<div class="alert alert-danger text-start" role="alert">'
         . $text .
@@ -11,24 +11,29 @@ function showError($error)
 {
     if (!$error) return;
     $text = "";
-    if ($error == 1) {
-        $text = "Please fill out all fields.";
-        redError($text);
-        return;
+
+    switch ($error) {
+        case 1:
+            $text = "Please fill out all fields.";
+            break;
+        case 2:
+            $text = "Password confirm does not match.";
+            break;
+        case 404:
+            // 404 not found
+            $text = "User not found. Please register.";
+            break;
+        case 403:
+            // 403 forbidden
+            $text = "Password is wrong.";
+            break;
+        case 408:
+            // 408 add new resource
+            $text = "User already exist.";
+            break;
+        default:
+            $text = "Unknown Error";
     }
-    if ($error == 2) {
-        $text = "Password confirm does not match.";
-        redError($text);
-        return;
-    }
-    if ($error == 404) {
-        $text = "User not found. Please register.";
-        redError($text);
-        return;
-    }
-    if ($error == 403) {
-        $text = "Password is wrong.";
-        redError($text);
-        return;
-    }
+
+    alert($text);
 }
