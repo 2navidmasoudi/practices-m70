@@ -13,22 +13,20 @@
 include $_SERVER['DOCUMENT_ROOT'] . "/php/variable.php";
 include "$root/php/user/info.php";
 include "$root/php/directory/get.php";
-// include "$root/php/storage/check.php";
-// include "$root/php/storage/info.php";
-$token = $_GET['token'] ?? '1f7501cb3c02a15621cd6b5638b00eed';
-if (!file_exists("$root/database/directory.json")) {
-    echo "no file exits";
-}
+include "$root/php/storage/get.php";
+
+$token = $_GET['token'] ?? '8ff590ecd78b627ba6b458c2b13f56ee';
 $user = user_info($token);
-// $storage = check_storage($token);
 $directory = get_directory($token);
+$storage = get_storage($directory);
+
+var_dump($storage);
 
 // $info = storage_info($storage);
 
 ?>
 
 <body class="text-center bg-dark text-light">
-
     <main class="container">
         <h1>Welcome to Drive!</h1>
     </main>
