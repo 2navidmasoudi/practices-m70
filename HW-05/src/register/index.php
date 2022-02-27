@@ -18,7 +18,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/php/error/show.php";
 <body class="text-center bg-dark">
 
     <main class="form-signin">
-        <form action="/php/register.php" method="post">
+        <form action="/php/user/register.php" method="post">
             <h1 class="h3 mb-3 fw-normal text-light">Please register</h1>
 
             <div class="form-floating">

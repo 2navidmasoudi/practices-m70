@@ -1,36 +1,38 @@
 <?php
 
-include "error/send.php";
-include "log.php";
+include $_SERVER["DOCUMENT_ROOT"] . "/php/variable.php";
+include "$root/php/error/send.php";
+include "$root/php/log.php";
+
+// for adding users to database.
+include "add.php";
 
 $username = $_POST['username'] ?? '';
 $password = $_POST['password'] ?? '';
 $confirm = $_POST['confirm'] ?? '';
 
-
-
 if (!$username) {
-    _log('Username not added', "register");
+    _log('Username field is empty in register', "user");
     sendError('register', 1);
 }
 
 if (!$password) {
-    _log("$username password not added", "register");
+    _log("$username password field is empty in register", "user");
     sendError('register', 1, "&username=$username");
 }
 
 if ($password != $confirm) {
-    _log("$username password not matched", "register");
+    _log("$username password not matched in register", "user");
     sendError('register', 2, "&username=$username");
 }
 
-$data = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/database/user.json");
-$users = json_decode($data, true) ?? [];
+$users = get_users();
 
+// find if the user already exist.
 $find = array_search($username, array_column($users, 'username'));
 
 if ($find !== false) {
-    _log("$username found in database", "register");
+    _log("$username found in database for register", "user");
     sendError('login', 408, "&username=$username");
 }
 
@@ -40,17 +42,15 @@ $token = hash('md5', $username . $password);
 $newUser = [
     "username" => $username,
     "password" => $password,
+    "token" => $token,
 ];
 
-$users = array_merge($users, [$newUser]);
-$data = json_encode($users, JSON_PRETTY_PRINT);
-$result = file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/database/user.json", $data);
+$result = add_user($newUser);
 
 if ($result !== false) {
-    $token = hash('md5', $username . $password);
-    _log("$username with token = $token added to database", "register");
+    _log("$username with token = $token register succesful", "user");
     header("Location: /src/drive/?token=$token");
 } else {
+    _log("$username failed to add in database", "user");
     sendError('register', 500, "&username=$username");
-    _log("$username failed to add in database", "register");
 }

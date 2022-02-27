@@ -18,7 +18,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/php/error/show.php";
 <body class="text-center bg-dark">
 
     <main class="form-signin">
-        <form action="/php/login.php" method="post">
+        <form action="/php/user/login.php" method="post">
             <!-- <img class="mb-4" src="/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
             <h1 class="h3 mb-3 fw-normal text-light">Please login</h1>
 

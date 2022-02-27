@@ -1,2 +1,0 @@
-[Sat, 26 Feb 2022 21:02:40]: Username not added (register)
-[Sat, 26 Feb 2022 21:15:02]: Navid with token = 8ff590ecd78b627ba6b458c2b13f56ee added to database (register)

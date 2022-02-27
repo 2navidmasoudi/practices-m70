@@ -11,6 +11,7 @@
         body {
             margin: 0;
             padding: 0;
+            height: 100vh;
         }
 
         iframe {
@@ -21,13 +22,17 @@
 </head>
 <?php
 
-header("location: /src/login/")
+// initial database :)
+if (!file_exists('database')) {
+    mkdir('database');
+}
+
+header("location: /src/login/");
 
 ?>
 
 <body>
     <iframe src="src/login/" frameborder="0"></iframe>
-    <!-- <script src="assets/dist/js/bootstrap.bundle.min.js"></script> -->
 </body>
 
 </html>
