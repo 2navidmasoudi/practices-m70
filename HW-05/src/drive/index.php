@@ -20,6 +20,8 @@ include "$root/php/user/info.php";
 include "$root/php/directory/get.php";
 include "$root/php/storage/get.php";
 include "$root/php/storage/show.php";
+include "$root/php/storage/rename.php";
+include "$root/php/storage/delete.php";
 include_once "$root/php/function.php";
 
 $token = $_GET['token'] ?? 'c7192cc967da3f6a772c2c0cb64e1994';
@@ -32,25 +34,14 @@ $directory = get_directory($token);
 
 // storage is basiclly everything user makes or uploads.
 $storage = get_storage($directory);
-
+// rename("/home/navidm/MaktabSharif70/HW-05/storage/DuMv9YcHPi/asd/asdzxc copy", "/home/navidm/MaktabSharif70/HW-05/storage/DuMv9YcHPi/asd/salam");
 ?>
 
-
-
 <body class="bg-dark text-light">
-
     <main class="container">
-        <h1 class="text-center">Hello <?php echo ucwords($user['name']) ?>, Welcome to Drive!</h1>
+        <h1 class="text-center my-5">Hello <?php echo ucwords($user['name']) ?>, Welcome to Drive!</h1>
         <section>
-            <pre>
-                <!-- <?php var_dump(file_exists("$root")); ?>
-                <?php var_dump(is_file("$root")); ?>
-                <?php var_dump(filesize("$root")); ?>
-                <?php var_dump($storage); ?> -->
-            </pre>
-
             <?php show_storage($storage); ?>
-
         </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
