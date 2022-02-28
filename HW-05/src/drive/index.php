@@ -7,29 +7,54 @@
     <meta name="description" content="">
     <title>Drive</title>
     <link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link href="style.css" rel="stylesheet">
 </head>
+
+
+
+
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . "/php/variable.php";
 include "$root/php/user/info.php";
 include "$root/php/directory/get.php";
 include "$root/php/storage/get.php";
+include "$root/php/storage/show.php";
+include_once "$root/php/function.php";
 
-$token = $_GET['token'] ?? '8ff590ecd78b627ba6b458c2b13f56ee';
+$token = $_GET['token'] ?? 'c7192cc967da3f6a772c2c0cb64e1994';
+
+// check if the token is valid and return user information.
 $user = user_info($token);
+
+// get the directory from token, if not exist makes one.
 $directory = get_directory($token);
+
+// storage is basiclly everything user makes or uploads.
 $storage = get_storage($directory);
-
-var_dump($storage);
-
-// $info = storage_info($storage);
 
 ?>
 
-<body class="text-center bg-dark text-light">
+
+
+<body class="bg-dark text-light">
+
     <main class="container">
-        <h1>Welcome to Drive!</h1>
+        <h1 class="text-center">Hello <?php echo ucwords($user['name']) ?>, Welcome to Drive!</h1>
+        <section>
+            <pre>
+                <!-- <?php var_dump(file_exists("$root")); ?>
+                <?php var_dump(is_file("$root")); ?>
+                <?php var_dump(filesize("$root")); ?>
+                <?php var_dump($storage); ?> -->
+            </pre>
+
+            <?php show_storage($storage); ?>
+
+        </section>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

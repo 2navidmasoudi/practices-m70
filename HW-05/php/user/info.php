@@ -14,5 +14,9 @@ function user_info($token)
         return;
         exit;
     }
-    return $users[$find];
+    $user = [
+        'name' => $users[$find]['username'],
+        'token' => $users[$find]['token'],
+    ];
+    return $user;
 }

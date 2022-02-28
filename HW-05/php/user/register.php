@@ -8,6 +8,7 @@ include "$root/php/log.php";
 include "add.php";
 
 $username = $_POST['username'] ?? '';
+$username = strtolower($username);
 $password = $_POST['password'] ?? '';
 $confirm = $_POST['confirm'] ?? '';
 
