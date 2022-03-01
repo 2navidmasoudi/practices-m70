@@ -23,6 +23,7 @@ include "$root/php/storage/show.php";
 include "$root/php/storage/rename.php";
 include "$root/php/storage/delete.php";
 include "$root/php/storage/upload.php";
+include "$root/php/storage/move.php";
 include_once "$root/php/function.php";
 include_once "$root/php/components/toast.php";
 
@@ -125,6 +126,11 @@ $toast_color = "primary";
 
         <section>
             <?php show_storage($storage); ?>
+
+            <!-- size of all storage -->
+            <div class="mt-2">
+                <?php echo "Your drive size is " . get_folder_size($storage) . " bytes" ?>
+            </div>
         </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

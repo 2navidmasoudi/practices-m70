@@ -72,7 +72,8 @@ function show_storage($storage)
             <?php if (!isset($folder['parent'])) { ?>
                 <div class="accordion-item rounded-0">
 
-                    <?php $idgenerator = rand_str(7) ?>
+                    <?php $idgenerator = rand_str(7); ?>
+                    <?php $folder_size = get_folder_size([$folder]); ?>
 
                     <h2 class="accordion-header" id="heading-<?php echo $idgenerator ?>">
 
@@ -80,7 +81,7 @@ function show_storage($storage)
                             <div class="col">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#folder-<?php echo $idgenerator ?>">
                                     <i class="bi bi-folder-fill me-2"></i>
-                                    <?php echo basename($key) ?>
+                                    <?php echo basename($key) . " (" . $folder_size . " bytes)" ?>
                                 </button>
                             </div>
                             <div class="col-auto d-flex justify-content-center align-items-center px-3 delete-directory">
@@ -103,9 +104,16 @@ function show_storage($storage)
                                         </button>
 
                                         <!-- Delete Folder Button -->
-                                        <button class="btn btn-danger" role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="delete folder" type="submit" name="delete" value="<?php echo $key ?>">
-                                            <i class="bi bi-trash ps-auto"></i>
-                                        </button>
+                                        <?php if ($folder_size) { ?>
+                                            <button class="btn btn-danger" data-bs-toggle="modal" type="button" data-bs-target="#modal-delete-folder-<?php echo $idgenerator ?>">
+                                                <i class="bi bi-trash ps-auto" data-bs-toggle="tooltip" data-bs-placement="top" title="delete folder"></i>
+                                            </button>
+                                        <?php } else { ?>
+                                            <button class="btn btn-danger" role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="delete folder" type="submit" name="delete" value="<?php echo $key ?>">
+                                                <i class="bi bi-trash ps-auto"></i>
+                                            </button>
+                                        <?php } ?>
+
                                     </div>
                                 </form>
                             </div>
@@ -187,6 +195,33 @@ function show_storage($storage)
                             </div>
                         </div>
                     </div>
+
+                    <!-- Delete folder modal -->
+                    <div class="modal fade" id="modal-delete-folder-<?php echo $idgenerator ?>">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content bg-dark text-light">
+                                <form action="" method="post">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Delete folder of <?php echo basename($key); ?></h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <p><span class="text-warning">Warning:</span> Your folder contains some files!</p>
+                                            <p>Do you want to <span class="text-danger">delete everyting</span> ?</p>
+                                            <p>or do you want to <span class="text-success">move subfolders to parent folder</span> ?</p>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-success" name="move" value="<?php echo $key ?>">Move Subfolders</button>
+                                        <button type="submit" class="btn btn-danger" name="delete" value="<?php echo $key ?>">Delete All</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- folder accordion -->
                     <div id="folder-<?php echo $idgenerator ?>" class="accordion-collapse collapse">
                         <div class="accordion-body">
