@@ -46,10 +46,10 @@ function rename_folder($path, $name)
     if (!file_exists($new_path)) {
         $result = rename($path, $new_path);
         if ($result) {
-            show_toast("Rename successful.", "success");
+            show_toast("Rename folder successful.", "success");
             _log("Rename folder: $old_name to $name in $parent_path successful", 'storage');
         } else {
-            show_toast("Rename failed.", "danger");
+            show_toast("Rename folder failed.", "danger");
             _log("Rename folder $old_name to $name in $parent_path failed", 'storage');
         }
     } else {

@@ -9,7 +9,7 @@ function show_file($file)
         <div class="row">
             <div class="col d-flex align-items-center">
                 <i class="bi bi-filetype-<?php echo $file['ext'] ?> me-1"></i>
-                <?php echo $file['name'] . " ({$file['size']} bytes)" ?>
+                <?php echo $file['name'] . " ({$file['size']} bytes)" . formatSizeUnits($file['size']) ?>
             </div>
             <div class="col ms-auto d-flex justify-content-end">
                 <form action="" method="post">
@@ -22,7 +22,7 @@ function show_file($file)
 
                         <!-- Download file -->
                         <a class="btn btn-info" href="<?php echo $file['relative'] ?>" role="button" download data-bs-toggle="tooltip" data-bs-placement="top" title="download">
-                            <i class="bi bi-download ps-auto"></i>
+                            <i class="bi bi-cloud-download ps-auto"></i>
                         </a>
                         <!-- Rename file -->
 
@@ -77,11 +77,12 @@ function show_storage($storage)
 
                     <h2 class="accordion-header" id="heading-<?php echo $idgenerator ?>">
 
+                        <!-- header with buttons for accordion -->
                         <div class="row w-100 m-0 g-0">
                             <div class="col">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#folder-<?php echo $idgenerator ?>">
                                     <i class="bi bi-folder-fill me-2"></i>
-                                    <?php echo basename($key) . " (" . $folder_size . " bytes)" ?>
+                                    <?php echo basename($key) . " (" . $folder_size . " bytes)" . formatSizeUnits($folder_size); ?>
                                 </button>
                             </div>
                             <div class="col-auto d-flex justify-content-center align-items-center px-3 delete-directory">

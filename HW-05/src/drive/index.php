@@ -11,10 +11,8 @@
     <link href="style.css" rel="stylesheet">
 </head>
 
-
-
-
 <?php
+
 include $_SERVER['DOCUMENT_ROOT'] . "/php/variable.php";
 include "$root/php/user/info.php";
 include "$root/php/directory/get.php";
@@ -38,18 +36,18 @@ $directory = get_directory($token);
 // storage is basiclly everything user makes or uploads.
 $storage = get_storage($directory);
 
-$toast_text = "test";
-$toast_color = "primary";
-// rename("/home/navidm/MaktabSharif70/HW-05/storage/DuMv9YcHPi/asd/asdzxc copy", "/home/navidm/MaktabSharif70/HW-05/storage/DuMv9YcHPi/asd/salam");
 ?>
 
 <body class="bg-dark-moon text-light">
 
+    <!-- toast component for showing the result -->
     <?php show_toast("Created by 2navidmasoudi@gmail.com", 'info') ?>
 
     <main class="container">
+
         <h1 class="text-center my-5">Hello <?php echo ucwords($user['name']) ?>, Welcome to <span class="text-gradient">Drive!</span></h1>
 
+        <!-- add button -->
         <div class="my-3">
             <div class="dropdown dropend">
                 <button class="btn btn-dark-blue pe-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -121,16 +119,28 @@ $toast_color = "primary";
                     </div>
                 </div>
             </div>
-
         </div>
 
         <section>
-            <?php show_storage($storage); ?>
 
+            <!-- show everything in storage -->
+            <?php if (count($storage) > 0) { ?>
+                <?php show_storage($storage); ?>
+            <?php } else { ?>
+                <div class="mt-2">
+                    <div class="w-100 border border-info rounded-3 bg-light text-primary text-center py-3">
+                        Your drive is empty.
+                    </div>
+                </div>
+            <?php } ?>
             <!-- size of all storage -->
-            <div class="mt-2">
-                <?php echo "Your drive size is " . get_folder_size($storage) . " bytes" ?>
-            </div>
+            <?php $size = get_folder_size($storage) ?>
+            <?php if ($size > 0) { ?>
+                <div class="mt-2">
+                    <?php echo "Your drive size is $size bytes" . formatSizeUnits($size) ?>
+                </div>
+            <?php } ?>
+
         </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
