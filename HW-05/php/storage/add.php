@@ -2,6 +2,7 @@
 
 include $_SERVER["DOCUMENT_ROOT"] . "/php/variable.php";
 include_once "$root/php/log.php";
+include_once "$root/php/components/toast.php";
 
 if (isset($_POST['new_folder'])) {
     $path = $_POST['new_folder'];
@@ -15,11 +16,14 @@ function add_folder($path, $name)
     if (!file_exists($folder)) {
         $result = mkdir($folder);
         if ($result) {
+            show_toast("New folder created.", "success");
             _log("new folder $folder created", 'storage');
         } else {
+            show_toast("Can't create folder!", "danger");
             _log("new folder $folder creation failed", 'storage');
         }
     } else {
+        show_toast("Folder already exist.", "danger");
         _log("$folder creation failed, already exist", 'storage');
     }
 }

@@ -2,6 +2,7 @@
 
 include $_SERVER["DOCUMENT_ROOT"] . "/php/variable.php";
 include_once "$root/php/log.php";
+include_once "$root/php/components/toast.php";
 
 if (isset($_POST['delete'])) {
     $path = $_POST['delete'];

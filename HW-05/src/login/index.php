@@ -15,7 +15,7 @@ $username = $_GET['username'] ?? '';
 include $_SERVER['DOCUMENT_ROOT'] . "/php/error/show.php";
 ?>
 
-<body class="text-center bg-dark">
+<body class="text-center bg-dark-moon">
 
     <main class="form-signin">
         <form action="/php/user/login.php" method="post">

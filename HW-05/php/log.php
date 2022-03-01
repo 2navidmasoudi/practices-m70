@@ -10,7 +10,7 @@ function _log($text, $location)
     }
     file_put_contents(
         "$root/log/log_{$location}.txt",
-        "[" . date('D, d M Y H:i:s') . "]: $text ($location)" . "\n",
+        "[" . date('D, d M Y H:i:s') . "]: $text" . "\n",
         FILE_APPEND
     );
 }
