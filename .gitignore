@@ -1,2 +1,5 @@
 node_modules/
 log_*
+log/
+database/
+storage/

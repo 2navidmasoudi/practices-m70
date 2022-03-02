@@ -18,9 +18,10 @@ function move_storage($path)
             continue;
         }
         $from = $path . '/' . $file;
-        $parent_path = preg_replace('/' . preg_quote($file, '/') . '$/', '', $path);
-        $parent_name = "/" . basename($parent_path);
-        $grand_path = preg_replace('/' . preg_quote($parent_name, '/') . '$/', '', $parent_path);
+        // $parent_path = preg_replace('/' . preg_quote($file, '/') . '$/', '', $path);
+        // $parent_name = "/" . basename($parent_path);
+        // $grand_path = preg_replace('/' . preg_quote($parent_name, '/') . '$/', '', $parent_path);
+        $grand_path = dirname($from, 2);
         $new_path = "$grand_path/$file";
         rename($from, $new_path);
     }

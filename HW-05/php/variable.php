@@ -1,3 +1,3 @@
 <?php
 
-$root = $_SERVER['DOCUMENT_ROOT'];
+$root = realpath(str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT']));

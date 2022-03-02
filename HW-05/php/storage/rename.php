@@ -21,7 +21,8 @@ function rename_file($path, $name)
 {
     $old_name = basename($path);
     $ext = pathinfo($path, PATHINFO_EXTENSION);
-    $parent_path = preg_replace('/' . preg_quote($old_name, '/') . '$/', '', $path);
+    // $parent_path = preg_replace('/' . preg_quote($old_name, '/') . '$/', '', $path);
+    $parent_path = dirname($path);
     $new_path = "$parent_path/$name.$ext";
     if (!file_exists($new_path)) {
         $result = rename($path, $new_path);
@@ -41,7 +42,8 @@ function rename_file($path, $name)
 function rename_folder($path, $name)
 {
     $old_name = basename($path);
-    $parent_path = preg_replace('/' . preg_quote($old_name, '/') . '$/', '', $path);
+    $parent_path = dirname($path);
+    // $parent_path = preg_replace('/' . preg_quote($old_name, '/') . '$/', '', $path);
     $new_path = "$parent_path/$name";
     if (!file_exists($new_path)) {
         $result = rename($path, $new_path);
