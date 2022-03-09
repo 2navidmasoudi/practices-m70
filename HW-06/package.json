@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "css1": "npx tailwindcss -i ./1/input.css -o ./1/output.css --watch",
+    "css2": "npx tailwindcss -i ./2/input.css -o ./2/output.css --watch",
+    "css3": "npx tailwindcss -i ./3/input.css -o ./3/output.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.0.23"
+  }
+}

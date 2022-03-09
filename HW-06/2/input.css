@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.icon-white {
+  color: white;
+}
+
+.icon-large {
+  font-size: 25px;
+}
+
+.icon-xlarge {
+  font-size: 50px;
+}
