@@ -4,6 +4,12 @@ session_start();
 // $_SESSION['view'] = isset($_SESSION['view']) ? ++$_SESSION['view'] : 1;
 $_SESSION['view'] =  ++$_SESSION['view'] ?? 1;
 
+setcookie('view', ++$_COOKIE['view'] ?? 1, time() + 60 * 60 * 24 * 365 * 10);
+
+if ($_COOKIE['view'] == 2) {
+    header('location: 1_test.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -17,8 +23,8 @@ $_SESSION['view'] =  ++$_SESSION['view'] ?? 1;
 </head>
 
 <body>
-    <h2>You visited <?php echo $_SESSION['view'] ?></h2>
-    <?php if ($_SESSION['view'] == 1) { ?>
+    <h2>You visited <?php echo $_COOKIE['view'] ?></h2>
+    <?php if ($_COOKIE['view'] == 1) { ?>
         <h3>You can only see this at first time.</h3>
     <?php } ?>
 </body>

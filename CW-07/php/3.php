@@ -6,9 +6,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     foreach ($_POST as $key => $post_data) {
         $_SESSION['font'][$key] = $post_data;
     }
-    setcookie('font-style', $_POST['font-style']);
-    setcookie('font-size', $_POST['font-size']);
-    setcookie('font-dir', $_POST['font-dir']);
+    // setcookie('font-style', $_POST['font-style']);
+    // setcookie('font-size', $_POST['font-size']);
+    // setcookie('font-dir', $_POST['font-dir']);
 }
 $fontStyle = $_SESSION['font']['font-style'] ?? $_COOKIE['font-style'];
 $fontSize = $_SESSION['font']['font-size'] ?? $_COOKIE['font-size'];
