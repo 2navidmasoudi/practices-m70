@@ -10,9 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 $user_data = $_SESSION['user'] ?? [];
 
-$users = [1, 14, 5, 8, 13, 16];
-echo $users[rand(0, count($users) - 1)];
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
