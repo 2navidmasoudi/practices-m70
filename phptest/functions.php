@@ -1,10 +1,21 @@
 <?php
 
-$add = fn ($multy, ...$arg) => array_reduce(
+$add_numbers = fn ($multy, ...$arg) => array_reduce(
     $arg,
     fn ($carry, $n) => $multy ? $n * $carry : $n + $carry,
     $initial
 );
+
+function add_numbers($multy, ...$arg)
+{
+    return array_reduce(
+        $arg,
+        function ($carry, $n) use ($multy) {
+            return  $multy ? $n * $carry : $n + $carry;
+        },
+        $multy ? 1 : 0
+    );
+}
 
 if (!function_exists('add_numbers')) {
     /**
@@ -33,3 +44,4 @@ if (!function_exists('add_numbers')) {
 }
 
 echo "sum: " . add_numbers(false, 1, 2.2, 3, 4, 5);
+// echo "sum: " . $add_numbers(false, 1, 2.2, 3, 4, 5);
