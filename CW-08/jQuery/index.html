@@ -45,6 +45,32 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(function () {
+
+            $.get({
+                url: "tel.php",
+                dataType: "json",
+                success: function (result, textStatus) {
+                    if (textStatus == "success") {
+                        $("table").html("");
+                        result.forEach(data => {
+                            $("table").append(`
+                                    <tr>
+                                        <td>${data.fname}</td>
+                                        <td>${data.lname}</td>
+                                        <td>${data.tel}</td>
+                                        <td>${data.gender}</td>
+                                        <td>${data.detail}</td>
+                                    </tr>
+                                `);
+
+                        });
+                    }
+                },
+                error: function (err) {
+                    console.error(err);
+                },
+            });
+
             $('#agree').change(function () {
                 let checked = $(this).is(":checked");
                 if (checked) {

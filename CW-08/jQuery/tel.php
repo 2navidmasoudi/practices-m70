@@ -15,3 +15,10 @@ if (isset($_POST['submit'])) {
     echo $data;
     file_put_contents('contacts.json', $data);
 }
+
+if (isset($_GET)) {
+    $file = file_get_contents('contacts.json');
+    $contacts = json_decode($file, true);
+    $data = json_encode($contacts, JSON_PRETTY_PRINT);
+    echo $data;
+}
