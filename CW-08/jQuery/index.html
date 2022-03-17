@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <div>
+            <label for="fname">First name: </label>
+            <input type="text" name="fname" id="fname" value="qwe">
+        </div>
+        <div>
+            <label for="lname">Last name: </label>
+            <input type="text" name="lname" id="lname" value="asd">
+        </div>
+        <div>
+            <label for="tel">Phone: </label>
+            <input type="tel" name="tel" id="tel" value="123">
+        </div>
+        <div>
+            <label for="gender">Gender: </label>
+            <select name="gender" id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+        <div>
+            <label style="display: block" for="detail">Detail: </label>
+            <textarea name="detail" id="detail" cols="30" rows="10">zxc</textarea>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            let limit_length = $("#detail").val().length;
+            console.log("limit: ", limit_length);
+            $('form').submit(function (e) {
+                e.preventDefault();
+                // let data = [];
+                // $("form :input").slice().each(function () {
+                //     var input = $(this).val();
+                //     var input = $(this).val;
+                //     console.log(input);
+                //     data.push([
+                //         "fname":
+                //     ])
+                // });
+                // console.log(e);
+                // e.target.forEach(element => {
+                //     console.log(element.target);
+                // });
+
+                const fname = $("#fname").val();
+                const lname = $("#lname").val();
+                const tel = $("#tel").val();
+                const gender = $("#gender").val();
+                const detail = $("#detail").val();
+
+                // if (limit_length > 100) {
+
+                // }
+
+                const data = {
+                    fname,
+                    lname,
+                    tel,
+                    gender,
+                    detail,
+                };
+
+                $.post({
+                    url: "tel.php",
+                    data,
+                    success: function (result) {
+                        console.log(result);
+                    },
+                    error: function (err) {
+                        console.error(err);
+                    },
+                })
+            })
+        });
+    </script>
+</body>
+
+</html>
