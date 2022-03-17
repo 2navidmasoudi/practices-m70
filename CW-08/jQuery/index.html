@@ -33,46 +33,25 @@
             <label style="display: block" for="detail">Detail: </label>
             <textarea name="detail" id="detail" cols="30" rows="10">zxc</textarea>
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" id="submit" name="submit" value="submit">Submit</button>
     </form>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(function () {
-            let limit_length = $("#detail").val().length;
+            let limit_length = 0;
+            $("#detail").keyup(function (e) {
+                limit_length = $(this).val().length;
+            });
             console.log("limit: ", limit_length);
             $('form').submit(function (e) {
                 e.preventDefault();
-                // let data = [];
-                // $("form :input").slice().each(function () {
-                //     var input = $(this).val();
-                //     var input = $(this).val;
-                //     console.log(input);
-                //     data.push([
-                //         "fname":
-                //     ])
-                // });
-                // console.log(e);
-                // e.target.forEach(element => {
-                //     console.log(element.target);
-                // });
 
-                const fname = $("#fname").val();
-                const lname = $("#lname").val();
-                const tel = $("#tel").val();
-                const gender = $("#gender").val();
-                const detail = $("#detail").val();
-
-                // if (limit_length > 100) {
-
-                // }
-
-                const data = {
-                    fname,
-                    lname,
-                    tel,
-                    gender,
-                    detail,
-                };
+                let data = {};
+                $("form :input").each(function () {
+                    var input = $(this);
+                    console.log(input);
+                    data[this.id] = input.val();
+                });
 
                 $.post({
                     url: "tel.php",
@@ -83,7 +62,7 @@
                     error: function (err) {
                         console.error(err);
                     },
-                })
+                });
             })
         });
     </script>
