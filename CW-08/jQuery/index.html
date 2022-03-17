@@ -108,8 +108,6 @@
                     dataType: "json",
                     data,
                     success: function (result, textStatus) {
-
-                        console.log(result);
                         if (textStatus == "success") {
                             $("table").html("");
                             result.forEach(data => {
