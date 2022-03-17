@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Document</title>
 </head>
 
@@ -40,30 +42,37 @@
         <button disabled type="submit" id="submit" name="submit" value="submit">Submit</button>
     </form>
 
-    <table></table>
+    <table class="table table-success"></table>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script>
         $(function () {
-
             $.get({
-                url: "tel.php",
-                dataType: "json",
+                url: "contacts.json",
                 success: function (result, textStatus) {
-                    if (textStatus == "success") {
-                        $("table").html("");
+                    if (textStatus == "success" && result.length) {
+                        $("table").html(`
+                                <tr>
+                                    <th>first</th>
+                                    <th>last</th>
+                                    <th>phone</th>
+                                    <th>gender</th>
+                                    <th>detail</th>
+                                </tr>
+                        `);
                         result.forEach(data => {
                             $("table").append(`
-                                    <tr>
-                                        <td>${data.fname}</td>
-                                        <td>${data.lname}</td>
-                                        <td>${data.tel}</td>
-                                        <td>${data.gender}</td>
-                                        <td>${data.detail}</td>
-                                    </tr>
-                                `);
-
+                                <tr>
+                                    <td>${data.fname}</td>
+                                    <td>${data.lname}</td>
+                                    <td>${data.tel}</td>
+                                    <td>${data.gender}</td>
+                                    <td>${data.detail}</td>
+                                </tr>
+                            `);
                         });
+
                     }
                 },
                 error: function (err) {
@@ -135,7 +144,15 @@
                     data,
                     success: function (result, textStatus) {
                         if (textStatus == "success") {
-                            $("table").html("");
+                            $("table").html(`
+                                <tr>
+                                    <th>first</th>
+                                    <th>last</th>
+                                    <th>phone</th>
+                                    <th>gender</th>
+                                    <th>detail</th>
+                                </tr>
+                            `);
                             result.forEach(data => {
                                 $("table").append(`
                                     <tr>
@@ -157,6 +174,7 @@
             })
         });
     </script>
+
 </body>
 
 </html>
