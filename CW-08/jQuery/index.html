@@ -30,34 +30,101 @@
             </select>
         </div>
         <div>
-            <label style="display: block" for="detail">Detail: </label>
+            <label style="display: block" for="detail">Detail: <span class="remain"></span></label>
             <textarea name="detail" id="detail" cols="30" rows="10">zxc</textarea>
         </div>
-        <button type="submit" id="submit" name="submit" value="submit">Submit</button>
+        <div>
+            <input type="checkbox" name="agree" id="agree">
+            <label for="agree">I'm sure to save <span id="name"></span> with phone: <span id="phone"></span></label>
+        </div>
+        <button disabled type="submit" id="submit" name="submit" value="submit">Submit</button>
     </form>
+
+    <table></table>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(function () {
-            let limit_length = 0;
-            $("#detail").keyup(function (e) {
-                limit_length = $(this).val().length;
+            $('#agree').change(function () {
+                let checked = $(this).is(":checked");
+                if (checked) {
+                    $("#submit").removeAttr("disabled");
+                } else {
+                    $("#submit").attr("disabled", "disabled");
+                }
             });
-            console.log("limit: ", limit_length);
+
+            let fname = "";
+            let lname = "";
+            $("#name").text($("#fname").val() + " " + $("#lname").val());
+
+            $("#fname").change(function (e) {
+                fname = $(this).val()
+                $("#name").text(fname + " " + lname);
+            });
+            $("#lname").change(function (e) {
+                lname = $(this).val()
+                $("#name").text(fname + " " + lname);
+            });
+
+            $("#phone").text($("#tel").val());
+            $("#tel").change(function (e) {
+                $("#phone").text($(this).val());
+            });
+
+            let input_length = 0;
+            $("#detail").change(function (e) {
+                let input_length = $(this).val().length;
+
+                if (input_length > 50) {
+                    $(".remain").text(input_length + "/100");
+                } else {
+                    $(".remain").text("");
+                }
+                if (input_length > 100) {
+                    $(".remain").css("color", "red");
+                } else {
+                    $(".remain").css("color", "black");
+                }
+            });
+
+
             $('form').submit(function (e) {
                 e.preventDefault();
+
+                if (input_length > 100) {
+                    alert('Detail should be less than 100');
+                    return;
+                }
 
                 let data = {};
                 $("form :input").each(function () {
                     var input = $(this);
-                    console.log(input);
                     data[this.id] = input.val();
                 });
 
                 $.post({
                     url: "tel.php",
+                    dataType: "json",
                     data,
-                    success: function (result) {
+                    success: function (result, textStatus) {
+
                         console.log(result);
+                        if (textStatus == "success") {
+                            $("table").html("");
+                            result.forEach(data => {
+                                $("table").append(`
+                                    <tr>
+                                        <td>${data.fname}</td>
+                                        <td>${data.lname}</td>
+                                        <td>${data.tel}</td>
+                                        <td>${data.gender}</td>
+                                        <td>${data.detail}</td>
+                                    </tr>
+                                `);
+
+                            });
+                        }
                     },
                     error: function (err) {
                         console.error(err);

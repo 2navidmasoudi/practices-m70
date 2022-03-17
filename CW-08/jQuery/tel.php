@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
         "gender" => $gender,
         "detail" => $detail,
     ];
-    var_dump($contacts);
     $data = json_encode($contacts, JSON_PRETTY_PRINT);
+    echo $data;
     file_put_contents('contacts.json', $data);
 }
