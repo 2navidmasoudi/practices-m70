@@ -6,11 +6,15 @@ $url = "https://randomuser.me/api/";
 
 $ch = curl_init($url);
 
+curl_exec($ch);
 
 // curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-type: application/json"]);
+// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+// curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-type: application/json"]);
 
+// $result = curl_exec($ch);
+
+// echo $result;
 
 // curl_setopt_array($ch, [
 //     CURLOPT_RETURNTRANSFER => true,
@@ -26,10 +30,6 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-type: application/json"]);
 
 // $result = json_encode($result);
 
-
-$result = curl_exec($ch);
-
-echo $result;
 // var_dump($ch);
 
 // $info = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -50,5 +50,5 @@ echo $result;
 // echo date('F,d,Y');
 // echo date("Y-m-d H:i:s", time() + 60 * 60 * 24);
 
-$users = [14, 12, 19, 17, 16, 20, 10, 21, 18, 8, 1, 13, "azad 1"];
-echo $users[rand(0, count($users) - 1)];
+// $users = [14, 12, 19, 17, 16, 20, 10, 21, 18, 8, 1, 13, "azad 1"];
+// echo $users[rand(0, count($users) - 1)];
