@@ -17,33 +17,51 @@ if (!isset($_SESSION['user']['username'])) {
     <meta name="description" content="">
     <title>Chat</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="output.css" rel="stylesheet">
+    <script type="text/javascript" src="../../js/AjaxPush.js"></script>
 </head>
 
 <?php
+
 $user = $_SESSION['user'];
+
 ?>
 
 <body>
     <main class="flex h-screen">
         <!-- about me section -->
-        <section class="flex-1 bg-black">
-
+        <section class="flex-1 bg-gray-300">
+            User Detail Section
         </section>
 
         <!-- general chat section -->
-        <section class="flex-[2] bg-green-600">
+        <section class="flex-[2] flex flex-col">
+            <div class="pt-5">
+                <h1 class="text-center">General Chat</h1>
+            </div>
+            <div class="overflow-y-scroll h-full" id="history">
 
+            </div>
+            <div class="flex">
+                <input class="bg-gray-50 border border-blue-300 text-gray-900 text-sm block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Enter message here..." type="text" name="message" id="message">
+                <button id="send" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4">
+                    Send
+                </button>
+            </div>
         </section>
 
         <!-- users section -->
-        <section class="flex-1 bg-red-600">
-
+        <section class="flex-1 bg-gray-300">
+            All Users
         </section>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+
+    </script>
 </body>
 
 </html>
