@@ -18,7 +18,6 @@ if (!isset($_SESSION['user']['username'])) {
     <title>Chat</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link href="output.css" rel="stylesheet">
-    <script type="text/javascript" src="../../js/AjaxPush.js"></script>
 </head>
 
 <?php
@@ -57,11 +56,8 @@ $user = $_SESSION['user'];
 
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-    <script type="text/javascript">
-
-    </script>
+    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
