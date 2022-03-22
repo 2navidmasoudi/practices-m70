@@ -12,6 +12,7 @@ function send_error($error = 500)
     if ($error < 5) {
         // http_response_code(422);
         $response['statusCode'] = 422;
+        $response['inputError'] = $error;
         header("HTTP/1.1 422 Invalid format");
     }
 
@@ -30,13 +31,13 @@ function message_error($error)
             $message = "Please fill out all fields.";
             break;
         case 2:
-            $message = "username should be min 3 and max 32 chars (chars and numbers)";
+            $message = "Username should be min 3 and max 32 chars (chars and numbers)";
             break;
         case 3:
-            $message = "name should be min 3 and max 32 chars (only lowercase and spaces)";
+            $message = "Name should be min 3 and max 32 chars (only lowercase and spaces)";
             break;
         case 4:
-            $message = "password should be min 4 and max 32 chars";
+            $message = "Password should be min 4 and max 32 chars";
             break;
         case 404:
             // 404 not found

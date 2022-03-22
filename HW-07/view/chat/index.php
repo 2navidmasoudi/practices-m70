@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user']['username'])) {
+if (!isset($_SESSION['token'])) {
     session_destroy();
     header('location: /index.php');
 }
@@ -22,7 +22,9 @@ if (!isset($_SESSION['user']['username'])) {
 
 <?php
 
-$user = $_SESSION['user'];
+$token = $_SESSION['token'];
+$username = $_SESSION['username'];
+$name = $_SESSION['name'];
 
 ?>
 

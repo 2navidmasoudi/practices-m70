@@ -4,22 +4,20 @@ include_once "get.php";
 
 function add_user($new_user)
 {
-    // test for ajax result
-    echo json_encode($new_user);
-    exit;
-
     // get all users from data base
     $users = get_users();
 
-    // add new user with username key
-    $users[$new_user['username']] = $new_user;
+    // add new user with username as key
+    $key = $new_user['username'];
+    $users[$key] = $new_user;
 
     // hash password
-    $users[$new_user['username']]['password'] = hash('sha256', $new_user['password']);
+    $new_pass = hash('sha256', $new_user['password']);
+    $users[$key]['password'] = $new_pass;
 
     // setting token for future config
-    $token = md5($new_user['username'] . $users[$new_user['username']]['password']);
-    $users[$new_user['token']]['token'] = $token;
+    $token = hash('md5', $key . $new_pass);
+    $users[$key]['token'] = $token;
 
     // rewerite db with new user
     $data = json_encode($users, JSON_PRETTY_PRINT);

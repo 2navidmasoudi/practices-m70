@@ -4,6 +4,8 @@ include_once "error.php";
 include_once "user/get.php";
 include_once "user/add.php";
 
+header('Content-Type: application/json');
+
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -38,6 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $response['statusCode'] = '201';
     $response['token'] = $token;
     $response['status'] = 'success';
+    $response['location'] = '/view/chat/';
+
     http_response_code(201);
     echo json_encode($response);
 
@@ -45,6 +49,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['name'] = $name;
     $_SESSION['username'] = $username;
     $_SESSION['token'] = $token;
-
-    header("location: /view/chat/index.php");
 }
