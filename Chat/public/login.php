@@ -1,5 +1,6 @@
 <?php
 
+include_once "root.php";
 include_once "error.php";
 include_once "user/get.php";
 

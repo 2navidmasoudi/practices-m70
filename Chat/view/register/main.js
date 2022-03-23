@@ -1,3 +1,4 @@
+import url from '/config.js';
 $(function () {
 
     // window.location.replace("/view/chat");
@@ -22,7 +23,7 @@ $(function () {
         });
 
         $.post({
-            url: "/public/register.php",
+            url: url + "/public/register.php",
             dataType: "json",
             data,
             success: function (response) {

@@ -966,6 +966,10 @@ textarea {
   border-color: rgb(59 130 246 / var(--tw-border-opacity));
 }
 
+.focus\:outline-0:focus {
+  outline-width: 0px;
+}
+
 .focus\:ring-blue-500:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(59 130 246 / var(--tw-ring-opacity));
