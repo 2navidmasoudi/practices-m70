@@ -14,7 +14,6 @@ $(function () {
     $('form').submit(function (e) {
         e.preventDefault();
 
-
         let data = {};
         $("form :input").each(function () {
             const input = $(this);
@@ -27,6 +26,7 @@ $(function () {
             dataType: "json",
             data,
             success: function (response) {
+                $("#alert").hide('fast');
                 $("input").addClass("is-valid");
                 $("input").removeClass("is-invalid");
 

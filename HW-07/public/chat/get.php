@@ -1,8 +1,6 @@
 <?php
 
-if (!file_exists("../../db")) {
-    mkdir("../../db");
-}
+session_start();
 
 function get_chat()
 {

@@ -10,10 +10,11 @@ function send_error($error = 500)
     // http_response_code($error);
 
     if ($error < 5) {
-        // http_response_code(422);
         $response['statusCode'] = 422;
         $response['inputError'] = $error;
         header("HTTP/1.1 422 Invalid format");
+
+        // http_response_code(422);
     }
 
     echo json_encode($response);
