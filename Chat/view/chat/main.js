@@ -8,8 +8,11 @@ $(function () {
             $("#loader").css('display', 'none');
             $("main").removeClass("hidden");
         }
-    }).then(e => {
-        console.log(e);
+    }).then(response => {
+        console.log(response);
+        const { username, token, name } = response;
+
+
 
     })
 });
