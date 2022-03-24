@@ -12,5 +12,19 @@
         "name": "Navd Masoudi",
         "password": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
         "token": "86f845c9f361ba7fb65c8eedcb13738d"
+    },
+    "MamadKhafan": {
+        "username": "MamadKhafan",
+        "email": "khafan@gmail.com",
+        "name": "Mamad Khafan",
+        "password": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+        "token": "ffece9ffa2270b33828dc6926f709c4d"
+    },
+    "Mona": {
+        "username": "Mona",
+        "email": "mona@gmail.com",
+        "name": "Mona Kamali",
+        "password": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+        "token": "e9336ac0ce738b647327568bf4e1f513"
     }
 }

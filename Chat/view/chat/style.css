@@ -87,6 +87,23 @@ body {
   }
 }
 
+.scrollbar-w-2::-webkit-scrollbar {
+  width: 0.25rem;
+  height: 0.25rem;
+}
+
+.scrollbar-track-blue-lighter::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.scrollbar-thumb-blue::-webkit-scrollbar-thumb {
+  @apply bg-sky-700;
+}
+
+.scrollbar-thumb-rounded::-webkit-scrollbar-thumb {
+  border-radius: 0.25rem;
+}
+
 .card-bordered {
   border: 1px solid #ebebeb;
 }
