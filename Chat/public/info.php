@@ -6,7 +6,7 @@ extract($_SESSION);
 
 header('Content-Type: application/json');
 
-if (!isset($token)) {
+if (!isset($token) or !file_exists('../db/users.json')) {
     http_response_code(400);
     session_destroy();
     echo json_encode([

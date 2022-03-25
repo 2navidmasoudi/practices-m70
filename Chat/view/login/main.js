@@ -16,11 +16,11 @@ $(function () {
         }
     })
 
-    $(document).keyup(function (e) {
-        if (e.which == 13) {
-            $("form").submit();
-        }
-    });
+    // $(document).keypress(function (e) {
+    //     if (e.which == 13) {
+    //         $("form").submit();
+    //     }
+    // });
 
     $('form').submit(function (e) {
         e.preventDefault();

@@ -6,11 +6,11 @@ $(function () {
     $("#alert").hide();
     $("#alert").removeClass("d-none");
 
-    $(document).keypress(function (e) {
-        if (e.which == 13) {
-            $("form").submit();
-        }
-    });
+    // $(document).keypress(function (e) {
+    //     if (e.which == 13) {
+    //         $("form").submit();
+    //     }
+    // });
 
     $('form').submit(function (e) {
         e.preventDefault();

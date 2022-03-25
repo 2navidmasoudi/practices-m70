@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="" />
   <title>Chat</title>
+
   <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
   <script src="/node_modules/jquery/dist/jquery.min.js"></script>
   <script src="/node_modules/lodash/lodash.min.js"></script>
   <script src="chat.js" type="module"></script>
-  <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
   <link href="output.css" rel="stylesheet" />
 </head>
@@ -34,12 +34,16 @@
       <div id="messages"
         class="flex flex-col h-full space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
       </div>
+      <div id="edit" class="bg-gray-700 border-t border-blue-500 flex justify-between">
+        <span id="edit_text" class="p-3 text-white text-sm"></span>
+        <button id="close_edit" class="p-3  text-red-600 fill-white flex"><i class="bi bi-x-circle"></i></button>
+
+      </div>
       <div
         class="flex gap-3 focus-within:outline-0 focus-within:border border dark:focus-within:ring-sky-500 dark:focus-within:border-sky-500 dark:bg-gray-700 bg-gray-50  text-gray-900 dark:border-gray-600 dark:text-white">
         <textarea
           class="bg-gray-50 border-blue-300 text-gray-900 text-sm block w-full p-2.5 focus:outline-0  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white resize-none"
-          placeholder="Enter message here... (ctrl + Enter to send)" type="text" name="message" id="message"
-          rows="1"></textarea>
+          placeholder="Enter message here..." type="text" name="message" id="message" rows="1"></textarea>
         <div class="flex flex-shrink items-center">
           <div id="limit" class="text-xs">
           </div>

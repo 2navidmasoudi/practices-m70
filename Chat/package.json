@@ -3,7 +3,7 @@
     "chat-css": "npx tailwindcss -i ./view/chat/style.css -o ./view/chat/output.css --watch",
     "server": "php -S 127.0.0.1:8080",
     "live": "live-server --port=5500",
-    "start": "npm-run-all --parallel watch server live",
+    "start": "npm-run-all --parallel watch server",
     "watch": "npm run chat-css"
   },
   "devDependencies": {
