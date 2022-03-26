@@ -7,11 +7,22 @@
   <meta name="description" content="" />
   <title>Chat</title>
 
+  <!-- Icons -->
   <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- jQuery Core -->
   <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+
+  <!-- jQuery Modal -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+  <!-- lodash for more data functions -->
   <script src="/node_modules/lodash/lodash.min.js"></script>
   <script src="chat.js" type="module"></script>
 
+  <!-- css made by Tailwind -->
   <link href="output.css" rel="stylesheet" />
 </head>
 
@@ -37,21 +48,42 @@
       <div id="edit" class="bg-gray-700 border-t border-blue-500 flex justify-between">
         <span id="edit_text" class="p-3 text-white text-sm"></span>
         <button id="close_edit" class="p-3  text-red-600 fill-white flex"><i class="bi bi-x-circle"></i></button>
-
       </div>
       <div
         class="flex gap-3 focus-within:outline-0 focus-within:border border dark:focus-within:ring-sky-500 dark:focus-within:border-sky-500 dark:bg-gray-700 bg-gray-50  text-gray-900 dark:border-gray-600 dark:text-white">
         <textarea
           class="bg-gray-50 border-blue-300 text-gray-900 text-sm block w-full p-2.5 focus:outline-0  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white resize-none"
           placeholder="Enter message here..." type="text" name="message" id="message" rows="1"></textarea>
+
+        <!-- Limit area -->
         <div class="flex flex-shrink items-center">
           <div id="limit" class="text-xs">
           </div>
         </div>
-        <button id="send" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4">
-          Send
-        </button>
+        <div class="flex flex-shrink">
+          <button id="upload" class="p-2 group">
+            <div
+              class="w-8 h-8 flex items-center justify-center transition-all group-hover:bg-green-700 text-white rounded-full text-lg">
+              <i class="bi bi-image"></i>
+            </div>
+          </button>
+          <input type="file" name="picture" id="picture" class="hidden">
+          <button id="send" class="p-2 group">
+            <div
+              class="w-8 h-8 flex items-center justify-center transition-all group-hover:-rotate-90 group-hover:bg-blue-700 text-white rounded-full">
+              <span class="material-icons pl-1">send</span>
+            </div>
+          </button>
+          <button id="edit_button" class="p-2 group hidden">
+            <div
+              class="w-8 h-8 flex items-center justify-center transition-all group-hover:bg-indigo-500 text-white rounded-full">
+              <span class="material-icons pl-1">edit</span>
+            </div>
+          </button>
+        </div>
       </div>
+
+
     </section>
 
     <!-- users section -->

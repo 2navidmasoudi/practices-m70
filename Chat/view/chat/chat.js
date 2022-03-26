@@ -13,8 +13,7 @@ $(function () {
         },
         success: function () {
             $("#loader").css('display', 'none');
-            $("main").addClass("flex");
-            $("main").removeClass("hidden");
+            $("main").addClass("flex").removeClass("hidden");
         }
     }).then(response => {
         getChat(response);
@@ -31,7 +30,7 @@ $(function () {
                     diff.forEach(item => {
                         if (item.sender.username != username) {
                             if (item?.deleted) {
-                                deleteSenderMessage(item.id);
+                                deleteSenderMessage(item);
                                 return;
                             }
                             if (_.find(previous, d => d.id == item.id)) {
@@ -60,7 +59,7 @@ $(function () {
         $.get("/public/chat/get.php")
             .done(async response => {
 
-                let itemsProcessed = 0;
+                // let itemsProcessed = 0;
                 const { username, token, name } = user_data;
 
                 await response.forEach(item => {
@@ -70,10 +69,10 @@ $(function () {
                         addSenderMessage(item, false)
                     }
 
-                    itemsProcessed++;
-                    if (itemsProcessed === response.length) {
-                        // scrollToBottom();
-                    }
+                    // itemsProcessed++;
+                    // if (itemsProcessed === response.length) {
+                    //     // scrollToBottom();
+                    // }
                 });
             });
         setTimeout(() => {
@@ -96,12 +95,23 @@ $(function () {
             this.style.height = "auto";
             this.style.height = (this.scrollHeight) + "px";
         })
+        if (message) addChat(message);
+    })
+
+    $("#edit_button").on('click', function () {
+        const message = $("#message").val();
+        if (message.length > 100) return false;
+        $("#message").val('').focus();
+        $("#limit").text("").css("color", "white");
+        $("textarea").each(function () {
+            this.style.height = "auto";
+            this.style.height = (this.scrollHeight) + "px";
+        })
         if (this?.value) {
             editMessage(this.value, message);
             $("#close_edit").click();
             return;
         }
-        if (message) addChat(message);
     })
 
 
@@ -114,7 +124,13 @@ $(function () {
     }).keypress(function (e) {
         const limit = $("#message").val().length;
         if (e.keyCode === 13 && !e.ctrlKey) {
-            if (limit <= 100) $("#send").click();
+            if (limit <= 100) {
+                if ($('#edit_button').attr('value')) {
+                    $("#edit_button").click();
+                } else {
+                    $("#send").click();
+                }
+            }
             return false;
         }
     });
@@ -137,8 +153,10 @@ $(function () {
     $("#close_edit").click(function () {
         $("#edit").hide('fast', function () {
             $("#edit_text").text("");
-        });
-        $("#send").removeAttr("value").text("Send");
+        })
+        $("#message").val("");
+        $("#edit_button").addClass('hidden').removeAttr("value");
+        $("#upload").removeClass('hidden');
+        $("#send").removeClass('hidden');
     })
-
 });

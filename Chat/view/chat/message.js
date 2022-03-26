@@ -1,4 +1,5 @@
 export const addMessage = (data, animate = true) => {
+    if (data?.deleted) return;
     if ($(".chat-message > div").last().hasClass('justify-end')) {
         $("#messages > .chat-message:last-child > div > div > div").last().animate({
             borderBottomRightRadius: '0.5rem',
@@ -47,6 +48,7 @@ export const addMessage = (data, animate = true) => {
 let sender_flag = '';
 
 export const addSenderMessage = (data, animate = true) => {
+    if (data?.deleted) return;
     if (!$(".chat-message > div").last().hasClass('justify-end') && data.sender.username == sender_flag) {
         $("#messages > .chat-message:last-child > div > div > div").last().animate({
             borderBottomLeftRadius: '0.5rem',
@@ -113,10 +115,31 @@ export const scrollToBottom = () => {
 
 }
 
-export const deleteSenderMessage = (id) => {
+export const deleteSenderMessage = (data) => {
+    const { id, sender } = data;
+    // console.log("remove " + id + sender.name);
+
+    // if ($(`message_${id}`).siblings().length == 0) {
+    //     console.log("remove everything");
+    //     console.log($(`#message_${id}`).parent('.chat-message'))
+    //     $(`#message_${id}`).parent('.chat-message').remove();
+    //     sender_flag = "";
+    // } else {
+    //     if ($(`message_${id}`).is(':first-child')) {
+    //         console.log("remove first");
+    //         console.log($(`message_${id}`).siblings().eq(0));
+    //         $(`message_${id}`).siblings().eq(1).prepend(`
+    //             <div class="font-bold italic text-blue-600">${sender.name}</div>
+    //         `)
+    //     }
     $(`#message_${id}`)
         .text("this message has beed deleted.")
         .addClass("text-gray-500 italic")
+    // .parent().remove()
+
+    // }
+
+
 }
 
 export const editMessage = (id, message) => {
@@ -135,11 +158,11 @@ const menu = (data) => `
     <button class="peer absolute top-0 left-0 mr-3 mb-3 md:mb-0 text-white font-medium rounded-lg text-sm py-1 text-center hidden group-hover:inline-flex items-center" type="button">
         <i class="bi bi-three-dots-vertical"></i>
     </button>
-    <div class="absolute z-50 hidden flex-col bg-gray-700 rounded w-20 top-0 -left-20 peer-hover:flex hover:flex">
+    <div class="absolute z-20 hidden flex-col bg-gray-700 rounded w-20 top-0 -left-20 peer-hover:flex hover:flex">
         <button id="edit_${data.id}" name="edit" value="${data.id}"
-            class="h-10 hover:bg-blue-500">Edit</button>
+            class="h-10 hover:bg-blue-500 rounded-t">Edit</button>
         <button id="delete_${data.id}" name="delete" value="${data.id}"
-            class="h-10 hover:bg-red-500 border-t">Delete</button>
+            class="h-10 hover:bg-red-500 border-t rounded-b">Delete</button>
     </div>       
 `
 
@@ -147,8 +170,10 @@ export const menuFunction = (data) => {
     $(`#edit_${data.id}`).click(function () {
         $("#message").val(data.message).focus();
         $("#edit_text").text(data.message);
-        $("#edit").show('fast');
-        $("#send").attr("value", data.id).text("Edit");
+        $("#edit").show('fast')
+        $("#send").addClass('hidden');
+        $("#upload").addClass('hidden');
+        $("#edit_button").removeClass("hidden").attr("value", data.id);
     })
     $(`#delete_${data.id}`).click(function () {
         $.post('/public/chat/delete.php', { id: data.id })
@@ -157,7 +182,11 @@ export const menuFunction = (data) => {
                     $(`#message_${response.id}`)
                         .text("this message has beed deleted.")
                         .addClass("text-gray-300 italic")
+                    // .remove()
+
+                    $("#close_edit").click();
+
                 }
-            });
+            })
     })
 }
