@@ -3,3 +3,4 @@ log_*
 log/
 database/
 storage/
+db/

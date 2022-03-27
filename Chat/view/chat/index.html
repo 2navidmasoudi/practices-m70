@@ -15,8 +15,8 @@
   <script src="/node_modules/jquery/dist/jquery.min.js"></script>
 
   <!-- jQuery Modal -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+  <script src="/node_modules/jquery-modal/jquery.modal.min.js"></script>
+  <link href="/node_modules/jquery-modal/jquery.modal.min.css" rel="stylesheet" />
 
   <!-- lodash for more data functions -->
   <script src="/node_modules/lodash/lodash.min.js"></script>
@@ -31,7 +31,7 @@
 
   <main class="h-screen hidden animate-opacity">
     <!-- about me section -->
-    <section class="flex-1 bg-gray-400">
+    <section class="flex-1 hidden md:block bg-gray-400">
       <div class="flex flex-shrink justify-center items-center py-3 shadow-sky-600 drop-shadow-lg bg-red-700">
         <h1 class="text-center text-white h1">User Detail Section</h1>
       </div>
@@ -42,15 +42,29 @@
       <div class="flex flex-shrink justify-center items-center py-3 shadow-sky-600 drop-shadow-lg bg-blue-900">
         <h1 class="text-center text-white h1">#General Chat</h1>
       </div>
+
+      <!-- History for all messages -->
       <div id="messages"
         class="flex flex-col h-full space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
       </div>
+
+      <!-- Edit Text -->
       <div id="edit" class="bg-gray-700 border-t border-blue-500 flex justify-between">
         <span id="edit_text" class="p-3 text-white text-sm"></span>
         <button id="close_edit" class="p-3  text-red-600 fill-white flex"><i class="bi bi-x-circle"></i></button>
       </div>
+
+      <div id="progress" class="bg-red-600 h-1 w-0 transition-all"></div>
+      <div id="error" class="bg-gray-700 flex justify-between">
+        <span id="error_text" class="p-3 text-red-400 text-sm"></span>
+        <button id="close_error" class="p-3  text-red-600 fill-white flex"><i class="bi bi-x-circle"></i></button>
+      </div>
+
+      <!-- User input -->
       <div
         class="flex gap-3 focus-within:outline-0 focus-within:border border dark:focus-within:ring-sky-500 dark:focus-within:border-sky-500 dark:bg-gray-700 bg-gray-50  text-gray-900 dark:border-gray-600 dark:text-white">
+
+        <!-- Text Input -->
         <textarea
           class="bg-gray-50 border-blue-300 text-gray-900 text-sm block w-full p-2.5 focus:outline-0  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white resize-none"
           placeholder="Enter message here..." type="text" name="message" id="message" rows="1"></textarea>
@@ -60,20 +74,27 @@
           <div id="limit" class="text-xs">
           </div>
         </div>
+
+        <!-- Button Group -->
         <div class="flex flex-shrink">
+
+          <!-- Upload pics -->
           <button id="upload" class="p-2 group">
             <div
               class="w-8 h-8 flex items-center justify-center transition-all group-hover:bg-green-700 text-white rounded-full text-lg">
               <i class="bi bi-image"></i>
             </div>
           </button>
-          <input type="file" name="picture" id="picture" class="hidden">
+
+          <!-- Send -->
           <button id="send" class="p-2 group">
             <div
               class="w-8 h-8 flex items-center justify-center transition-all group-hover:-rotate-90 group-hover:bg-blue-700 text-white rounded-full">
               <span class="material-icons pl-1">send</span>
             </div>
           </button>
+
+          <!-- Edit -->
           <button id="edit_button" class="p-2 group hidden">
             <div
               class="w-8 h-8 flex items-center justify-center transition-all group-hover:bg-indigo-500 text-white rounded-full">
@@ -83,11 +104,21 @@
         </div>
       </div>
 
+      <input type="file" name="picture" id="picture" class="hidden">
 
+      <!-- Image Preview -->
+      <div id="picture_modal" class="modal bg-gray-600">
+        <!-- <p>Thanks for clicking. That felt good.</p> -->
+        <img id="img" alt="your image" class="w-full h-auto" />
+        <div class="flex justify-end mt-3">
+          <button id="confirm_upload" class="text-white bg-green-600 rounded shadow py-1 px-3 mr-3">Upload</button>
+          <button id="cancle_upload" class="text-white bg-red-600 rounded shadow py-1 px-3">Cancle</button>
+        </div>
+      </div>
     </section>
 
     <!-- users section -->
-    <section class="flex-1 bg-gray-400">
+    <section class="flex-1 hidden md:block bg-gray-400">
       <div class="flex flex-shrink justify-center items-center py-3 shadow-sky-600 drop-shadow-lg bg-yellow-700">
         <h1 class="text-center text-white h1">All Users</h1>
       </div>

@@ -1,7 +1,9 @@
 import url from '/config.js';
 import { addMessage, addSenderMessage, scrollToBottom, deleteSenderMessage, editMessage } from './message.js';
+import upload from './upload.js';
 $(function () {
     $("#edit").hide();
+    $("#error").hide();
     // $("#loader").css('display', 'none');
     // $("main").addClass("flex");
     // $("main").removeClass("hidden");
@@ -53,6 +55,8 @@ $(function () {
             this.style.height = "auto";
             this.style.height = (this.scrollHeight) + "px";
         });
+
+        upload();
     })
 
     const getChat = (user_data = {}) => {
