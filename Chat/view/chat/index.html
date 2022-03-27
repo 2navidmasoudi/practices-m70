@@ -14,12 +14,17 @@
   <!-- jQuery Core -->
   <script src="/node_modules/jquery/dist/jquery.min.js"></script>
 
+  <!-- popperjs -->
+  <script src="/node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+
   <!-- jQuery Modal -->
   <script src="/node_modules/jquery-modal/jquery.modal.min.js"></script>
   <link href="/node_modules/jquery-modal/jquery.modal.min.css" rel="stylesheet" />
 
   <!-- lodash for more data functions -->
   <script src="/node_modules/lodash/lodash.min.js"></script>
+
+  <!-- main.js -->
   <script src="chat.js" type="module"></script>
 
   <!-- css made by Tailwind -->
@@ -83,6 +88,13 @@
             <div
               class="w-8 h-8 flex items-center justify-center transition-all group-hover:bg-green-700 text-white rounded-full text-lg">
               <i class="bi bi-image"></i>
+            </div>
+          </button>
+
+          <button id="emoji" class="p-2 group">
+            <div
+              class="w-8 h-8 flex items-center justify-center transition-all  group-hover:bg-yellow-500 text-white rounded-full">
+              <span class="material-icons">face</span>
             </div>
           </button>
 

@@ -2,7 +2,7 @@
 
 import { addMessage } from "./message.js";
 
-export default (data) => {
+export default () => {
     $("#upload").on("click", function () {
         $("#picture").click();
     })
