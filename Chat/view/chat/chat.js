@@ -1,10 +1,15 @@
 import { EmojiButton } from '/node_modules/@joeattardi/emoji-button/dist/index.js';
 import url from '/config.js';
-import { addMessage, addSenderMessage, scrollToBottom, deleteSenderMessage, editMessage } from './message.js';
+import {
+    addMessage, addSenderMessage,
+    scrollToBottom, editMessage,
+    deleteSenderMessage, deleteMessage
+} from './message.js';
 import upload from './upload.js';
+import alert from './alert.js';
 $(function () {
     $("#edit").hide();
-    $("#error").hide();
+    $("#alert").hide();
     // $("#loader").css('display', 'none');
     // $("main").addClass("flex");
     // $("main").removeClass("hidden");
@@ -20,7 +25,7 @@ $(function () {
         }
     }).then(response => {
         getChat(response);
-        const { username, token, name } = response;
+        const { username, admin, ban } = response;
 
         let previous = null;
         let current = null;
@@ -33,17 +38,20 @@ $(function () {
                     diff.forEach(item => {
                         if (item.sender.username != username) {
                             if (item?.deleted) {
-                                deleteSenderMessage(item);
+                                deleteSenderMessage(item, admin);
                                 return;
                             }
                             if (_.find(previous, d => d.id == item.id)) {
                                 $(`#message_${item.id}`).text(item.message);
                                 return;
                             }
-                            addSenderMessage(item);
+                            addSenderMessage(item, admin);
+                        } else {
+                            if (item?.deleted) {
+                                deleteMessage(item, admin);
+                                return;
+                            }
                         }
-
-
                     })
                 }
                 previous = current;
@@ -82,34 +90,37 @@ $(function () {
     })
 
     const getChat = (user_data = {}) => {
-        $.get("/public/chat/get.php")
-            .done(async response => {
+        $.get("/public/chat/get.php").done(response => {
 
-                // let itemsProcessed = 0;
-                const { username, token, name } = user_data;
+            // let itemsProcessed = 0;
+            const { username, token, name, admin } = user_data;
+            // console.log(user_data);
+            // console.log(response);
 
-                await response.forEach(item => {
-                    if (username == item.sender.username) {
-                        addMessage(item, false);
-                    } else {
-                        addSenderMessage(item, false)
-                    }
+            response.forEach(item => {
+                if (username == item.sender.username) {
+                    addMessage(item, false);
+                } else {
+                    addSenderMessage(item, admin, false)
+                }
 
-                    // itemsProcessed++;
-                    // if (itemsProcessed === response.length) {
-                    //     // scrollToBottom();
-                    // }
-                });
+                // itemsProcessed++;
+                // if (itemsProcessed === response.length) {
+                //     // scrollToBottom();
+                // }
             });
+        });
+
         setTimeout(() => {
-            scrollToBottom()
+            scrollToBottom();
         }, 500);
     };
 
 
     const addChat = (message) => {
         $.post('/public/chat/add.php', { message })
-            .done(response => addMessage(response));
+            .done(response => addMessage(response))
+            .fail(e => alert(e.responseJSON.error));
     }
 
     $("#send").on('click', function () {

@@ -2,6 +2,14 @@
 
 function send_error($error = 500)
 {
+    if ($error == 400) {
+        http_response_code(400);
+        echo json_encode([
+            "status" => 400,
+            "statusText" => "Bad Request"
+        ]);
+        exit;
+    }
     $response['statusCode'] = $error;
     $response['message'] = message_error($error);
     $response['status'] = 'error';
@@ -39,6 +47,10 @@ function message_error($error)
             break;
         case 4:
             $message = "Password should be min 4 and max 32 chars";
+            break;
+        case 400:
+            // 404 not found
+            $message = "Bad Request";
             break;
         case 404:
             // 404 not found

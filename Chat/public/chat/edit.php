@@ -1,6 +1,7 @@
 <?php
 
 include_once "get.php";
+include_once "../error.php";
 
 header('Content-Type: application/json');
 
@@ -15,12 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $find = array_search($id, array_column($chat, 'id'));
 
     if ($find === false) {
-        http_response_code(400);
-        echo json_encode([
-            "status" => 400,
-            "statusText" => "Bad Request"
-        ]);
-        exit;
+        send_error(400);
     }
 
     $chat[$find]['message'] = $message;

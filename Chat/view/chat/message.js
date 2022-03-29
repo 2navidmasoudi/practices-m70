@@ -1,3 +1,5 @@
+import alert from "./alert.js";
+
 export const addMessage = (data, animate = true) => {
     if (data?.deleted) return;
     if ($(".chat-message > div").last().hasClass("justify-end")) {
@@ -55,7 +57,7 @@ export const addMessage = (data, animate = true) => {
 
 let sender_flag = "";
 
-export const addSenderMessage = (data, animate = true) => {
+export const addSenderMessage = (data, admin = false, animate = true) => {
     if (data?.deleted) return;
     if (
         !$(".chat-message > div").last().hasClass("justify-end") &&
@@ -69,9 +71,10 @@ export const addSenderMessage = (data, animate = true) => {
             "slow"
         );
         $(`
-            <div class="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-800" >
-                <div id="message_${data.id}" class="${data?.deleted && " italic text-gray-500"}" >
+            <div class="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-800 group relative" >
+                <div id="message_${data.id}" class="${data?.deleted && " italic text-gray-500"} ">
                     ${renderData(data)}
+                    ${admin ? adminMenu(data) : ""}
                 </div>
             </div>
         `)
@@ -88,10 +91,13 @@ export const addSenderMessage = (data, animate = true) => {
             <div class="chat-message" >
                 <div class="flex items-end">
                     <div class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
-                        <div class="px-4 py-2 rounded-lg rounded-bl-none inline-block bg-gray-300 text-gray-800">
-                            <div class="font-bold italic text-blue-600">${data.sender.name}</div>
+                        <div class="px-4 py-2 rounded-lg rounded-bl-none inline-block bg-gray-300 text-gray-800 group relative">
+                            <div class="font-bold italic text-blue-600">
+                                ${data.sender.name}
+                            </div>
                             <div id="message_${data.id}" class="${data?.deleted && "italic text-gray-500"}">
                                 ${renderData(data)}
+                                ${admin ? adminMenu(data) : ""}
                             </div>
                         </div>
                     </div>
@@ -114,6 +120,9 @@ export const addSenderMessage = (data, animate = true) => {
     // if (!animate) {
     //     $("#messages").animate({ scrollTop: $("#messages").height() }, 'fast');
     // }
+    if (admin) {
+        adminFunction(data);
+    }
 };
 
 // const messages = $("#messages")
@@ -137,7 +146,20 @@ const renderData = (data) => {
     if (data?.message) return data.message.replace(/\n\r?/g, "<br />");
 }
 
-export const deleteSenderMessage = (data) => {
+// for admin delete
+export const deleteMessage = (data, admin = false) => {
+    $(`#message_${data.id}`)
+        .text("this message has beed deleted.")
+        .addClass("text-gray-300 italic");
+
+    if (admin) {
+        $(`#message_${data.id}`).append(adminMenu(data))
+        adminFunction(data)
+    };
+}
+
+// delete message comming from server
+export const deleteSenderMessage = (data, admin = false) => {
     const { id } = data;
     // console.log("remove " + id + sender.name);
 
@@ -159,13 +181,16 @@ export const deleteSenderMessage = (data) => {
         .addClass("text-gray-500 italic");
     // .parent().remove()
 
+    if (admin) {
+        $(`#message_${data.id}`).append(adminMenu(data))
+        adminFunction(data)
+    };
     // }
 };
 
 export const editMessage = (id, message) => {
     $.post("/public/chat/edit.php", { id, message }).done((response) => {
         $(`#message_${response.id}`).html(response.message + menu(response));
-
         menuFunction(response);
     });
 };
@@ -191,7 +216,30 @@ const menu = (data) => `
     </div>       
 `;
 
+const adminMenu = (data) => `
+    <button class="peer absolute top-0 right-0 ml-3 mb-3 md:mb-0 text-black font-medium rounded-lg text-sm py-1 text-center hidden group-hover:inline-flex items-center" type="button">
+        <i class="bi bi-three-dots-vertical"></i>
+    </button>
+    <div class="absolute z-20 hidden flex-col bg-gray-700 rounded w-20 top-0 -right-20 peer-hover:flex hover:flex">
+    ${!data?.deleted ?
+        `
+        <button id="delete_${data.id}" name="delete" value="${data.id}"
+            class="h-10 hover:bg-rose-500 rounded-t text-gray-300">Delete</button>
+        <button id="ban_${data.id}" name="ban" value="${data.id}"
+            class="h-10 hover:bg-red-500 border-t rounded-b text-gray-300">Ban/Unban</button>
+        `
+        :
+        `
+        <button id="ban_${data.id}" name="ban" value="${data.id}"
+            class="h-10 hover:bg-red-500 text-gray-300 rounded">Ban/Unban</button>
+        `
+    }
+    </div>       
+`;;
+
 export const menuFunction = (data) => {
+    if (data?.deleted) return;
+
     $(`#edit_${data.id}`).click(function () {
         $("#message").val(data.message).focus();
         $("#edit_text").text(data.message);
@@ -200,16 +248,42 @@ export const menuFunction = (data) => {
         $("#upload").addClass("hidden");
         $("#edit_button").removeClass("hidden").attr("value", data.id);
     });
+
     $(`#delete_${data.id}`).click(function () {
         $.post("/public/chat/delete.php", { id: data.id }).done((response) => {
             if (response.deleted) {
-                $(`#message_${response.id}`)
-                    .text("this message has beed deleted.")
-                    .addClass("text-gray-300 italic");
-                // .remove()
+                deleteMessage(response);
 
                 $("#close_edit").click();
             }
         });
+    });
+};
+
+export const adminFunction = (data) => {
+    if (!data?.deleted) {
+        $(`#delete_${data.id}`).click(function () {
+            $.post("/public/chat/delete.php", { id: data.id }).done((response) => {
+                if (response.deleted) {
+                    deleteSenderMessage(response, true);
+
+                    // $("#close_edit").click();
+                }
+            });
+        });
+    }
+
+    $(`#ban_${data.id}`).click(function () {
+        $.post('/public/chat/ban.php', {
+            // data,
+            username: data.sender.username
+        }).done(response => {
+            // console.log(response);
+            alert(
+                `${response.name} has been ${!response.ban ? "un" : ""}banned.`,
+                "text-blue-400",
+                "bg-blue-600"
+            );
+        })
     });
 };

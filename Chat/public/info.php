@@ -1,20 +1,37 @@
 <?php
 
+include_once "user/get.php";
+include_once "error.php";
+
 session_start();
-// session_destroy();
-extract($_SESSION);
 
 header('Content-Type: application/json');
 
+// extract($_SESSION);
+
+$token = $_GET['token'] ?? $_SESSION['token'];
+
 if (!isset($token) or !file_exists('../db/users.json')) {
-    http_response_code(400);
     session_destroy();
-    echo json_encode([
-        "status" => 400,
-        "statusText" => "Bad Request"
-    ]);
-    exit;
+    send_error(400);
+}
+
+$users = get_users();
+$username = array_search($token, array_map(fn ($val) => $val['token'], $users));
+
+if ($username === false) {
+    send_error(400);
+}
+
+$response['username'] = $username;
+$response['name'] = $users[$username]['name'];
+$response['token'] = $users[$username]['token'];
+if (isset($users[$username]['admin'])) {
+    $response['admin'] = $users[$username]['admin'];
+}
+if (isset($users[$username]['ban'])) {
+    $response['ban'] = $users[$username]['ban'];
 }
 
 http_response_code(200);
-echo json_encode($_SESSION);
+echo json_encode($response);

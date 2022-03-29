@@ -1,6 +1,7 @@
 // import { addMessage } from "./message.js";
 
 import { addMessage } from "./message.js";
+import alert from "./alert.js";
 
 export default () => {
     $("#upload").on("click", function () {
@@ -13,19 +14,8 @@ export default () => {
             const fileType = file['type'];
             const validImageTypes = ["image/gif", "image/jpeg", "image/png"];
             if ($.inArray(fileType, validImageTypes) < 0) {
-
-
-                // Show error if its not picture...
-                $("#error_text").text("File is not an image.");
-                $("#error").show('fast', function () {
-                    $("#progress").animate({ width: "100%" }, 2500);
-                    setTimeout(() => {
-                        $(this).hide('fast', function () {
-                            $("#progress").animate({ width: 0 });
-                            $("#error_text").text("");
-                        });
-                    }, 3000);
-                });
+                // Show alert if its not picture...
+                alert("File is not an image.");
                 const pic = $("#picture");
                 pic.files = [];
                 return;
@@ -59,13 +49,6 @@ export default () => {
             processData: false
         });
         $.modal.close();
-    })
-
-    $("#close_error").on("click", function () {
-        $("#error").hide('fast', function () {
-            $("#progress").animate({ width: 0 });
-            $("#error_text").text("");
-        });
     })
 
     // event on closing modal
