@@ -1,36 +1,21 @@
 <?php
 
-class Row
-{
-    private array $values;
-
-    public function __construct(array $values)
-    {
-        $this->values = $values;
-    }
-
-    public function count()
-    {
-        return count($this->values);
-    }
-
-    public function getValues()
-    {
-        return $this->values;
-    }
-}
-
 class Table
 {
-    private array $rows;
     private Row $header;
-    private string $tableClasses = "";
-    private string $cellClasses = "";
-    private string $headerClasses = "";
+    private array $rows;
+    public string $tableClasses = "";
+    public string $cellClasses = "";
+    public string $headerClasses = "";
 
     public function __construct(Row $header)
     {
         $this->header = $header;
+    }
+
+    public function getRows(): array
+    {
+        return $this->rows;
     }
 
     public function addRow(Row $row): Table
@@ -68,10 +53,10 @@ class Table
     public function toHTML(): string
     {
         $table  = "";
-        $table .= "<table class='$this->tableClasses'>";
+        $table .= "<table class='{$this->tableClasses}'>";
 
         // for header
-        $table .= "<tr class='$this->headerClasses'>";
+        $table .= "<tr class='{$this->headerClasses}'>";
         foreach ($this->header->getValues() as $title) {
             $table .= "<td>";
             $table .= $title;
@@ -84,7 +69,7 @@ class Table
             // cell of each row.
             $table .= "<tr>";
             foreach ($row->getValues() as $cell) {
-                $table .= "<td class='$this->cellClasses'>";
+                $table .= "<td class='{$this->cellClasses}'>";
                 $table .= $cell;
                 $table .= "</td>";
             }
