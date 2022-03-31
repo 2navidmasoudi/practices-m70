@@ -9,6 +9,7 @@ if (!file_exists("../db")) {
 header('Content-Type: application/json');
 
 session_start();
+session_regenerate_id();
 
 // login in users has token before.
 if (isset($_SESSION['token'])) {
