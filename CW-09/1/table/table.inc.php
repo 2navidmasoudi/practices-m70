@@ -13,11 +13,29 @@ class Table
         $this->header = $header;
     }
 
+    /**
+     * Get rows of Table
+     * @return array $rows
+     */
     public function getRows(): array
     {
         return $this->rows;
     }
 
+    /**
+     * Get header of Table
+     * @return Row $header
+     */
+    function getHeader(): Row
+    {
+        return $this->header;
+    }
+
+    /**
+     * add row to rows of Table
+     * @param Row $row
+     * @return Table
+     */
     public function addRow(Row $row): Table
     {
         if ($row->count() === $this->header->count())
@@ -25,12 +43,24 @@ class Table
         return $this;
     }
 
+    /**
+     * Swap 2 rows $a and $b of Table
+     * @param int $a
+     * @param int $b
+     * @return Table
+     */
     public function switchRows(int $a, int $b): Table
     {
         [$this->rows[$a], $this->rows[$b]]
-            = [$this->rows[$b], $this->rows[$a]];
+             = [$this->rows[$b], $this->rows[$a]];
         return $this;
     }
+
+    /**
+     * Set cellClasses as string to Table
+     * @param array $classes
+     * @return Table
+     */
 
     public function setCellClasses(array $classes): Table
     {
@@ -38,21 +68,36 @@ class Table
         return $this;
     }
 
+    /**
+     * Set headerClasses as string to Table
+     * @param array $classes
+     * @return Table
+     */
     public function setHeaderClasses(array $classes): Table
     {
         $this->headerClasses = implode(" ", $classes);
         return $this;
     }
 
+    /**
+     * Set tableClasses as string to Table
+     * @param array $classes
+     * @return Table
+     */
     public function setTableClasses(array $classes): Table
     {
         $this->tableClasses = implode(" ", $classes);
         return $this;
     }
 
+
+    /**
+     * Returns html of Table
+     * @return string
+     */
     public function toHTML(): string
     {
-        $table  = "";
+        $table = "";
         $table .= "<table class='{$this->tableClasses}'>";
 
         // for header
