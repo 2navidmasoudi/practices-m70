@@ -23,8 +23,10 @@ class Pants extends Product
      */
     function setSize(int $size): self
     {
-        if ($size % 2 == 0 && $size <= 60 && $size >= 30)
+        if ($size % 2 == 0 && $size >= 30 && $size <= 60)
             $this->size = $size;
+        else
+            echo "not a good size for Pants.";
         return $this;
     }
 }

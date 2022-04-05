@@ -4,7 +4,6 @@ class Shop
 {
     private array $repo = [];
     private int $income = 0;
-
     private static $id = 1;
 
     public function addProduct(Product $product, int $count): bool

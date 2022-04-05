@@ -1,49 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+include "shop/shop.inc.php";
 
-    <title>Shop</title>
-</head>
+$pants1 = new Pants('Pants1', 299, ['red', 'khafan', 'pare']);
+$pants1->setSize(30);
 
-<body class="container pt-3">
+$pants2 = new Pants('Pants2', 199, ['blue', 'lee', 'sade']);
+$pants2->setSize(34);
 
-    <?php
+$shirt1 = new Shirt('Shirt1', 59, ['blue', 'bahal', 'v', 'LC']);
+$shirt1->setSize('xm');
 
-    include "shop/shop.inc.php";
+$shirt2 = new Shirt('Shirt2', 79, ['white', 'LC', 'o']);
+$shirt2->setSize('xm');
 
-    $pants1 = new Pants('Pants1', 299, ['red', 'khafan', 'pare']);
-    $pants1->setSize(30);
+$shop = new Shop();
 
-    $pants2 = new Pants('Pants2', 199, ['blue', 'lee', 'sade']);
-    $pants2->setSize(34);
+$shop->addProduct($pants1, 10);
+$shop->addProduct($pants2, 20);
+$shop->addProduct($shirt1, 15);
+$shop->addProduct($shirt2, 25);
 
-    $shirt1 = new Shirt('Shirt1', 59, ['blue', 'bahal', 'v', 'LC']);
-    $shirt1->setSize('xm');
+print_r($shop->getSuggestion('Shirt', 'xm', null, ['LC', 'blue']));
 
-    $shirt2 = new Shirt('Shirt2', 79, ['white', 'LC', 'o']);
-    $shirt2->setSize('xm');
+$shop->sell(1);
 
-    $shop = new Shop();
-
-    $shop->addProduct($pants1, 10);
-    $shop->addProduct($pants2, 20);
-    $shop->addProduct($shirt1, 15);
-    $shop->addProduct($shirt2, 25);
-
-    // print_r($shop->getSuggestion('Shirt', 'xm', null, ['LC', 'blue']));
-
-    $shop->sell(1);
-
-    ?>
-
-    <pre>
-        <?php var_dump($shop) ?>
-    </pre>
-
-</body>
-
-</html>
+var_dump($shop);

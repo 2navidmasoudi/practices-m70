@@ -20,6 +20,7 @@ class Cart
     public function addProduct(Product $product, int $quantity): CartItem
     {
         foreach ($this->items as $cartItem) {
+            // if ($product == $cartItem->getProduct()) {
             if ($product->getId() == $cartItem->getProduct()->getId()) {
 
                 for ($i = 0; $i < $quantity; $i++) {
@@ -43,6 +44,7 @@ class Cart
     public function removeProduct(Product $product)
     {
         foreach ($this->items as $key => $cartItem) {
+            // if ($product == $cartItem->getProduct()) {
             if ($product->getId() == $cartItem->getProduct()->getId()) {
                 unset($this->items[$key]);
             }
