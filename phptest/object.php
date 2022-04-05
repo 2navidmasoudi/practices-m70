@@ -1,27 +1,27 @@
 <?php
 
-class A
-{
-}
-class B
-{
-}
-class C
-{
-}
+// class A
+// {
+// }
+// class B
+// {
+// }
+// class C
+// {
+// }
 
-$Alpha = range("A", "Z");
+// $Alpha = range("A", "Z");
 
-foreach ($Alpha as $c) {
-    new $c;
-}
+// foreach ($Alpha as $c) {
+//     new $c;
+// }
 
-foreach ($Alpha as $name) {
-    ${"class$className"} = new $className;
-}
+// foreach ($Alpha as $name) {
+//     ${"class$className"} = new $className;
+// }
 
 
-var_dump($classA);
+// var_dump($classA);
 // class M
 // {
 //     public $p = "p";
