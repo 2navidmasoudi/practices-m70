@@ -7,6 +7,6 @@
 
 #### todo:
 
-- [x] [Nothing](/)
+- [x] ~~Nothing~~
 
 ---
