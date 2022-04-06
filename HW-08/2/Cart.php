@@ -47,6 +47,7 @@ class Cart
             // if ($product == $cartItem->getProduct()) {
             if ($product->getId() == $cartItem->getProduct()->getId()) {
                 unset($this->items[$key]);
+                break;
             }
         }
     }

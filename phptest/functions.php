@@ -43,5 +43,43 @@ if (!function_exists('add_numbers')) {
     }
 }
 
-echo "sum: " . add_numbers(false, 1, 2.2, 3, 4, 5);
+// echo "sum: " . add_numbers(false, 1, 2.2, 3, 4, 5);
 // echo "sum: " . $add_numbers(false, 1, 2.2, 3, 4, 5);
+
+
+
+
+
+// function jame_adad(...$adad)
+// {
+//     $jam = 0;
+
+//     foreach ($adad as $value) {
+//         $jam += $value;
+//     }
+
+//     return $jam;
+// }
+
+function jame_adad(...$adad)
+{
+    return array_reduce(
+        $adad,
+        function ($carry, $n) {
+            echo "carry: $carry \nn: $n\n";
+            return $carry + $n;
+        },
+        0
+    );
+}
+
+function zarb_adad(...$adad)
+{
+    return array_reduce(
+        $adad,
+        fn ($carry, $n) => $carry * $n,
+        1
+    );
+}
+
+echo zarb_adad(1, 2, 3, 4, 5);

@@ -6,16 +6,19 @@ class Shop
     private int $income = 0;
     private static $id = 1;
 
-    public function addProduct(Product $product, int $count): bool
+    public function addProduct(Product $product, int $count)
     {
 
-        // $product->id = self::$id++;
-        // $product->count = $count;
-        $this->repo[] = [
-            "id" => self::$id++,
-            "product" => $product,
-            "count" => $count,
-        ];
+        $product->id = self::$id++;
+        $product->count = $count;
+
+        // $this->repo[] = [
+        //     "id" => self::$id++,
+        //     "product" => $product,
+        //     "count" => $count,
+        // ];
+
+        $this->repo[] = $product;
         return false;
     }
 
