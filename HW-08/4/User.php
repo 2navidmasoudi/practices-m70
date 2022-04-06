@@ -11,6 +11,24 @@ class User
         $this->account = $account;
     }
 
+    public function addBalance(float $balance): self
+    {
+        $currentBalance = $this->account->getBalance();
+        $this->account->setBalance($currentBalance + $balance);
+        return $this;
+    }
+
+    public function subtractBalance(float $balance): self
+    {
+        $currentBalance = $this->account->getBalance();
+        if ($currentBalance >= $balance) {
+            $this->account->setBalance($currentBalance - $balance);
+        } else {
+            echo "Not enough balance.";
+        }
+        return $this;
+    }
+
     public function info()
     {
         echo "User Name: {$this->name}\n";
@@ -25,16 +43,5 @@ class User
     function getName(): string
     {
         return $this->name;
-    }
-
-    /**
-     * 
-     * @param string $name 
-     * @return User
-     */
-    function setName(string $name): self
-    {
-        $this->name = $name;
-        return $this;
     }
 }

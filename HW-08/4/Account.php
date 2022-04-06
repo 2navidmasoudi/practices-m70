@@ -15,19 +15,22 @@ class Account
         }
     }
 
-    public function addBalance(float $balance)
+    public function addBalance(float $balance): self
     {
         $this->balance += $balance;
+        return $this;
     }
 
-    public function substactBalance(float $balance)
+    public function subtractBalance(float $balance): self
     {
         if ($this->balance >= $balance) {
             $this->balance -= $balance;
         } else {
             echo "Not enough balance.";
         }
+        return $this;
     }
+
     /**
      * 
      * @return string
@@ -43,5 +46,15 @@ class Account
     function getBalance(): float
     {
         return $this->balance;
+    }
+    /**
+     * 
+     * @param float $balance 
+     * @return Account
+     */
+    function setBalance(float $balance): self
+    {
+        $this->balance = $balance;
+        return $this;
     }
 }
