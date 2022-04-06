@@ -20,9 +20,9 @@ class Cart
     public function addProduct(Product $product, int $quantity): CartItem
     {
         foreach ($this->items as $cartItem) {
-            // if ($product == $cartItem->getProduct()) {
             if ($product->getId() == $cartItem->getProduct()->getId()) {
 
+                // increase quantity as much as you can...
                 for ($i = 0; $i < $quantity; $i++) {
                     $cartItem->increaseQuantity();
                 }
@@ -44,8 +44,14 @@ class Cart
     public function removeProduct(Product $product)
     {
         foreach ($this->items as $key => $cartItem) {
-            // if ($product == $cartItem->getProduct()) {
             if ($product->getId() == $cartItem->getProduct()->getId()) {
+
+                // we remove cardItem from cart, so we have more product
+                // product available += quantity of cardItem
+                $product->setAvailableQuantity(
+                    $cartItem->getQuantity() + $cartItem->getProduct()->getAvailableQuantity()
+                );
+
                 unset($this->items[$key]);
                 break;
             }
@@ -54,7 +60,6 @@ class Cart
 
     /**
      * This returns total number of products added in cart
-     *
      * @return int
      */
     public function getTotalQuantity(): int
@@ -68,7 +73,6 @@ class Cart
 
     /**
      * This returns total price of products added in cart
-     *
      * @return float
      */
     public function getTotalSum(): float
@@ -80,23 +84,13 @@ class Cart
             0
         );
     }
+
     /**
-     * 
+     * Get all items
      * @return array
      */
     function getItems(): array
     {
         return $this->items;
-    }
-
-    /**
-     * 
-     * @param array $items 
-     * @return Cart
-     */
-    function setItems(array $items): self
-    {
-        $this->items = $items;
-        return $this;
     }
 }

@@ -1,6 +1,5 @@
 <?php
 
-
 class Product
 {
     private int $id;
@@ -42,6 +41,7 @@ class Product
     {
         $cart->removeProduct($this);
     }
+
     /**
      * 
      * @return int
@@ -51,16 +51,6 @@ class Product
         return $this->id;
     }
 
-    /**
-     * 
-     * @param int $id 
-     * @return Product
-     */
-    function setId(int $id): self
-    {
-        $this->id = $id;
-        return $this;
-    }
     /**
      * 
      * @return string
@@ -99,6 +89,7 @@ class Product
         $this->price = $price;
         return $this;
     }
+
     /**
      * 
      * @return int

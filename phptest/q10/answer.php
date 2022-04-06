@@ -17,6 +17,9 @@ abstract class Animal implements AnimalRoutine
     {
         return $this->name . " is eating";
     }
+
+    // abstract public function MakeNoise(): string;
+
 }
 
 class Cat extends Animal

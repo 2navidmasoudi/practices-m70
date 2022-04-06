@@ -78,3 +78,31 @@
 // }
 // $strawberry = new Strawberry("Strawberry", "red");  // OK. __construct() is public
 // $strawberry->message(); // OK. message() is public and it calls intro() (which is protected) from within the derived class
+
+class Maktab
+{
+    public int $var;
+    public function __construct(int $var = null)
+    {
+        $this->var = $var;
+    }
+    function __set($key, $value)
+    {
+        // echo "can not add atri to this class" . PHP_EOL;
+        $this->$key = $value;
+    }
+
+    function __get($key)
+    {
+        echo "$key ine";
+        return $this->$key;
+    }
+}
+
+$m = new Maktab(1);
+
+$m->name = 'Navid';
+echo $m->var;
+$m->fname = 'Masoudi';
+
+print_r($m);

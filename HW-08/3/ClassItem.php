@@ -15,9 +15,6 @@ class ClassItem
         $this->description = $description;
     }
 
-    // TODO Generate getters and setters of properties
-
-
     /**
      * 
      * @return int

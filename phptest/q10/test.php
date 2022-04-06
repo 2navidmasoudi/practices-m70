@@ -10,7 +10,7 @@ class M
     }
     public static function getName()
     {
-        return $this->n;
+        // return $this->n;
     }
 }
 

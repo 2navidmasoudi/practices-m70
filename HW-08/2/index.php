@@ -12,6 +12,7 @@ $cart = new Cart();
 
 $cartItem1 = $cart->addProduct($product1, 1);
 $cartItem2 = $product2->addToCart($cart, 1);
+
 echo "Number of items in cart: " . PHP_EOL;
 echo $cart->getTotalQuantity() . PHP_EOL; // This must print 2
 echo "Total price of items in cart: " . PHP_EOL;
@@ -33,3 +34,8 @@ echo $cart->getTotalQuantity() . PHP_EOL; // This must print 4 - 1 = 3
 
 echo "Total price of items in cart: " . PHP_EOL;
 echo $cart->getTotalSum() . PHP_EOL; // This must print 3700 - 2500 = 1200
+
+// availableQuantity is changed after adding to Cart
+// print_r($product1);
+// print_r($product2);
+// print_r($cart);
