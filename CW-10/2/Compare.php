@@ -2,7 +2,7 @@
 
 class Compare
 {
-    public static function diff(Person $person1, Person $person2)
+    public static function compare(Person $person1, Person $person2)
     {
         $balance1 = $person1->getBalance();
         $balance2 = $person2->getBalance();
