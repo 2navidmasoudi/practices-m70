@@ -1,7 +1,6 @@
 <?php
 
-
-class TimeStamp
+class Time
 {
     private int $time;
     private $timeZone;
@@ -33,5 +32,11 @@ class TimeStamp
     public function getFull()
     {
         return date("Y/m/d H:i:s", $this->time);
+    }
+
+    public function addDay(int $day)
+    {
+
+        return $this;
     }
 }
