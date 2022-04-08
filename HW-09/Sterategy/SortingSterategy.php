@@ -1,5 +1,6 @@
 <?php
 
-interface SortingStrategy {
+interface SortingStrategy
+{
     public function getSortedSet($set);
 }

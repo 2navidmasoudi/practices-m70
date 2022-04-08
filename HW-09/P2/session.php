@@ -27,7 +27,7 @@ class Session
     /**
      * flash
      * 
-     * If session exist, it will return the value and unset
+     * If session exist, it will return the value
      * and unset the session.
      * 
      * Otherwise, make the $name session with $string value.
