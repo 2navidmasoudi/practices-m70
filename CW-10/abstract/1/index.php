@@ -21,7 +21,7 @@ $strictMode = 0;
 
 // $validation_array = ['phone', 'number', 'asd'];
 $input = "Navid";
-$validation_array = ["strlen(3-4)", "len{5}", "number", "phone"];
+$validation_array = ["strlen(3-4)", "length{5}", "number", "phone"];
 
 $result = Validation::validate($input, $validation_array, $strictMode);
 
