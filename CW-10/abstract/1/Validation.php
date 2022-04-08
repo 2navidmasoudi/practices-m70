@@ -2,18 +2,30 @@
 
 class Validation
 {
-    private static $input;
+    private static $input, $range;
     private static array $result;
     public static function validate($input, $validation_array, $strictMode = 0)
     {
         self::$input = $input;
-        foreach ($validation_array as $function_name) {
 
-            $validation_func = strtolower($function_name);
+        foreach ($validation_array as $method) {
+            $method_name = strtolower($method);
+            if (str_contains($method_name, "len")) {
 
-            if (!method_exists('Validation', $validation_func)) {
+                $method_name = "str_len";
 
-                $e = new Exception("Exception :$validation_func method not found" . PHP_EOL);
+                preg_match_all("/(\d+)/", $method, $found);
+                $range = $found[0];
+
+                if (count($range) == 1 or count($range) == 2) {
+                    sort($range);
+                    self::$range = $range;
+                } else {
+                    self::$range = [];
+                }
+            } elseif (!method_exists(__CLASS__, $method_name)) {
+
+                $e = new Exception("Exception :$method_name method not found" . PHP_EOL);
                 echo $e->getMessage();
 
                 /**
@@ -23,21 +35,25 @@ class Validation
                  */
                 // if ($strictMode) return false;
 
-                self::$result[$function_name] = "Not found!";
+                self::$result[$method] = NULL;
                 continue;
             }
 
-            $validate = self::$validation_func();
+            $validate = self::$method_name();
             if ($strictMode) {
                 if (!$validate) return false;
             } else {
                 // echo $validate
-                //     ? "$function_name is valid" . PHP_EOL
-                //     : "$function_name is invalid" . PHP_EOL;
+                //     ? "$method is valid" . PHP_EOL
+                //     : "$method is invalid" . PHP_EOL;
 
-                self::$result[$function_name] = $validate
-                    ? "valid"
-                    : "invalid";
+                // self::$result[$method] = $validate
+                //     ? "valid"
+                //     : "invalid";
+
+                self::$result[$method] = $validate
+                    ? TRUE
+                    : FALSE;
             }
         }
 
@@ -73,5 +89,16 @@ class Validation
     private static function num_alpha()
     {
         return !!preg_match('/^\w+$/', self::$input);
+    }
+    private static function str_len()
+    {
+        if (count(self::$range) == 0) {
+            return false;
+        } elseif (count(self::$range) == 1) {
+            return strlen(self::$input) == self::$range[0];
+        } else {
+            return strlen(self::$input) >= self::$range[0]
+                and strlen(self::$input) <= self::$range[1];
+        }
     }
 }
