@@ -62,14 +62,14 @@ class VisualData
 
     public function sort(string $key)
     {
-        // usort($this->data, fn ($a, $b) => )
+        usort($this->data, fn ($a, $b) => $a->$key >= $b->$key);
     }
 
     public function capitalize($needle, $key = "index")
     {
         if ($key != "index") {
             $find = array_search($needle, array_column($this->data, $key));
-            if ($find !== true) {
+            if ($find !== false) {
                 $temp = (array) $this->data[$find];
                 $temp = array_map('strtoupper', $temp);
                 $this->data[$find] = (object) $temp;

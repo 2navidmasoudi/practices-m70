@@ -12,7 +12,7 @@ class Log
             "data" => $data,
             "method" => $method,
             "time" => date("c"),
-            // "request_url" => $_SERVER["REQUEST_URI"],
+            "request_url" => $_SERVER["REQUEST_URI"],
             "protocol" => "http://",
             "memory_useage" => memory_get_usage()
         ];

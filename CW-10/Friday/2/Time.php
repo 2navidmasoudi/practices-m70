@@ -7,10 +7,10 @@ interface getTime
     public function get(): self;
 }
 
-class Time
+class Time implements getTime
 {
     protected int $timeStamp;
-    protected $timeZone;
+    protected string $timeZone;
 
     public function __construct(int $timeStamp)
     {
@@ -44,7 +44,7 @@ class Time
     }
 }
 
-class Date extends Time
+class Date extends Time implements getTime
 {
     public function __construct(int|string $time)
     {

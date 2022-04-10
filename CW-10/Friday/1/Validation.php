@@ -4,17 +4,22 @@ class Validation
 {
     private static $input, $range;
     private static array $result;
-    public static function validate($input, $validation_array, $strictMode = 0)
-    {
+    public static function validate(
+        string $input,
+        array $validation_array,
+        int $strictMode = 0
+    ): array|bool {
+
         self::$input = $input;
 
         foreach ($validation_array as $method) {
             $method_name = strtolower($method);
+
             if (str_contains($method_name, "len")) {
 
                 $method_name = "str_len";
 
-                preg_match_all("/(\d+)/", $method, $found);
+                preg_match_all("/(\d+)/", $method_name, $found);
                 $range = $found[0];
 
                 if (count($range) == 1 or count($range) == 2) {
@@ -40,6 +45,7 @@ class Validation
             }
 
             $validate = self::$method_name();
+
             if ($strictMode) {
                 if (!$validate) return false;
             } else {
@@ -88,7 +94,7 @@ class Validation
 
     private static function num_alpha()
     {
-        return !!preg_match('/^\w+$/', self::$input);
+        return !!preg_match('/(?=.?[a-zA-Z])(?=.?[0-9]).{2,}/', self::$input);
     }
     private static function str_len()
     {
@@ -97,6 +103,7 @@ class Validation
         } elseif (count(self::$range) == 1) {
             return strlen(self::$input) == self::$range[0];
         } else {
+            // range count is 2
             return strlen(self::$input) >= self::$range[0]
                 and strlen(self::$input) <= self::$range[1];
         }

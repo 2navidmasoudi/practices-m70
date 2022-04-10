@@ -12,6 +12,7 @@ $date->setTimeZone("Asia/Tehran")
     ->addMonth(3)
     ->getDate()
     ->addYear(3)
-    ->getTime();
+    ->getTime()
+    ->get();
 
 Log::output();
