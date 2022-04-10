@@ -19,7 +19,7 @@ class VisualData
     {
         if ($key != "index") {
             $find = array_search($needle, array_column($this->data, $key));
-            if ($find !== true) {
+            if ($find !== false) {
                 unset($this->data[$find]);
             }
         } elseif (is_int($needle)) {
@@ -41,7 +41,7 @@ class VisualData
         // for header
         $table .= "<tr>";
         foreach ((array) $this->data[0] as $title => $value) {
-            $table .= "<td>$title</td>";
+            $table .= "<th>$title</th>";
         }
         $table .= "</tr>";
 
@@ -60,9 +60,9 @@ class VisualData
         return $table;
     }
 
-    public function sort()
+    public function sort(string $key)
     {
-        # code...
+        // usort($this->data, fn ($a, $b) => )
     }
 
     public function capitalize($needle, $key = "index")
