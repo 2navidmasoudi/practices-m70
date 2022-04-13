@@ -22,9 +22,16 @@ var_dump($student->isStudentHasClass($class)); //true
 $class3 = new ClassItem(3, 'Geo', 'meh...');
 var_dump($student->isStudentHasClass($class3)); //false
 
+$student2 = new Student('hossein', 'qeydari', 25);
+$student2->addClass($class3)->addClass($class);
+$student2->removeClass($class3);
+$student2->isStudentHasClass($class3);
+var_dump($student2->classList());
+
+
 // $student->removeClass($class);
 
-print_r($student->classList());
+// print_r($student->classList());
 //must like this
 //[
 //  ['id'=>1,'name'=>'Mathematics','description'=>'best','duration'=>1or2,'days'=>[]],
