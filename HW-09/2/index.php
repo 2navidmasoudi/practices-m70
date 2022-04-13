@@ -1,65 +1,120 @@
+<!DOCTYPE html>
 <?php
 
-spl_autoload_register(function ($className) {
-    require str_replace("\\", "/", $className) . ".php";
+spl_autoload_register(function ($class_name) {
+    include strtolower($class_name) . '.php';
 });
 
-use Vehicle\{Car, Bike, Motor};
-// require "Floor.php";
-// require "Parking.php";
-// require "Vehicle.php";
-// require "Rent.php";
+function call($class, $method, ...$args)
+{
+    echo "$class::$method(" . implode(",", $args) . "):";
+    var_dump($class::$method(...$args));
+    echo "<br>";
+}
 
-// we define floors with
-// elevation
-// name
-// capacity each.
-$floors = [
-    new Floor(1, "A", 70),
-    new Floor(2, "B", 70),
-    new Floor(3, "C", 70),
-    new Floor(4, "D", 70),
-    new Floor(5, "E", 70),
-    new Floor(5, "F", 70),
-    new Floor(7, "G", 70)
-];
+?>
+<html lang="en">
 
-$parking = new Parking("markazi", 8, 24, $floors);
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+        }
 
-// Car with tag and weight
-$car = new Car("12L566", 12);
+        @media (max-width: 768px) {
+            body {
+                display: block;
+            }
+        }
 
-// Motor with only tag (not so much weight so we ignore that)
-$motor = new Motor("NS400");
+        div {
+            flex: 1;
+        }
+    </style>
+</head>
 
-// no tag or weight so we ignore both.
-$bike = new Bike;
+<body>
+    <div>
+        <!-- For Input Test -->
+        <b>Input Test</b><br>
+        <?php
+        call("Input", "exists", "get");
+        call("Input", "exists", "post");
+        call("Input", "get", "name");
+        ?>
+        <form action="" method="get">
+            <input type="text" name="name" placeholder="name">
+            <input type="submit" value="send get">
+        </form>
+        <form action="" method="post">
+            <input type="text" name="name" placeholder="name">
+            <input type="submit" value="send post">
+        </form>
+        <br>
+        <!-- For Redirect Test -->
+        <b>Redirect Test</b><br>
+        <?php
+        if (isset($_POST['redirect'])) {
+            $path = $_POST['location'];
+            if (file_exists($path)) {
+                Redirect::to($path);
+            } else {
+                echo "Page not found: 404";
+            }
+        }
+        ?>
+        <form action="" method="post">
+            <input type="text" name="location" placeholder="page">
+            <input type="submit" name="redirect" value="redirect">
+        </form>
+        <br>
+        <!-- Session test -->
+        <b>Session Test</b><br>
+        <?php
+        call("Session", "exists", "name");
+        call("Session", "put", "name", "Navid");
+        call("Session", "exists", "name");
+        call("Session", "get", "name");
 
-$rent1 = $parking->addVehicle($car, "Sunday", 25, 3, 17, 19);
+        echo "<br>";
 
-$rent2 = $parking->addVehicle($car, "Monday", 25, 3, 17);
-// rent3 is false now
-$rent3 = $parking->addVehicle($car, "Monday", 25, 3, 17);
+        call("Session", "flash", "name");
+        call("Session", "exists", "name");
 
-$rent4 = $motor->addToParking($parking, "Thursday", 24, 1, 9, 14);
-$rent5 = $bike->addToParking($parking, "Monday", 24, 1, 9, 14);
+        echo "<br>";
 
+        call("Session", "flash", "name", "mamad");
+        call("Session", "exists", "name");
 
-// PASS FALSE OR NOTHING IF YOU DONT WANT INFO MESSAGE
-echo "Rent(1)= " . $rent1->getPayment(true) . PHP_EOL;
-echo "Rent(2)= " . $rent2->getPayment(true) . PHP_EOL;
+        echo "<br>";
 
-// this code bellow throw errors because rent3 is false, no methods in it.
-// echo "Rent(3)= " . $rent3->getPayment(true) . PHP_EOL;
+        call("Session", "delete", "name");
+        call("Session", "exists", "name");
+        ?>
+        <br>
+    </div>
+    <div>
+        <!-- Cookie test -->
+        <b>Cookie Test</b><br>
+        <?php
+        call("Cookie", "exists", "name");
+        call("Cookie", "put", "name", "Navid", 50000);
+        call("Cookie", "exists", "name");
+        call("Cookie", "get", "name");
 
-echo "Rent(4)= " . $rent4->getPayment(true) . PHP_EOL;
-echo "Rent(5)= " . $rent5->getPayment(true) . PHP_EOL;
+        echo "<br>";
 
-echo "Parking income = " . $parking->getPayment() . PHP_EOL;
+        echo "Notice: uncoment code below to get delete result";
+        echo "<br>";
+        // call("Cookie", "delete", "name");
+        // call("Cookie", "exists", "name");
 
-// get all parking slots info.
-// $parking->info();
+        ?>
+    </div>
+</body>
 
-// print_r($parking);
-// print_r($car);
-// print_r($rent1);
+</html>
