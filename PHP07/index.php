@@ -16,12 +16,15 @@
 // require "auto/index.php";
 
 // Composer
+
 require "vendor/autoload.php";
 
-use ClassPath\{PersonClass\Person as P, NewClass as N};
+use ClassPath\PersonClass\Person;
+use function ClassPath\PersonClass\N;
 
-$person = new P;
+$person = new Person;
 $person->sayHello();
 
-$time = new N;
-echo $time->number;
+// $time = new N;
+// echo $time->number;
+N();

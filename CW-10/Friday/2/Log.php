@@ -1,6 +1,6 @@
 <?php
 
-class Log
+trait Log
 {
     private static array $logs = [];
 

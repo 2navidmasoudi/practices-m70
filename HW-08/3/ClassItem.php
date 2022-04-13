@@ -10,7 +10,7 @@ class ClassItem
 
     public function __construct($id, $name, $description)
     {
-        $this->id = $id;
+        $this->setId($id);
         $this->name = $name;
         $this->description = $description;
     }
@@ -29,9 +29,9 @@ class ClassItem
      * @param int $duration 
      * @return ClassItem
      */
-    function setDuration(int $duration): self
+    function setDuration($duration): self
     {
-        if ($duration === 1 || $duration === 2)
+        if ($duration == 1 || $duration === 2)
             $this->duration = $duration;
         else
             echo "Duration must be 1 or 2";
@@ -94,4 +94,14 @@ class ClassItem
         $this->name = $name;
         return $this;
     }
+	/**
+	 * 
+	 * @param int $id 
+	 * @return ClassItem
+	 */
+	private function setId(int $id): self {
+        if ($id > 0)
+		    $this->id = $id;
+		return $this;
+	}
 }

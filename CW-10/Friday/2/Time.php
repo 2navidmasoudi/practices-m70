@@ -18,6 +18,12 @@ class Time implements getTime
     }
 
     use Change;
+    use Log;
+
+    public function __call($name, $arguments)
+    {
+        self::log($this->name(), $name);
+    }
 
     public function setTimeZone(string $timeZone): self
     {
@@ -27,20 +33,26 @@ class Time implements getTime
 
     public function getDate(): self
     {
-        Log::log(date("Y/m/d", $this->timeStamp), __FUNCTION__);
+        self::log(date("Y/m/d", $this->timeStamp), __FUNCTION__);
+        echo date("Y/m/d", $this->timeStamp);
         return $this;
     }
 
     public function getTime(): self
     {
-        Log::log(date("H:i:s", $this->timeStamp), __FUNCTION__);
+        echo date("H:i:s", $this->timeStamp);
         return $this;
     }
 
     public function get(): self
     {
-        Log::log(date("Y/m/d H:i:s", $this->timeStamp), __FUNCTION__);
+        echo date("Y/m/d H:i:s", $this->timeStamp);
         return $this;
+    }
+
+    public function __destruct()
+    {
+        self::log($this->timeStamp, __FUNCTION__);
     }
 }
 

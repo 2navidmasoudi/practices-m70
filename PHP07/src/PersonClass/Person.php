@@ -7,3 +7,8 @@ class Person {
         echo "Hello";
     }
 }
+
+function N()
+{
+    echo "M";
+}

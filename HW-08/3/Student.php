@@ -3,7 +3,7 @@
 final class Student extends Person
 {
 
-    private array $classes;
+    private array $classes = [];
 
     /**
      * return array of classes
@@ -23,7 +23,11 @@ final class Student extends Person
      */
     public function addClass(ClassItem $classItem): Student
     {
-        $this->classes[] = $classItem;
+        // If class already exist, don't add it...
+        if (!$this->isStudentHasClass($classItem))
+            $this->classes[] = $classItem;
+        else
+            "Class already exist.";
         return $this;
     }
 
@@ -36,8 +40,9 @@ final class Student extends Person
     public function isStudentHasClass(ClassItem $classItem): bool
     {
         $find = array_search($classItem, $this->classes);
-        if ($find !== false) return true;
-        return false;
+        return $find !== false;
+
+        // return in_array($classItem, $this->classes);
     }
 
     /**

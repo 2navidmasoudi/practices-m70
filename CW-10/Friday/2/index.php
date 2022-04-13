@@ -15,4 +15,5 @@ $date->setTimeZone("Asia/Tehran")
     ->getTime()
     ->get();
 
-Log::output();
+// Log::output();
+$date::output();
