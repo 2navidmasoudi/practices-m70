@@ -2,12 +2,14 @@
 
 namespace Clothing;
 
+use Discount\Strategy;
+
 class Clothing
 {
     protected string $name;
     protected string $sutableSeason;
     protected float $basePrice;
-    protected \Discount\Strategy $discountStrategy;
+    protected Strategy $discountStrategy;
 
     public function __construct($name, $sutableSeason, $basePrice)
     {
@@ -16,7 +18,7 @@ class Clothing
         $this->basePrice = $basePrice;
     }
 
-    public function setDiscountStrategy(\Discount\Strategy $discountStrategy)
+    public function setDiscountStrategy(Strategy $discountStrategy)
     {
         $this->discountStrategy = $discountStrategy;
     }
