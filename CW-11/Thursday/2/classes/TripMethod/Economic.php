@@ -4,21 +4,9 @@ namespace TripMethod;
 
 class Economic implements TripMethod
 {
-    const RAINY = 1.2;
-    const TRAFIC = 1.2;
-    const BOTH = 1.4;
-    const ENTRANCE = 5;
-    public function calcPrice(\TripParam $param): float
-    {
-        if ($param->isRainy() and $param->isTrafic()) {
-            return self::ENTRANCE * self::BOTH;
-        }
-        if ($param->isRainy()) {
-            return self::ENTRANCE * self::RAINY;
-        }
-        if ($param->isTrafic()) {
-            return self::ENTRANCE * self::TRAFIC;
-        }
-        return self::ENTRANCE;
-    }
+    private float $rainy = 1.2;
+    private float $trafic = 1.2;
+    private float $both = 1.4;
+    private float $entrance = 5;
+    use CalcPrice;
 }
