@@ -1,6 +1,6 @@
 {
-    "name": "navidm/marpele",
-    "description": "Bazie marpele be darkhaste aghae madani",
+    "name": "navidm/snake_board",
+    "description": "Snake board game :)",
     "type": "game",
     "license": "MIT",
     "autoload": {
