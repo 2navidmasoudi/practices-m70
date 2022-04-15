@@ -19,6 +19,11 @@ class Player
         return $this->name;
     }
 
+    public function getColor()
+    {
+        return $this->color;
+    }
+
     public function move(int $cellNumber)
     {
         $this->cellNumber = $cellNumber;

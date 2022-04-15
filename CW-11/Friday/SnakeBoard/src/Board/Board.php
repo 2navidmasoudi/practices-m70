@@ -46,10 +46,20 @@ class Board
                     $player->move($player->getCellNumber() + $n);
 
                 // Describe each player in which cell;
+                if ($player->getColor() == "red") {
+                    echo "\e[31m";
+                }
+                if ($player->getColor() == "blue") {
+                    echo "\e[34m";
+                }
+                if ($player->getColor() == "green") {
+                    echo "\e[32m";
+                }
                 echo $player->getName();
-                echo ": is now on " . $player->getCellNumber();
+                echo ": got $n and now on " . $player->getCellNumber();
                 echo "\n";
 
+                usleep(500000);
                 // if Player reach end, game will end.
                 if ($player->getCellNumber() == $this->cells) {
                     die("Game Over, Player: " . $player->getName() . " won!");
