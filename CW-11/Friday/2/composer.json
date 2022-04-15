@@ -1,0 +1,17 @@
+{
+    "name": "navidm/marpele",
+    "description": "Bazie marpele be darkhaste aghae madani",
+    "type": "game",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "authors": [{
+        "name": "Navid Masoudi",
+        "email": "2navidmasoudi@gmail.com"
+    }],
+    "minimum-stability": "dev",
+    "require": {}
+}

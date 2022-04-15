@@ -1,0 +1,13 @@
+{
+  "name": "abpeykar/hw-10",
+  "autoload": {
+    "psr-4": {
+      "": "src/Classes/"
+    }
+  },
+  "require": {},
+  "authors": [{
+    "name": "Mohammad Amin Abpeykar",
+    "email": "amaabpeykar@gmail.com"
+  }]
+}
