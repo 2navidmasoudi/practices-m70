@@ -28,11 +28,9 @@ class Board
         return $this;
     }
 
-    public function addPlayer($name, $color)
+    public function addPlayer(Player $player)
     {
-        $newPlayer = new Player($name, $color);
-        $this->players[] = $newPlayer;
-        return $newPlayer;
+        $this->players[] = $player;
     }
 
     public function getWinner()
