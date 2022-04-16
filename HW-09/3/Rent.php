@@ -46,7 +46,7 @@ class Rent implements Payment
     {
         $rentInfo = "";
 
-        $type = get_class($this->vehicle);
+        $type = basename(str_replace("\\", "/", get_class($this->vehicle)));
         $weight = $this->vehicle->getWeight();
         $tag = $this->vehicle->getTag();
 

@@ -9,9 +9,9 @@ include "../vendor/autoload.php";
 
 $board = new Board(10, 10);
 
-$board->addPlayer(new Player("Hossein", "purple"));
-$board->addPlayer(new Player("AmirReza", "red"));
+// $board->addPlayer(new Player("AmirReza", "red"));
 $board->addPlayer(new Player("Navid", "blue"));
+$board->addPlayer(new Player("AmirHossein", "purple"));
 // $board->addPlayer(new Player("Mohammad", "yellow"));
 
 $board
