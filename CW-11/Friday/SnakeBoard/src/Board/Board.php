@@ -2,6 +2,7 @@
 
 namespace Board;
 
+use Player\Colors;
 use Player\Player;
 
 class Board
@@ -33,7 +34,7 @@ class Board
         $this->players[] = $player;
     }
 
-    public function getWinner()
+    public function getWinner(float $speed = 0.5)
     {
         while (true) {
             foreach ($this->players as $player) {
@@ -46,20 +47,12 @@ class Board
                     $player->move($player->getCellNumber() + $n);
 
                 // Describe each player in which cell;
-                if ($player->getColor() == "red") {
-                    echo "\e[31m";
-                }
-                if ($player->getColor() == "blue") {
-                    echo "\e[34m";
-                }
-                if ($player->getColor() == "green") {
-                    echo "\e[32m";
-                }
+                Colors::putColor($player->getColor());
                 echo $player->getName();
                 echo ": got $n and now on " . $player->getCellNumber();
                 echo "\n";
 
-                usleep(500000);
+                usleep($speed * 1000000);
                 // if Player reach end, game will end.
                 if ($player->getCellNumber() == $this->cells) {
                     die("Game Over, Player: " . $player->getName() . " won!");
@@ -68,6 +61,8 @@ class Board
                 // Check if player reach any Snake or ladder here.
                 $this->checkCell($player);
             }
+            Colors::putColor();
+            echo "------------\n";
         }
     }
 

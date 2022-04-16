@@ -2,12 +2,16 @@
 
 include "../vendor/autoload.php";
 
-$Provider = new BikeProvider();
-$BikeStore = new BikeStore($Provider);
-$Bike1 = $BikeStore->borrow();
-$BikeStore->restore($Bike1, true);
-// print_r($Bike1);
-$bike2 = $BikeStore->borrow();
-// $bike3 = $BikeStore->borrow();
+$provider = new BikeProvider;
 
-var_dump($BikeStore);
+$bikeStore = new BikeStore($provider);
+
+$bike1 = $bikeStore->borrow();
+
+$bikeStore->restore($bike1, true);
+
+// print_r($bike1);
+$bike2 = $bikeStore->borrow();
+$bike3 = $bikeStore->borrow();
+
+var_dump($bikeStore);

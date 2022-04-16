@@ -4,7 +4,7 @@ class BikeProvider implements Provider
 {
     public function provide(): Bike
     {
-        return new Bike("Bike");
+        return new Bike("bike");
     }
 
     public function repair(Bike $bike)

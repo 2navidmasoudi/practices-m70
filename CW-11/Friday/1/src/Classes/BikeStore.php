@@ -3,8 +3,12 @@
 class BikeStore
 {
     private Provider $provider;
+
+    // array of Bike
     private array $presentBikes = [];
+
     private array $borrowedBikes = [];
+
     public function __construct(Provider $provider)
     {
         $this->provider = $provider;
@@ -31,6 +35,7 @@ class BikeStore
         $key = array_search($bike, $this->borrowedBikes);
         if ($key === false)
             throw new Exception("Rabin Hood");
+
         $this->presentBikes[] = $bike;
         unset($this->borrowedBikes[$key]);
     }
