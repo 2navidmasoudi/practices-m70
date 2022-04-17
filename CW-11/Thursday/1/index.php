@@ -1,8 +1,14 @@
 <?php
 
+spl_autoload_register(function ($className) {
+    include "classes/" . str_replace("\\", "/", $className) . ".php";
+});
+
+use Clothing\{Shirt, Socks, Pants, Jacket};
+use Discount\{Summer, Winter, Yalda};
 
 
-
+$shirt1 = new Shirt("Shirt1", "summer", 100);
 
 $shirt1->setDiscountStrategy(new Winter);
 
