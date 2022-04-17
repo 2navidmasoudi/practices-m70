@@ -11,14 +11,13 @@ class Colors
         'cyan' => '1;36',
         'red' => '1;31',
         'purple' => '1;35',
-        'brown' => '1;33',
+        'yellow' => '1;33',
         'white' => '97',
-        'yellow' => '93',
     ];
 
     // Returns colored string
     public static function putColor($color = 'white')
     {
-        echo "\e[" . self::$colors[$color] . "m";
+        return "\e[" . self::$colors[$color] . "m";
     }
 }

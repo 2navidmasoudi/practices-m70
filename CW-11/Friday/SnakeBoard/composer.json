@@ -13,5 +13,7 @@
         "email": "2navidmasoudi@gmail.com"
     }],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "phplucidframe/console-table": "dev-master"
+    }
 }

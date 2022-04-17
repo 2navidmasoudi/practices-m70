@@ -2,6 +2,8 @@
 
 namespace Board;
 
+use Player\Colors;
+
 trait MovePlayer
 {
     private int $start;
@@ -9,8 +11,20 @@ trait MovePlayer
     public function movePlayer(\Player\Player $player)
     {
         $type = basename(str_replace("\\", "/", get_class($this)));
-        echo $player->getName() . " reach a " . $type . " from " . $this->start . " to " . $this->end . "!\n";
+        if ($type == "Snake") {
+            $type = "🐍";
+        } elseif ($type == "Ladder") {
+            $type = "🪜";
+        }
         $player->move($this->end);
+        return [
+            Colors::putColor($player->getColor()),
+            $player->getName(),
+            $type,
+            $this->start,
+            "▶",
+            $this->end
+        ];
     }
 
     public function getStart()

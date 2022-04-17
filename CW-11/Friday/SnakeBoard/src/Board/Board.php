@@ -2,6 +2,7 @@
 
 namespace Board;
 
+use LucidFrame\Console\ConsoleTable;
 use Player\Colors;
 use Player\Player;
 
@@ -11,10 +12,15 @@ class Board
     private array $snakes = [];
     private array $ladders = [];
     private array $players = [];
+    private ConsoleTable $statusTable;
 
     public function __construct(int $width, $height)
     {
         $this->cells = $width * $height;
+        $this->statusTable = new ConsoleTable;
+        $this->statusTable
+            ->setHeaders([Colors::putColor(), "Game Status 🎮"])
+            ->hideBorder();
     }
 
     public function addSnake(Snake $snake)
@@ -32,54 +38,121 @@ class Board
     public function addPlayer(Player $player)
     {
         $this->players[] = $player;
+        return $this;
     }
 
     public function getWinner(float $speed = 0.5)
     {
         while (true) {
-            foreach ($this->players as $player) {
 
-                // random number for player :)
-                $n = rand(1, 6);
-
-                // if out of reach.
-                if ($player->getCellNumber() + $n <= $this->cells)
-                    $player->move($player->getCellNumber() + $n);
-
-                // Describe each player in which cell;
-                Colors::putColor($player->getColor());
-                echo $player->getName();
-                echo ": got $n and now on " . $player->getCellNumber();
-                echo "\n";
-
-                usleep($speed * 1000000);
-                // if Player reach end, game will end.
-                if ($player->getCellNumber() == $this->cells) {
-                    die("Game Over, Player: " . $player->getName() . " won!");
-                }
-
-                // Check if player reach any Snake or ladder here.
-                $this->checkCell($player);
+            // for clearning terminal
+            if (PHP_OS == "Windows") {
+                system("cls");
+            } else {
+                system("clear");
             }
-            Colors::putColor();
-            echo "------------\n";
+            $this->statusTable->display();
+            $this->MovePlayers();
+            $this->checkPlayers();
+            usleep($speed * 1000000);
         }
     }
 
-    public function checkCell($player)
+    public function MovePlayers()
     {
-        // snake
-        foreach ($this->snakes as $snake) {
-            if ($player->getCellNumber() == $snake->getStart()) {
-                $snake->movePlayer($player);
-                return;
-            }
+        // Show each players dice
+        $diceTable = new ConsoleTable;
+
+        // Show players scores.
+        $scoreTable = new ConsoleTable;
+        $scoreTable->setHeaders(
+            [
+                Colors::putColor(),
+                "Player",
+                // "Dice",
+                "🏠"
+            ]
+        );
+
+        foreach ($this->players as $player) {
+
+            // random number for player :)
+            $n = $player->tossDice();
+            $diceTable->addRow(
+                [
+                    Colors::putColor($player->getColor()),
+                    $player->getName(),
+                    implode(",", $player->getDices())
+                ]
+            );
+
+            // echo Colors::putColor($player->getColor());
+            // echo $player->getName() . ": ";
+            // echo implode(",", $player->getDices());
+            // echo "\n";
+            // if out of reach.
+            if ($player->getCellNumber() + $n <= $this->cells)
+                $player->move($player->getCellNumber() + $n);
+
+            // Describe each player in which cell;
+            $scoreTable->addRow(
+                [
+                    Colors::putColor($player->getColor()),
+                    $player->getName(),
+                    // $n,
+                    $player->getCellNumber(),
+                ]
+            );
+            // echo Colors::putColor($player->getColor());
+            // echo $player->getName();
+            // echo ": got $n and now on " . $player->getCellNumber();
+            // echo "\n";
+            // usleep($speed * 1000000);
+            // Check if player reach any Snake or ladder here.
+
         }
-        // ladder
-        foreach ($this->ladders as $ladder) {
-            if ($player->getCellNumber() == $ladder->getStart()) {
-                $ladder->movePlayer($player);
-                return;
+        echo Colors::putColor();
+        echo "---------- Player 🎲 ----------\n";
+        $diceTable->hideBorder()->display();
+        $scoreTable->hideBorder()->display();
+    }
+
+    public function checkPlayers()
+    {
+        // Check winner
+        foreach ($this->players as $player) {
+            // if Player reach end, game will end
+            if ($player->getCellNumber() == $this->cells) {
+                echo Colors::putColor($player->getColor());
+                $winner_message = "Game Over, Player: " . $player->getName() . " won!";
+                $table = new ConsoleTable;
+                $table
+                    ->addRow()
+                    ->addColumn($winner_message)
+                    ->display();
+                exit;
+            }
+            // snake
+            foreach ($this->snakes as $snake) {
+                if ($player->getCellNumber() == $snake->getStart()) {
+                    // echo Colors::putColor();
+                    // echo "------------\n";
+                    $this->statusTable
+                        ->addRow($snake->movePlayer($player));
+                    // echo $snake->movePlayer($player);
+                    // continue;
+                }
+            }
+            // ladder
+            foreach ($this->ladders as $ladder) {
+                if ($player->getCellNumber() == $ladder->getStart()) {
+                    // Colors::putColor();
+                    // echo "------------\n";
+                    $this->statusTable
+                        ->addRow($ladder->movePlayer($player));
+                    // echo $ladder->movePlayer($player);
+                    // continue;
+                }
             }
         }
     }

@@ -1,0 +1,54 @@
+{
+    "packages": [
+        {
+            "name": "phplucidframe/console-table",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phplucidframe/console-table.git",
+                "reference": "d9f17b5a862af48cf4cd1b885220f17469758ca9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phplucidframe/console-table/zipball/d9f17b5a862af48cf4cd1b885220f17469758ca9",
+                "reference": "d9f17b5a862af48cf4cd1b885220f17469758ca9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "*"
+            },
+            "time": "2021-11-13T10:06:23+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "LucidFrame\\": "src/",
+                    "LucidFrameTest\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sithu K.",
+                    "email": "cithukyaw@gmail.com"
+                }
+            ],
+            "description": "Console Table",
+            "support": {
+                "issues": "https://github.com/phplucidframe/console-table/issues",
+                "source": "https://github.com/phplucidframe/console-table/tree/master"
+            },
+            "install-path": "../phplucidframe/console-table"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}
