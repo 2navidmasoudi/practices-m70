@@ -1,7 +1,5 @@
 <?php
 
-
-
 class Bike
 {
     private static $number = 1;

@@ -12,11 +12,13 @@ class Board
     private array $snakes = [];
     private array $ladders = [];
     private array $players = [];
+
     private ConsoleTable $statusTable;
 
     public function __construct(int $width, $height)
     {
         $this->cells = $width * $height;
+
         $this->statusTable = new ConsoleTable;
         $this->statusTable
             ->setHeaders([Colors::putColor(), "Game Status 🎮"])
@@ -51,10 +53,13 @@ class Board
             } else {
                 system("clear");
             }
+
             $this->statusTable->display();
+
             $this->MovePlayers();
             $this->checkPlayers();
             usleep($speed * 1000000);
+            
         }
     }
 

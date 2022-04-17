@@ -10,7 +10,7 @@ $bike1 = $bikeStore->borrow();
 
 $bikeStore->restore($bike1, true);
 
-// print_r($bike1);
+// // print_r($bike1);
 $bike2 = $bikeStore->borrow();
 $bike3 = $bikeStore->borrow();
 
