@@ -4,6 +4,8 @@ spl_autoload_register(function ($className) {
     include "classes/" . str_replace("\\", "/", $className) . ".php";
 });
 
+
+
 use Clothing\{Shirt, Socks, Pants, Jacket};
 use Discount\{Summer, Winter, Yalda};
 

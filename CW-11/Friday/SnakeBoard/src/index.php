@@ -10,14 +10,14 @@ include "../vendor/autoload.php";
 $board = new Board(10, 10);
 
 $board
-    ->addPlayer(new Player("Navid", "blue"))
-    // ->addPlayer(new Player("Mamad", "yellow"))
-    // ->addPlayer(new Player("Asghar", "red"))
-    // ->addPlayer(new Player("Javad", "black"))
-    // ->addPlayer(new Player("Rasoul", "green"))
-    // ->addPlayer(new Player("Zamin", "cyan"))
-    // ->addPlayer(new Player("Ehsan", "white"))
-    ->addPlayer(new Player("AmirHossein", "purple"));
+    ->addPlayer(new Player("iNFiNiTY", "blue"))
+    ->addPlayer(new Player("GodRod", "red"))
+    ->addPlayer(new Player("Araghe_Keshmesh", "yellow"))
+    ->addPlayer(new Player("MonsterDeh", "purple"));
+// ->addPlayer(new Player("Rasoul", "green"))
+// ->addPlayer(new Player("Zamin", "cyan"))
+// ->addPlayer(new Player("Ehsan", "white"))
+// ->addPlayer(new Player("AmirHossein", "purple"));
 
 $board
     ->addLadder(new Ladder(25, 36))
