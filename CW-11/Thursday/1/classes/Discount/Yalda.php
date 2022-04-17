@@ -15,6 +15,7 @@ class Yalda implements Strategy
         $className = get_class($clothing);
         $clothingType = basename(str_replace('\\', '/', $className));
         // discount for cloth type.
+
         switch ($clothingType) {
             case "Jacket":
                 $price *= (1 - self::JACKET_DISCOUNT);

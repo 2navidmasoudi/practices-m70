@@ -3,18 +3,21 @@
 namespace Clothing;
 
 use Discount\Strategy;
+use Discount\Summer;
 
 class Clothing
 {
     protected string $name;
-    protected string $sutableSeason;
+    protected string $season;
     protected float $basePrice;
+
+    
     protected Strategy $discountStrategy;
 
-    public function __construct($name, $sutableSeason, $basePrice)
+    public function __construct($name, $season, $basePrice)
     {
         $this->name = $name;
-        $this->sutableSeason = $sutableSeason;
+        $this->season = $season;
         $this->basePrice = $basePrice;
     }
 
@@ -37,6 +40,6 @@ class Clothing
 
     public function getSeason(): string
     {
-        return $this->sutableSeason;
+        return $this->season;
     }
 }

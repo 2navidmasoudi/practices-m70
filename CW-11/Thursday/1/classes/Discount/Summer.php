@@ -11,7 +11,7 @@ class Summer implements Strategy
     const FALL_DISCOUNT   = 0  / 100;
     const WINTER_DISCOUNT = 30 / 100;
 
-    public function priceByDiscount(\Clothing\Clothing $clothing): float
+    public function priceByDiscount(Clothing $clothing): float
     {
         $price = $clothing->getBasePrice();
         // $className = get_class($clothing);

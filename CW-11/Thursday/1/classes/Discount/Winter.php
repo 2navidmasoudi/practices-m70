@@ -15,7 +15,13 @@ class Winter implements Strategy
     {
         $price = $clothing->getBasePrice();
         $className = get_class($clothing);
+        // echo $className; // Clothing/asdasd/asdasdasd/Jacket
         $clothingType = basename(str_replace('\\', '/', $className));
+
+        // $array = explode("\\", $className);
+        // $count = count($array);
+        // $clothingType = $array[$count - 1];
+
         // discount for cloth season type.
         switch ($clothing->getSeason()) {
             case "spring":
