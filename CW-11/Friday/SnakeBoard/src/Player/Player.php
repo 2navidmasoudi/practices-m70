@@ -7,6 +7,7 @@ class Player
     private string $color;
     private string $name;
     private int $cellNumber = 1;
+
     private array $dices = [];
 
     public function __construct(string $name, string $color)
@@ -22,9 +23,11 @@ class Player
         return $n;
     }
 
-    public function getDices() {
+    public function getDices()
+    {
         return $this->dices;
     }
+
     public function getName()
     {
         return $this->name;

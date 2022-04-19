@@ -10,11 +10,9 @@ include "vendor/autoload.php";
 $game = new Board(10, 10);
 
 $game
-    ->addPlayer(new Player("Navid", "blue"))
+    ->addPlayer(new Player("iNFiNiTY", "blue"))
     ->addPlayer(new Player("Hossein", "purple"))
-    ->addPlayer(new Player("Amir", "green"))
-    ->addPlayer(new Player("Hassan", "red"))
-    ->addPlayer(new Player("MohammadReza", "cyan"));
+    ->addPlayer(new Player("Black Brigand", "red"));
 
 $game
     ->addLadder(new Ladder(25, 36))
@@ -33,4 +31,4 @@ $game
     ->addSnake(new Snake(98, 88))
     ->addSnake(new Snake(54, 30));
 
-$game->getWinner(0);
+$game->getWinner(0.5);

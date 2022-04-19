@@ -21,3 +21,19 @@ class Colors
         return "\e[" . self::$colors[$color] . "m";
     }
 }
+
+// $colors = [
+//     'black' => '1;30',
+//     'blue' => '1;34',
+//     'green' => '1;32',
+//     'cyan' => '1;36',
+//     'red' => '1;31',
+//     'purple' => '1;35',
+//     'yellow' => '1;33',
+//     'white' => '97',
+// ];
+
+// function putColor($color = "white") {
+//     global $colors;
+//     return "\e[" . self::$colors[$color] . "m";
+// }

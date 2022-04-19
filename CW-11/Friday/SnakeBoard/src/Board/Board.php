@@ -59,7 +59,6 @@ class Board
             $this->MovePlayers();
             $this->checkPlayers();
             usleep($speed * 1000000);
-            
         }
     }
 
@@ -140,23 +139,15 @@ class Board
             // snake
             foreach ($this->snakes as $snake) {
                 if ($player->getCellNumber() == $snake->getStart()) {
-                    // echo Colors::putColor();
-                    // echo "------------\n";
                     $this->statusTable
                         ->addRow($snake->movePlayer($player));
-                    // echo $snake->movePlayer($player);
-                    // continue;
                 }
             }
             // ladder
             foreach ($this->ladders as $ladder) {
                 if ($player->getCellNumber() == $ladder->getStart()) {
-                    // Colors::putColor();
-                    // echo "------------\n";
                     $this->statusTable
                         ->addRow($ladder->movePlayer($player));
-                    // echo $ladder->movePlayer($player);
-                    // continue;
                 }
             }
         }
