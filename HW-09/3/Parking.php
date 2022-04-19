@@ -88,7 +88,7 @@ class Parking
         }
 
         // Car entered before opening hour
-        if ($enterHour < $this->openHour) {
+        if ($enterHour <= $this->openHour) {
             $error[] =  "Parking is not open yet. (Open Hour = $this->openHour)";
         }
         // Car exited after closing hour

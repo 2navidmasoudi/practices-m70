@@ -2,7 +2,7 @@
 
 class Input
 {
-    public static function exists(string $type = 'post'): bool
+    public static function exists(string $type = 'post'|'get'): bool
     {
         return @$_SERVER['REQUEST_METHOD'] === strtoupper($type);
     }

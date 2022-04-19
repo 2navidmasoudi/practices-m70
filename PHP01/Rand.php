@@ -1,18 +1,5 @@
 <?php
 
-// $students = [
-//     // 1  => "Masoudi",
-//     // 5  => "Barzegari",
-//     // 7  => "Khanjari",
-//     // 10 => "Rajab'ali",
-//     // 12 => "Sadeghi",
-//     // 13 => "Abpeykar",
-//     // 14 => "Ardebili",
-//     21 => "Karimi",
-//     26 => "Madani",
-// ];
-// echo "Aghaye " . $students[array_rand($students)];
-
 class Exercise
 {
     const STUDENTS = [

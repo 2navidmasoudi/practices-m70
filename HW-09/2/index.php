@@ -110,8 +110,8 @@ function call($class, $method, ...$args)
 
         echo "Notice: uncoment code below to get delete result";
         echo "<br>";
-        // call("Cookie", "delete", "name");
-        // call("Cookie", "exists", "name");
+        call("Cookie", "delete", "name");
+        call("Cookie", "exists", "name");
 
         ?>
     </div>

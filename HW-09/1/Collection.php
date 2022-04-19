@@ -3,7 +3,7 @@
 class Collection
 {
     protected $list;
-    protected $sort;
+    protected SortingStrategy $sort;
     public function __construct(SortingStrategy $sort)
     {
         $this->sort = $sort;
