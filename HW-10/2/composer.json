@@ -1,0 +1,14 @@
+{
+    "name": "navidmasoudi/blog",
+    "description": "HW-10",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [{
+        "name": "Navid Masoudi",
+        "email": "2navidmasoudi@gmail.com"
+    }],
+    "require": {}
+}
