@@ -5,3 +5,4 @@ log/
 database/
 storage/
 db/
+package-lock.*
