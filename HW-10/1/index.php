@@ -18,7 +18,7 @@ use AutoMobile\Irankhodro\{L90, Dena};
  * @param float $fuel
  * @param array $destination
  * Destination for car to reach etc.: [10,10]
- * @param array $destination [optional] default = [0,0]
+ * @param array $position [optional] default = [0,0]
  * Staring position for car etc.: [2,3]
  * 
  * Some cars have ability to change speed (setSpeed)

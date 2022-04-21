@@ -12,7 +12,7 @@ namespace AutoMobile;
  * @param float $fuel
  * @param array $destination
  * Destination for car to reach etc.: [10,10]
- * @param array $destination [optional] default = [0,0]
+ * @param array $position [optional] default = [0,0]
  * Staring position for car etc.: [2,3]
  */
 abstract class Car implements Movement
