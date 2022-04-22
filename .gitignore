@@ -6,3 +6,4 @@ database/
 storage/
 db/
 package-lock.*
+.vscode/
