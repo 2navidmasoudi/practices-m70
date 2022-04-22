@@ -28,3 +28,5 @@ $person->sayHello();
 // $time = new N;
 // echo $time->number;
 N();
+
+// Salam
