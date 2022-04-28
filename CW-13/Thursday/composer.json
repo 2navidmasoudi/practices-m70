@@ -1,0 +1,14 @@
+{
+    "name": "navid/cw13",
+    "description": "Thursday problem",
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "authors": [{
+        "name": "Navid Masoudi",
+        "email": "2navidmasoudi@gmail.com"
+    }],
+    "require": {}
+}
