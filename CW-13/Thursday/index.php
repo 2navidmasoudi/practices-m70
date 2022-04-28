@@ -8,10 +8,21 @@ include "vendor/autoload.php";
 $mySql = Connection::getInstance();
 
 $query1 = new MySqlDatabase($mySql);
-$query1
-    ->table('Users')
+$result = $query1
+    ->table('Students')
     ->select(['name', 'age'])
     ->where("age", "18", ">")
     ->fetchAll();
 
-echo "salam";
+$result2 = $query1
+    ->table('Students')
+    ->insert(["name" => "Shabpare", "age" => 5])
+    ->exec();
+
+$result3 = $query1
+    ->table('Students')
+    ->update(["age" => "29999"])
+    ->where("name", "Ali")
+    ->exec();
+
+print_r($result);

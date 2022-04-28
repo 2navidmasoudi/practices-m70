@@ -4,12 +4,14 @@ namespace Connection;
 
 use PDO;
 
-class Connection implements ConnectionInterface {
+class Connection implements ConnectionInterface
+{
   private static $instance = null;
   private $host = "localhost";
+  private $name = "Maktab";
   private $user = "root";
   private $pass = "4845647";
-  
+
   private PDO $conn;
 
   private function __construct()
@@ -21,18 +23,17 @@ class Connection implements ConnectionInterface {
       array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'")
     );
   }
- 
+
   public static function getInstance()
   {
-    if (!isset(self::$instance))
-    {
+    if (!isset(self::$instance)) {
       self::$instance = new Connection;
     }
- 
+
     return self::$instance;
   }
 
-  public function getConnection() : PDO
+  public function getConnection(): PDO
   {
     return $this->conn;
   }
