@@ -7,22 +7,23 @@ include "vendor/autoload.php";
 
 $mySql = Connection::getInstance();
 
-$query1 = new MySqlDatabase($mySql);
-$result = $query1
+$db = new MySqlDatabase($mySql);
+
+// $result2 = $db
+//     ->table('Students')
+//     ->insert(["name" => "Masoud", "age" => 50])
+//     ->exec(); // true
+
+$result3 = $db
+    ->table('Students')
+    ->update(["age" => 30])
+    ->where("name", "Masoud")
+    ->exec(); // true
+
+$result = $db
     ->table('Students')
     ->select(['name', 'age'])
-    ->where("age", "18", ">")
+    ->where("age", "25", ">")
     ->fetchAll();
-
-$result2 = $query1
-    ->table('Students')
-    ->insert(["name" => "Shabpare", "age" => 5])
-    ->exec();
-
-$result3 = $query1
-    ->table('Students')
-    ->update(["age" => "29999"])
-    ->where("name", "Ali")
-    ->exec();
 
 print_r($result);

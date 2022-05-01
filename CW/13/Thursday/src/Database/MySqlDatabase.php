@@ -7,9 +7,13 @@ use PDO;
 
 class MySqlDatabase implements DatabaseInterface
 {
+    private PDO $db;
+    private string $table;
+    private string $query;
+    
     public function __construct(ConnectionInterface $connection)
     {
-        $this->conn = $connection->getConnection();
+        $this->db = $connection->getConnection();
     }
     public function table(string $table): DatabaseInterface
     {
@@ -27,6 +31,7 @@ class MySqlDatabase implements DatabaseInterface
     public function insert(array $fields): DatabaseInterface
     {
         $this->insert = $fields;
+
         $values = array_map(fn ($v) => "'$v'", array_values($fields));
         $this->query =
             "INSERT INTO " . $this->table .
@@ -38,12 +43,16 @@ class MySqlDatabase implements DatabaseInterface
     public function update(array $fields): DatabaseInterface
     {
         $this->update = $fields;
+        // $fields = ["name" => "shappare", "age" => 5];
+        // "UPDATE Students SET name = 'shappare',age = '5'";
         $arr = array_map(
-            fn ($key, $value) => "$key = $value",
+            fn ($key, $value) => "$key = '$value'",
             array_keys($fields),
-            array_values($fields)
+            array_values($fields),
         );
+
         $this->query = "UPDATE " . $this->table . " SET " . implode(",", $arr);
+
         return $this;
     }
     public function where(string $val1, string $val2, string $operation = '='): DatabaseInterface
@@ -57,17 +66,19 @@ class MySqlDatabase implements DatabaseInterface
         $this->query .= " WHERE $val1 $operation '$val2'";
         return $this;
     }
+    public function prepare() {
+        
+    }
     public function fetch()
     {
-        return $this->conn->query($this->query)->fetch(PDO::FETCH_OBJ);
+        return $this->db->query($this->query)->fetch(PDO::FETCH_OBJ);
     }
     public function fetchAll()
     {
-
-        return $this->conn->query($this->query)->fetchAll(PDO::FETCH_OBJ);
+        return $this->db->query($this->query)->fetchAll(PDO::FETCH_OBJ);
     }
     public function exec(): bool
     {
-        return $this->conn->exec($this->query);
+        return $this->db->exec($this->query);
     }
 }
