@@ -2,7 +2,6 @@ node_modules/
 log_*
 Log.*
 log/
-database/
 storage/
 db/
 package-lock.*

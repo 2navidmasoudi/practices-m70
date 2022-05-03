@@ -120,7 +120,11 @@ FROM Mentors
     RIGHT JOIN Students on Students.id = mentor_student.student_id;
 -- @BLOCK
 SELECT Students.name,
-    Mentors.name-- @BLOCK
+    Mentors.name
+FROM Students
+    INNER JOIN mentor_student on Students.id = mentor_student.student_id
+    INNER JOIN Mentors on Mentors.id = mentor_student.mentor_id;
+-- @BLOCK
 CREATE TABLE mentor_student(
     id INT NOT NULL AUTO_INCREMENT,
     student_id INT,
@@ -129,6 +133,3 @@ CREATE TABLE mentor_student(
     FOREIGN KEY (student_id) REFERENCES Students(id),
     FOREIGN KEY (mentor_id) REFERENCES Mentors(id)
 );
-FROM Students
-    INNER JOIN mentor_student on Students.id = mentor_student.student_id
-    RIGHT JOIN Mentors on Mentors.id = mentor_student.mentor_id;
