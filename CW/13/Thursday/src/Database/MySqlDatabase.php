@@ -10,7 +10,7 @@ class MySqlDatabase implements DatabaseInterface
     private PDO $db;
     private string $table;
     private string $query;
-    
+
     public function __construct(ConnectionInterface $connection)
     {
         $this->db = $connection->getConnection();
@@ -66,8 +66,8 @@ class MySqlDatabase implements DatabaseInterface
         $this->query .= " WHERE $val1 $operation '$val2'";
         return $this;
     }
-    public function prepare() {
-        
+    public function prepare()
+    {
     }
     public function fetch()
     {
