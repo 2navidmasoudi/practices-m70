@@ -17,9 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $file = $_FILES['file'];
 
-    $allowedTypes = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
-    $detectedType = exif_imagetype($file['tmp_name']);
-    if (!in_array($detectedType, $allowedTypes)) {
+    // $allowedTypes = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
+    $detectedType = getimagesize($file['tmp_name']);
+    if (!$detectedType) {
         http_response_code(400);
         echo json_encode([
             "status" => 400,

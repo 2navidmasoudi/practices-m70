@@ -1,0 +1,8 @@
+{
+    "database": true,
+    "username": "root",
+    "password": "4845647",
+    "host": "localhost",
+    "dbname": "CHAT",
+    "driver": "mysql"
+}
