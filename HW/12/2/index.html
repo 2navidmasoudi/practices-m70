@@ -1,0 +1,9 @@
+<script type="module">
+  import url from "/config.js";
+  console.log(url);
+  const init_url = "/public/init.php";
+
+  fetch(url + init_url)
+    .then((res) => res.json())
+    .then((response) => (window.location.href = response.location));
+</script>

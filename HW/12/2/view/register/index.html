@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Register to Chat</title>
+    <link
+      href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+  </head>
+
+  <body class="text-center bg-dark-moon">
+    <main class="form-signin">
+      <form>
+        <h1 class="h3 mb-3 fw-normal text-light">Please register</h1>
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingUsername"
+            placeholder="Username"
+            name="username"
+          />
+          <label for="floatingUsername">Username</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="email"
+            class="form-control"
+            id="floatingEmail"
+            placeholder="email"
+            name="email"
+          />
+          <label for="floatingEmail">Email</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingName"
+            placeholder="name"
+            name="name"
+          />
+          <label for="floatingName">Name</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="password"
+            class="form-control"
+            id="floatingPassword"
+            placeholder="password"
+            name="password"
+          />
+          <label for="floatingPassword">Password</label>
+        </div>
+        <div
+          id="alert"
+          class="d-none alert alert-danger text-start"
+          role="alert"
+        ></div>
+        <button class="w-100 btn btn-lg btn-success" type="submit">
+          Register
+        </button>
+        <p class="mt-5 mb-3 text-muted">
+          Already a user? <a href="/view/login/" class="link-info">Login</a>.
+        </p>
+      </form>
+    </main>
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="main.js" type="module"></script>
+  </body>
+</html>

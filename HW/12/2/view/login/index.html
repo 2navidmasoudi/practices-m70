@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login to Chat</title>
+    <link
+      href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+  </head>
+
+  <body class="text-center bg-dark-moon">
+    <main class="form-signin">
+      <form action="/public/login.php" method="post">
+        <!-- <img class="mb-4" src="/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+        <h1 class="h3 mb-3 fw-normal text-light">Please login</h1>
+
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingInput"
+            placeholder="Username"
+            name="username"
+          />
+          <label for="floatingInput">Username</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="password"
+            class="form-control"
+            id="floatingPassword"
+            placeholder="Password"
+            name="password"
+          />
+          <label for="floatingPassword">Password</label>
+        </div>
+        <div
+          id="alert"
+          class="d-none alert alert-danger text-start"
+          role="alert"
+        ></div>
+        <button class="w-100 btn btn-lg btn-success" type="submit">
+          Login
+        </button>
+        <p class="mt-5 mb-3 text-muted">
+          Not a user yet?
+          <a href="/view/register/" class="link-info">Register</a>.
+        </p>
+      </form>
+    </main>
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="main.js" type="module"></script>
+  </body>
+</html>
