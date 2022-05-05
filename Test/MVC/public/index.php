@@ -1,16 +1,16 @@
 <?php
 
+use app\controllers\SiteController;
 use app\core\Application;
 
 include_once __DIR__ . "/../vendor/autoload.php";
 
-$app = new Application();
+$app = new Application(dirname(__DIR__));
 
-$app->router->get('/', function () {
-    return "Hello World!";
-});
-$app->router->get('/contact', function () {
-    return "Contact Us";
-});
+$siteController = new SiteController;
+
+$app->router->get('/', [$siteController, 'home']);
+$app->router->get('/contact', [$siteController, 'contact']);
+$app->router->post('/contact', [$siteController, 'handleContact']);
 
 $app->run();
