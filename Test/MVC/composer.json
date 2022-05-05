@@ -1,13 +1,13 @@
 {
     "name": "navidm/mvc",
-    "authors": [{
-        "name": "Navid Masoudi",
-        "email": "2navidmasoudi@gmail.com"
-    }],
     "autoload": {
         "psr-4": {
             "app\\": "./"
         }
     },
+    "authors": [{
+        "name": "Navid Masoudi",
+        "email": "2navidmasoudi@gmail.com"
+    }],
     "require": {}
 }
