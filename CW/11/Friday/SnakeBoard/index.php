@@ -12,7 +12,7 @@ $game = new Board(10, 10);
 $game
     ->addPlayer(new Player("iNFiNiTY", "blue"))
     ->addPlayer(new Player("Hossein", "purple"))
-    ->addPlayer(new Player("Black Brigand", "red"));
+    ->addPlayer(new Player("Aghaye Sadeghi", "red"));
 
 $game
     ->addLadder(new Ladder(25, 36))
@@ -31,4 +31,4 @@ $game
     ->addSnake(new Snake(98, 88))
     ->addSnake(new Snake(54, 30));
 
-$game->getWinner(0.5);
+$game->getWinner(0);
