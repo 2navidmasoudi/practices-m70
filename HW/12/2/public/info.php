@@ -18,7 +18,7 @@ if (!isset($token)) {
 }
 
 if (db_mode()) {
-    $query = "SELECT * FROM Users WHERE :token = Users.token";
+    $query = "SELECT * FROM Users WHERE token = :token";
     $stmt = $pdo->prepare($query);
     $stmt->execute(["token" => $token]);
     $response = $stmt->fetch();
