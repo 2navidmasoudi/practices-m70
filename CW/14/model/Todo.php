@@ -15,7 +15,7 @@ class Todo
         $this->conn = new PDO("mysql:host={$this->servername};dbname=todo", $this->username, $this->password);
         $this->conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     }
-    public  function getTodo($id = null)
+    public function getTodo($id = null)
     {
         if (isset($id)) {
             $query = "SELECT * FROM todos WHERE id = ?";
@@ -36,10 +36,17 @@ class Todo
         return $stmt->execute([$task]);
     }
 
-    public function toggleTodo($id, $status)
+    public function toggleTodo($id)
     {
-        $query = "UPDATE todos SET status = :status WHERE id = :id";
+        $query = "UPDATE todos SET status = IF (status,0,1) WHERE id = :id";
         $stmt = $this->conn->prepare($query);
-        return $stmt->execute([":status" => $status, ":id" => $id]);
+        return $stmt->execute(["id" => $id]);
+    }
+
+    public function deleteTodo($id)
+    {
+        $query = "DELETE FROM todos WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        return $stmt->execute([$id]);
     }
 }

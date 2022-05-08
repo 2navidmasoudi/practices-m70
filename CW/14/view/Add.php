@@ -5,3 +5,5 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+<?php if (isset($task)) echo "$task successfully added.";

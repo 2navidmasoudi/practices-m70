@@ -2,6 +2,8 @@
 
 namespace App\core;
 
+use App\controllers\SiteController;
+
 class Router
 {
     public array $routes = [];

@@ -17,8 +17,7 @@ class SiteController
 
     public function home(Request $request)
     {
-        $id = $request->getBody()['id'];
-
+        $id = $request->getBody()['id'] ?? null;
         return (new View)->renderView("home", ["todo" => $this->todo->getTodo($id)]);
     }
 
@@ -27,21 +26,23 @@ class SiteController
         $task = $request->getBody()['todo'];
         $this->todo->addTodo($task);
 
-        return (new View)->renderView("home", ["todo" => $this->todo->getTodo()]);
+        return (new View)->renderView("Add", ["task" => $task]);
     }
 
-    public function adding()
+    public function addForm()
     {
         return (new View)->renderView("Add");
     }
 
     public function toggleTodo(Request $request)
     {
-        $data = $request->getBody();
-        $id = $data["id"];
-        $status = $data["status"];
-        if ($status === "false") $status = 0;
-        if ($status === "true") $status = 1;
-        $this->todo->toggleTodo($id, $status);
+        $id = $request->getBody()['id'];
+        $this->todo->toggleTodo($id);
+    }
+
+    public function deleteTodo(Request $request)
+    {
+        $id = $request->getBody()['id'];
+        $this->todo->deleteTodo($id);
     }
 }
