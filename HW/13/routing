@@ -1,0 +1,8 @@
+/ (home) [main]
+/profile [main]
+
+/register [auth]
+/login [auth]
+
+/panel(/work-/unit) (doctor) [panel]
+/panel(/accept-/unit) (manager) [panel]
