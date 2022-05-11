@@ -89,6 +89,7 @@ class MySqlDatabase implements DatabaseInterface
         foreach ($this->fields as $key => $value) {
             $statement->bindParam(":$key", $value);
         }
+        $statement->execute();
         return $statement->fetch(PDO::FETCH_OBJ);
     }
     public function fetchAll()
