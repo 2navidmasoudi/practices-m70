@@ -9,5 +9,7 @@
         "name": "Navid Masoudi",
         "email": "2navidmasoudi@gmail.com"
     }],
-    "require": {}
+    "require": {
+        "vlucas/phpdotenv": "^5.4"
+    }
 }
