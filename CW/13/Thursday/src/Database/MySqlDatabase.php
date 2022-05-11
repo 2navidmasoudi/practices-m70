@@ -10,45 +10,61 @@ class MySqlDatabase implements DatabaseInterface
     private PDO $db;
     private string $table;
     private string $query;
+    private array $fields = [];
 
     public function __construct(ConnectionInterface $connection)
     {
         $this->db = $connection->getConnection();
     }
+
+    // Add table name in the first place
     public function table(string $table): DatabaseInterface
     {
         $this->table = $table;
         return $this;
     }
+
+    // Create table then exec
+    public function create()
+    {
+        $this->query = "CREATE TABLE {$this->table}";
+        return $this;
+    }
+
+    // Drop table then exec
+    public function drop()
+    {
+        $this->query = "DROP TABLE {$this->table}";
+        return $this;
+    }
+
+    // SELECT array $cols from table then fetch or fetchAll
     public function select(array $cols = ['*']): DatabaseInterface
     {
-        $this->cols = $cols;
         $this->query =
             "SELECT " . implode(",", $cols) .
             " FROM " . $this->table;
         return $this;
     }
+
+    // SELECT array $cols from table then fetch or fetchAll
     public function insert(array $fields): DatabaseInterface
     {
-        $this->insert = $fields;
-
-        $values = array_map(fn ($v) => "'$v'", array_values($fields));
+        $this->fields = $fields;
+        $params = array_map(fn ($v) => ":$v", array_keys($fields));
         $this->query =
             "INSERT INTO " . $this->table .
             "(" . implode(",", array_keys($fields)) . ") " .
-            "VALUES (" . implode(",", $values) . ")";
-
+            "VALUES (" . implode(",", $params) . ")";
         return $this;
     }
     public function update(array $fields): DatabaseInterface
     {
-        $this->update = $fields;
-        // $fields = ["name" => "shappare", "age" => 5];
-        // "UPDATE Students SET name = 'shappare',age = '5'";
+        $this->fields = $fields;
+
         $arr = array_map(
-            fn ($key, $value) => "$key = '$value'",
+            fn ($key) => "$key = :$key",
             array_keys($fields),
-            array_values($fields),
         );
 
         $this->query = "UPDATE " . $this->table . " SET " . implode(",", $arr);
@@ -66,19 +82,30 @@ class MySqlDatabase implements DatabaseInterface
         $this->query .= " WHERE $val1 $operation '$val2'";
         return $this;
     }
-    public function prepare()
-    {
-    }
+
     public function fetch()
     {
-        return $this->db->query($this->query)->fetch(PDO::FETCH_OBJ);
+        $statement = $this->db->prepare($this->query);
+        foreach ($this->fields as $key => $value) {
+            $statement->bindParam(":$key", $value);
+        }
+        return $statement->fetch(PDO::FETCH_OBJ);
     }
     public function fetchAll()
     {
-        return $this->db->query($this->query)->fetchAll(PDO::FETCH_OBJ);
+        $statement = $this->db->prepare($this->query);
+        foreach ($this->fields as $key => $value) {
+            $statement->bindParam(":$key", $value);
+        }
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_OBJ);
     }
     public function exec(): bool
     {
-        return $this->db->exec($this->query);
+        $statement = $this->db->prepare($this->query);
+        foreach ($this->fields as $key => $value) {
+            $statement->bindParam(":$key", $value);
+        }
+        return $statement->execute();
     }
 }
