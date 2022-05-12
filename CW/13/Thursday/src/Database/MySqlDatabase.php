@@ -2,6 +2,7 @@
 
 namespace Database;
 
+use Connection\Connection;
 use Connection\ConnectionInterface;
 use PDO;
 
@@ -15,6 +16,11 @@ class MySqlDatabase implements DatabaseInterface
     public function __construct(ConnectionInterface $connection)
     {
         $this->db = $connection->getConnection();
+    }
+
+    public static function do(): self
+    {
+        return new self(Connection::getInstance());
     }
 
     // Add table name in the first place
