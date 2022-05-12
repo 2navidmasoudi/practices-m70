@@ -58,6 +58,7 @@ class MySqlDatabase implements DatabaseInterface
             "VALUES (" . implode(",", $params) . ")";
         return $this;
     }
+
     public function update(array $fields): DatabaseInterface
     {
         $this->fields = $fields;
@@ -71,6 +72,7 @@ class MySqlDatabase implements DatabaseInterface
 
         return $this;
     }
+
     public function where(string $val1, string $val2, string $operation = '='): DatabaseInterface
     {
         $this->where = [
@@ -92,6 +94,7 @@ class MySqlDatabase implements DatabaseInterface
         $statement->execute();
         return $statement->fetch(PDO::FETCH_OBJ);
     }
+
     public function fetchAll()
     {
         $statement = $this->db->prepare($this->query);
@@ -101,6 +104,7 @@ class MySqlDatabase implements DatabaseInterface
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_OBJ);
     }
+    
     public function exec(): bool
     {
         $statement = $this->db->prepare($this->query);

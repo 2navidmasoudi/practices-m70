@@ -20,10 +20,10 @@ $result3 = $db
     ->where("name", "Masoud")
     ->exec(); // true
 
-$result = $db
-    ->table('Students')
-    ->select(['name', 'age'])
-    ->where("age", "25", ">")
-    ->fetchAll();
+// $result = $db
+//     ->table('Students')
+//     ->select(['name', 'age'])
+//     ->where("age", "25", ">")
+//     ->fetchAll();
 
 print_r($result);
