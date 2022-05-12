@@ -85,32 +85,32 @@ class MySqlDatabase implements DatabaseInterface
         return $this;
     }
 
-    public function fetch()
+    private function prepare($query)
     {
-        $statement = $this->db->prepare($this->query);
+        $statement = $this->db->prepare($query);
         foreach ($this->fields as $key => $value) {
             $statement->bindParam(":$key", $value);
         }
+        return $statement;
+    }
+
+    public function fetch()
+    {
+        $statement = $this->prepare($this->query);
         $statement->execute();
         return $statement->fetch(PDO::FETCH_OBJ);
     }
 
     public function fetchAll()
     {
-        $statement = $this->db->prepare($this->query);
-        foreach ($this->fields as $key => $value) {
-            $statement->bindParam(":$key", $value);
-        }
+        $statement = $this->prepare($this->query);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_OBJ);
     }
-    
+
     public function exec(): bool
     {
-        $statement = $this->db->prepare($this->query);
-        foreach ($this->fields as $key => $value) {
-            $statement->bindParam(":$key", $value);
-        }
+        $statement = $this->prepare($this->query);
         return $statement->execute();
     }
 }

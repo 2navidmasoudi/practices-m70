@@ -14,16 +14,16 @@ $db = new MySqlDatabase($mySql);
 //     ->insert(["name" => "Masoud", "age" => 50])
 //     ->exec(); // true
 
-$result3 = $db
-    ->table('Students')
-    ->update(["age" => 30])
-    ->where("name", "Masoud")
-    ->exec(); // true
-
-// $result = $db
+// $result3 = $db
 //     ->table('Students')
-//     ->select(['name', 'age'])
-//     ->where("age", "25", ">")
-//     ->fetchAll();
+//     ->update(["age" => 30])
+//     ->where("name", "Masoud")
+//     ->exec(); // true
+
+$result = $db
+    ->table('Students')
+    ->select(['name', 'age'])
+    ->where("age", "25", ">")
+    ->fetchAll();
 
 print_r($result);
