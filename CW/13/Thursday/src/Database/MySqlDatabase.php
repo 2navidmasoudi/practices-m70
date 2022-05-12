@@ -89,7 +89,7 @@ class MySqlDatabase implements DatabaseInterface
     {
         $statement = $this->db->prepare($query);
         foreach ($this->fields as $key => $value) {
-            $statement->bindParam(":$key", $value);
+            $statement->bindValue(":$key", $value);
         }
         return $statement;
     }
