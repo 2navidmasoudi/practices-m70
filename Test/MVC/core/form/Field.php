@@ -3,6 +3,7 @@
 namespace app\core\form;
 
 use app\core\Model;
+use Attribute;
 
 class Field
 {
@@ -12,15 +13,13 @@ class Field
 
     public Model $model;
     public string $attribute;
-    public string $label;
     public string $type = self::TYPE_TEXT;
 
-    public function __construct(Model $model, string $attribute, string $label)
+    public function __construct(Model $model, string $attribute)
     {
         $this->type = self::TYPE_TEXT;
         $this->model = $model;
         $this->attribute = $attribute;
-        $this->label = $label;
     }
 
     public function __toString()
@@ -36,7 +35,7 @@ class Field
             </div>
         ',
             $this->attribute,
-            $this->label,
+            $this->model->getLabel($this->attribute),
             $this->type,
             $this->attribute,
             $this->model->{$this->attribute},
