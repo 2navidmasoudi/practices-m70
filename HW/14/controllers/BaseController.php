@@ -14,19 +14,32 @@ class BaseController extends Controller
     {
         $this->setLayout('main');
     }
-    public function home()
+    public function home(Request $request)
     {
+        $doctors = [];
+        $units = Unit::do()->all() ?? [];
+        if ($request->isPost()) {
+            $data = $request->getBody();
+            $unit_id = $data['unit_id'];
+            $search = $data['search'];
+            $doctors = Doctor::do()->filter($unit_id, $search);
+            return $this->render("home", ['doctors' => $doctors, 'units' => $units, 'unit_id' => $unit_id, 'search' => $search]);
+        }
         $doctors = Doctor::do()->all();
-        $units = Unit::do()->all();
         return $this->render("home", ['doctors' => $doctors, 'units' => $units]);
     }
     public function doctor(Request $request)
     {
-        $doctor = false;
+        $doctor = [];
+        $works = [];
         $id = $request->getId();
-        if ($id) $doctor = Doctor::do()->find($id);
-        if ($doctor === false) return $this->home();
-        $works = Work::do()->findAll($id, "doctor_id");
+        if ($id) {
+            $doctor = Doctor::do()->find($id);
+            $works = Work::do()->findAll($id, "doctor_id");
+        } else {
+            return $this->home($request);
+        }
+        // if ($doctor === false) return $this->home();
         return $this->render("doctor", ['doctor' => $doctor, 'works' => $works]);
     }
     public function profile()
