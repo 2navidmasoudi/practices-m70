@@ -26,7 +26,7 @@ class BaseController extends Controller
             return $this->render("home", ['doctors' => $doctors, 'units' => $units, 'unit_id' => $unit_id, 'search' => $search]);
         }
         $doctors = Doctor::do()->all();
-        return $this->render("home", ['doctors' => $doctors, 'units' => $units]);
+        return $this->render("home", ['doctors' => $doctors, 'units' => $units, 'unit_id' => '', 'search' => '']);
     }
     public function doctor(Request $request)
     {
