@@ -14,6 +14,7 @@ class Application
 
     public function __construct(string $rootPath, array $config)
     {
+        include __DIR__ . "/helpers/helper.php";
         self::$ROOT_DIR = $rootPath;
         self::$app = $this;
         $this->request = new Request();

@@ -1,4 +1,3 @@
-<h3>Welcome to Modern Hospital</h3>
 <?php if (!empty($doctors)) : ?>
     <div class="row">
         <?php foreach ($doctors as $doctor) { ?>
@@ -7,4 +6,6 @@
             </div>
         <?php } ?>
     </div>
+<?php else : ?>
+    <h3>No doctors in this hospital :(</h3>
 <?php endif; ?>

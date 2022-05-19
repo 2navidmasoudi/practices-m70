@@ -29,6 +29,10 @@ abstract class Model extends Validation
     {
         return $this->query->select()->where($col, $value)->fetch();
     }
+    public function findAll(string $value, string $col = 'id') // return the record
+    {
+        return $this->query->select()->where($col, $value)->fetchAll();
+    }
     public function create(array $data) // make a new recorde 
     {
         return $this->query->insert($data)->exec();

@@ -6,23 +6,35 @@ class Request
 {
     public function getPath()
     {
-        $path = $_SERVER['REQUEST_URI'] ?? '/';
-        $position = strpos($path, "?");
-        if ($position === false) {
-            return $path;
+        $path = $this->getFullPath();
+        if (preg_match("/\d+$/", $path) !== false) {
+            $path = preg_replace("/\d+$/", ":id", $path);
         }
-        return substr($path, 0, $position);
+        return $path;
     }
 
-    public function getFirstParam()
+    public function getFullPath()
     {
-        $url = explode('/', $this->getPath());
-        foreach ($url as $param) {
-            if (is_numeric($param)) {
-                return $param;
-            }
+        $path = $_SERVER['REQUEST_URI'] ?? '/';
+
+        // Delete get from request uri
+        $position = strpos($path, "?");
+        if ($position !== false) {
+            $path = substr($path, 0, $position);
         }
-        return null;
+
+        // Delete the end / from request
+        if ($path !== "/") {
+            $path = preg_replace("/\/$/", "", $path);
+        }
+
+        return $path;
+    }
+
+    public function getId(): ?string
+    {
+        preg_match("/\d+/", $this->getFullPath(), $match);
+        return $match[0] ?? null;
     }
 
     public function method()

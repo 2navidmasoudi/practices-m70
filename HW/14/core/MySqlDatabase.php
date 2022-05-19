@@ -114,7 +114,7 @@ class MySqlDatabase implements DatabaseInterface
 
     protected function prepare($query)
     {
-        $statement = $this->db->prepare($query);
+        $statement = $this->pdo->prepare($query);
         foreach ($this->fields as $key => $value) {
             $statement->bindValue(":$key", $value);
         }

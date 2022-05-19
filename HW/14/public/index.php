@@ -22,6 +22,7 @@ $config = [
 $app = new Application(dirname(__DIR__), $config);
 
 $app->get('/', [BaseController::class, 'home']);
+$app->get('/doctor', [BaseController::class, 'doctor']);
 $app->get('/doctor/:id', [BaseController::class, 'doctor']);
 
 // Completing Profile
