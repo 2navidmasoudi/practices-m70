@@ -1,0 +1,15 @@
+{
+    "name": "navidm/mvc",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [{
+        "name": "Navid Masoudi",
+        "email": "2navidmasoudi@gmail.com"
+    }],
+    "require": {
+        "vlucas/phpdotenv": "^5.4"
+    }
+}
