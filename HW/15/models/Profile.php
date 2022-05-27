@@ -4,11 +4,11 @@ namespace app\models;
 
 use app\core\Model;
 
-class Doctor extends Model
+class Profile extends Model
 {
     public static function Do()
     {
-        return new User('doctors');
+        return new Profile('profiles');
     }
 
     public function getByUserId($userId)

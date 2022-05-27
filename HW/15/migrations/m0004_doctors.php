@@ -2,7 +2,7 @@
 
 use app\core\Application;
 
-class m0005_doctors
+class m0004_doctors
 {
     public function up()
     {

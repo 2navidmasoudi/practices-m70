@@ -2,23 +2,18 @@
 
 namespace app\core;
 
-abstract class Model extends Validation
+abstract class Model
 {
     protected $table; // which table this model should work on
     private DatabaseInterface $db;
     private DatabaseInterface $query;
 
-    abstract public function getTable(): string;
+    public abstract static function Do();
 
-    public function __construct()
+    protected function __construct($tableName)
     {
         $this->db = Application::$app->db;
-        $this->query = $this->db->table($this->getTable());
-    }
-
-    public static function do()
-    {
-        return new static;
+        $this->query = $this->db->table($tableName);
     }
 
     public function all() // return all records
@@ -52,6 +47,10 @@ abstract class Model extends Validation
         return $this;
     }
     public function get() // return all the filtered  records by where method
+    {
+        return $this->query->fetch();
+    }
+    public function getAll() // return all the filtered  records by where method
     {
         return $this->query->fetchAll();
     }

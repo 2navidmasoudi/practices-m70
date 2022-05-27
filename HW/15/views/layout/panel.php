@@ -21,8 +21,9 @@
         </button>
         <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
         <div class="navbar-nav">
-            <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="/">Sign out</a>
+            <div class="nav-item text-nowrap d-flex">
+                <a class="nav-link px-3" href="/">home</a>
+                <a class="nav-link px-3" href="/logout">logout</a>
             </div>
         </div>
     </header>
@@ -31,35 +32,61 @@
         <div class="row">
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block h-100 sidebar collapse">
                 <div class="position-sticky pt-3">
-
+                    <?php if (isUser()) { ?>
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <span>Patients</span>
+                        </h6>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/panel/visits/reserve">
+                                    Reserve a visit
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/panel/visits/lists">
+                                    Reserved lists
+                                </a>
+                            </li>
+                        </ul>
+                    <?php } ?>
                     <!-- For Doctors we show this -->
-                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                        <span>Doctors</span>
-                    </h6>
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/panel/work">
-                                <!-- Icon -->
-                                Working Hour
-                            </a>
-                        </li>
-                    </ul>
+                    <?php if (isDoctor()) { ?>
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <span>Doctors</span>
+                        </h6>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/panel/work">
+                                    <!-- Icon -->
+                                    Working Hour
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/panel/visits">
+                                    <!-- Icon -->
+                                    Reserved Visits
+                                </a>
+                            </li>
+                        </ul>
+                    <?php } ?>
 
-                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                        <span>Managers</span>
-                    </h6>
-                    <ul class="nav flex-column mb-2">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/panel/confirm">
-                                Confirm
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/panel/units">
-                                Units
-                            </a>
-                        </li>
-                    </ul>
+                    <?php if (isAdmin()) { ?>
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <span>Managers</span>
+                        </h6>
+                        <ul class="nav flex-column mb-2">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/panel/confirm">
+                                    Confirm
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/panel/units">
+                                    Units
+                                </a>
+                            </li>
+                        </ul>
+                    <?php } ?>
                 </div>
             </nav>
 

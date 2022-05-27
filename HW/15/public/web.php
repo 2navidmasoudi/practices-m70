@@ -18,6 +18,7 @@ $app->get('/login', [AuthController::class, 'login']);
 $app->post('/login', [AuthController::class, 'login']);
 $app->get('/register', [AuthController::class, 'register']);
 $app->post('/register', [AuthController::class, 'register']);
+$app->get('/logout', [AuthController::class, 'logout']);
 
 // Show Panel for Manager or Doctor
 $app->get('/panel', [PanelController::class, 'panel']);

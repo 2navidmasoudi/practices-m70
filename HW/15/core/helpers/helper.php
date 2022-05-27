@@ -9,3 +9,11 @@ function findObjectById($id, $array)
     }
     return false;
 }
+
+function dd($data)
+{
+    echo '<pre>';
+    var_dump($data);
+    echo '</pre>';
+    die;
+}

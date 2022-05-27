@@ -4,10 +4,10 @@ namespace app\models;
 
 use app\core\Model;
 
-class Work extends Model
+class Treat extends Model
 {
     public static function Do()
     {
-        return new Work('works');
+        return new Treat('treats');
     }
 }

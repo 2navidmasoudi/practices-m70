@@ -6,8 +6,8 @@ use app\core\Model;
 
 class Unit extends Model
 {
-    public function getTable(): string
+    public static function Do()
     {
-        return "units";
+        return new User('units');
     }
 }

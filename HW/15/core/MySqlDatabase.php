@@ -23,13 +23,6 @@ class MySqlDatabase implements DatabaseInterface
         return $this;
     }
 
-    // Create table then exec
-    // public function create()
-    // {
-    //     $this->query = "CREATE TABLE {$this->table}";
-    //     return $this;
-    // }
-
     // Drop table then exec
     public function drop()
     {

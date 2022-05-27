@@ -3,9 +3,15 @@
 namespace app\controllers;
 
 use app\core\Application;
+use app\core\Auth;
 use app\core\Controller;
+use app\core\Error;
 use app\core\Request;
+use app\core\Response;
+use app\core\Session;
+use app\core\Validation;
 use app\models\Register;
+use app\models\User;
 
 class AuthController extends Controller
 {
@@ -14,23 +20,40 @@ class AuthController extends Controller
         $this->setLayout('auth');
     }
 
-    public function login()
+    public function login(Request $request, Response $response)
     {
-        return $this->render('login');
+        if ($request->isPost()) {
+            $data = $request->getBody();
+            $username = $data['username'];
+            $password = $data['password'];
+
+            Validation::make()->data($data)->rules([
+                'username' => ['required'],
+                'password' => ['required'],
+            ])->validate();
+
+            if (Error::getInstance()->hasError()) {
+                return $this->render('login', ['errors' => Error::getInstance()]);
+            }
+
+            $id = User::Do()->validateLogin($username, $password);
+            if ($id !== false) {
+                Session::put('user_id', $id);
+                $response->redirect('/');
+            } else {
+                Error::getInstance()->addError('login', "Wrong username or password");
+            }
+        }
+        return $this->render('login', ['errors' => Error::getInstance()]);
+    }
+
+    public function logout(Request $request, Response $response)
+    {
+        Session::destroy();
+        $response->redirect('/');
     }
 
     public function register(Request $request)
     {
-        $registerModel = new Register();
-        if ($request->isPost()) {
-            $registerModel->loadData($request->getBody());
-
-            if ($registerModel->validate()) {
-                Application::$app->response->redirect('/');
-            }
-        }
-        return $this->render('register', [
-            'model' => $registerModel
-        ]);
     }
 }

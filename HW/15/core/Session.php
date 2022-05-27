@@ -20,6 +20,11 @@ class Session
         return $_SESSION[$key] ?? null;
     }
 
+    public static function has($key)
+    {
+        return isset($_SESSION[$key]);
+    }
+
     public static function forget($key)
     {
         unset($_SESSION[$key]);
@@ -28,5 +33,10 @@ class Session
     public static function flash($name, $message, $duration = 5, $path = "/")
     {
         setcookie($name, $message, $duration, $path);
+    }
+
+    public static function destroy()
+    {
+        session_destroy();
     }
 }

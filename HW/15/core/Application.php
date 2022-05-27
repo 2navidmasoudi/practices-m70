@@ -14,12 +14,13 @@ class Application
 
     public function __construct(string $rootPath, array $config)
     {
+
         include __DIR__ . "/helpers/helper.php";
         include __DIR__ . "/helpers/session.php";
         session();
-
-        self::$ROOT_DIR = $rootPath;
+        include __DIR__ . "/helpers/auth.php";
         self::$app = $this;
+        self::$ROOT_DIR = $rootPath;
         $this->request = new Request();
         $this->response = new Response();
         $this->router = new Router($this->request, $this->response);

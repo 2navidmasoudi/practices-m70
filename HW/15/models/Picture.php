@@ -6,8 +6,8 @@ use app\core\Model;
 
 class Picture extends Model
 {
-    public function getTable(): string
+    public static function Do()
     {
-        return "pictures";
+        return new Picture('pictures');
     }
 }

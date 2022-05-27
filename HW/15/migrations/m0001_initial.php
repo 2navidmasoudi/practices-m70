@@ -18,10 +18,6 @@ class m0001_initial
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             ) ENGINE=INNODB;";
         $db->pdo->exec($query);
-        $query =
-            "INSERT INTO hospital (name)
-             VALUES ('Modern Hospital')";
-        $db->pdo->exec($query);
     }
 
     public function down()

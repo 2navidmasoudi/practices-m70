@@ -39,7 +39,7 @@ class Request
 
     public function method()
     {
-        return strtolower($_SERVER['REQUEST_METHOD']);
+        return strtolower($_POST['_method'] ?? $_SERVER['REQUEST_METHOD']);
     }
 
     public function isGet()
@@ -52,6 +52,16 @@ class Request
         return $this->method() === 'post';
     }
 
+    public function isDelete()
+    {
+        return $this->method() === "delete";
+    }
+
+    public function isPut()
+    {
+        return $this->method() === "put";
+    }
+
     public function getBody()
     {
         $body = [];
@@ -62,10 +72,8 @@ class Request
             }
         }
 
-        if ($this->isPost()) {
-            foreach ($_POST as $key => $value) {
-                $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            }
+        foreach ($_POST as $key => $value) {
+            $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         }
 
         return $body;

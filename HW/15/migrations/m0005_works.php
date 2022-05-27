@@ -2,7 +2,7 @@
 
 use app\core\Application;
 
-class m0004_works
+class m0005_works
 {
     public function up()
     {

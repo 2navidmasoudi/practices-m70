@@ -2,117 +2,169 @@
 
 namespace app\core;
 
-abstract class Validation
+use app\core\traits\Formatter;
+
+class Validation
 {
-    public const RULE_REQUIRED = "required";
-    public const RULE_EMAIL = "email";
-    public const RULE_PHONE = "phone";
-    public const RULE_MAX = "max";
-    public const RULE_MIN = "min";
-    public const RULE_MATCH = "match";
-    public const RULE_UNIQUE = "unique";
+    private static $instance = null;
+    private ?array $rules = null;
+    private ?array $data = null;
 
-    public array $errors = [];
-    public array $rules = [];
-
-    public function rules(): array
+    private function __construct()
     {
-        return [];
     }
 
-    public function __construct(array $rules)
+    public static function make()
+    {
+        if (self::$instance == null)
+            self::$instance = new Validation();
+
+        return self::$instance;
+    }
+
+    public function rules($rules)
     {
         $this->rules = $rules;
+        return $this;
     }
 
-    public function loadData($data)
+    public function data(array $data): Validation
     {
-        foreach ($data as $key => $value) {
-            if (property_exists($this, $key)) {
-                $this->{$key} = $value;
-            }
-        }
+        $this->data = $data;
+        return $this;
+    }
+
+    public function files(array $files): Validation
+    {
+        $this->files = $files;
+        return $this;
     }
 
     public function validate()
     {
-        foreach ($this->rules() as $attribute => $rules) {
-            $value = $this->{$attribute};
-            foreach ($rules as $rule) {
-                $ruleName = $rule;
-                if (!is_string($ruleName)) {
-                    $ruleName = $rule[0];
-                }
+        foreach ($this->rules as $param => $conditions) {
 
-                if ($ruleName === self::RULE_REQUIRED && !$value) {
-                    $this->addError($attribute, self::RULE_REQUIRED);
-                }
+            foreach ($conditions as $condition) {
+                $function = is_array($condition) ? $condition[0] : $condition;
+                $args = is_array($condition) ? (count($condition) > 2 ? array_slice($condition, 1) : $condition[1]
+                ) : null;
 
-                if ($ruleName === self::RULE_EMAIL && !filter_var($value, FILTER_VALIDATE_EMAIL)) {
-                    $this->addError($attribute, self::RULE_EMAIL);
-                }
-
-                if ($ruleName === self::RULE_MIN && strlen($value) < $rule['min']) {
-                    $this->addError($attribute, self::RULE_MIN, $rule);
-                }
-
-                if ($ruleName === self::RULE_MAX && strlen($value) > $rule['max']) {
-                    $this->addError($attribute, self::RULE_MIN, $rule);
-                }
-
-                if ($ruleName === self::RULE_MATCH && $value !== $this->{$rule['match']}) {
-                    $this->addError($attribute, self::RULE_MATCH, $rule);
-                }
-
-                if ($ruleName === self::RULE_UNIQUE) {
-                    $className = $rule['class'];
-                    $uniqueAttr = $rule['attribute'] ?? $attribute;
-                    $tableName = $className::tableName();
-                    $query = "SELECT * FROM $tableName WHERE $uniqueAttr = :attr;";
-                    $statement = Application::$app->db->prepare($query);
-                    $statement->bindParam(":attr", $value);
-                    $statement->execute();
-                    $record = $statement->fetchObject();
-
-                    if ($record) {
-                        $this->addError($attribute, self::RULE_UNIQUE, ["field" => $attribute]);
-                    }
-                }
+                if (call_user_func([$this, $function], $param, $args) === false)
+                    break;
             }
         }
-
-        return empty($this->errors);
     }
 
-    public function errorMessages()
+    private function required(string $param): bool
     {
-        return [
-            self::RULE_REQUIRED => 'This field is required',
-            self::RULE_EMAIL => 'This field must a valid email address',
-            self::RULE_MIN => 'Min length of this field must be {min}',
-            self::RULE_MAX => 'Max length of this field must be {max}',
-            self::RULE_MATCH => 'This field must be the same as {match}',
-            self::RULE_UNIQUE => 'Record with this {field} already exists',
-        ];
-    }
-
-    public function addError(string $attribute, string $rule, $params = [])
-    {
-        $message = $this->errorMessages()[$rule] ?? "";
-        foreach ($params as $key => $value) {
-            $message = str_replace("{{$key}}", $value, $message);
+        if (!array_key_exists($param, $this->data)) {
+            Error::getInstance()->addError($param, "$param input must exist");
+            return false;
         }
 
-        $this->errors[$attribute][] = $message;
+        return true;
     }
 
-    public function hasError($attribute)
+    private function optional(string $param): bool
     {
-        return $this->errors[$attribute] ?? false;
+        if (!array_key_exists($param, $this->data))
+            return false;
+
+        return true;
     }
 
-    public function getFirstError($attribute)
+    private function username(string $param)
     {
-        return $this->errors[$attribute][0] ?? false;
+        if (preg_match("/^[a-zA-Z0-9_]+$/", trim($this->data[$param])) === 0)
+            Error::getInstance()->addError(
+                $param,
+                "Username must only contains alphabetic characters ,numbers and underline."
+            );
     }
+
+    private function alphabetic(string $param)
+    {
+        if (preg_match("/^[a-zA-Z]+$/", trim($this->data[$param])) === 0)
+            Error::getInstance()->addError(
+                $param,
+                "$param must only contains alphabetic characters."
+            );
+    }
+
+    private function alphanumeric(string $param)
+    {
+        if (preg_match("/^[a-zA-Z0-9_]+$/", trim($this->data[$param])) === 0)
+            Error::getInstance()->addError(
+                $param,
+                "$param must only contains alphabetic and numeric characters."
+            );
+    }
+
+    private function numeric(string $param)
+    {
+        if (preg_match("/^[0-9]+$/", trim($this->data[$param])) === 0)
+            Error::getInstance()->addError(
+                $param,
+                "$param must only contains numbers."
+            );
+    }
+
+    private function email(string $param)
+    {
+        if (preg_match("/^[a-zA-Z][a-zA-Z0-9_.]*@[a-zA-Z0-9.]+\.[a-z]{2,5}$/", trim($this->data[$param])) === 0)
+            Error::getInstance()->addError(
+                $param,
+                "It is not an email format."
+            );
+    }
+
+    private function min(string $param, $min)
+    {
+        if (trim($this->data[$param]) < $min)
+            Error::getInstance()->addError(
+                $param,
+                "amount of $param must be greater than $min"
+            );
+    }
+
+    private function max(string $param, $max)
+    {
+        if (trim($this->data[$param]) > $max)
+            Error::getInstance()->addError(
+                $param,
+                "amount of $param must be less than $max"
+            );
+    }
+
+    private function minLen(string $param, $min)
+    {
+        if (strlen(trim($this->data[$param])) < $min)
+            Error::getInstance()->addError(
+                $param,
+                "the length of $param must be greater than $min"
+            );
+    }
+
+    private function maxLen(string $param, $max)
+    {
+        if (strlen(trim($this->data[$param])) > $max)
+            Error::getInstance()->addError(
+                $param,
+                "the length of  $param must be less than $max"
+            );
+    }
+
+    // private function confirmation(string $param) {
+    //     if (!array_key_exists($param . '-confirmation', $this->data)) {
+    //         Error::getInstance()->addError($param,
+    //             "your $param must be confirmed",
+    //         );
+    //         return;
+    //     }
+
+    //     if ($this->data[$param . '-confirmation'] != $this->data[$param])
+    //         Error::getInstance()->addError($param . "-confirmation",
+    //             "$param doesn't match $param confirmation",
+    //         );
+    // }
 }
