@@ -8,10 +8,14 @@ class m0001_initial
     {
         $db = Application::$app->db;
         $query =
-            "CREATE TABLE hospital (
+            "CREATE TABLE users (
                 id INT AUTO_INCREMENT PRIMARY KEY,
-                name VARCHAR(255) NOT NULL,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                username VARCHAR(255) NOT NULL,
+                password VARCHAR(255) NOT NULL,
+                status TINYINT NOT NULL DEFAULT 0,
+                role VARCHAR(255) NOT NULL DEFAULT 'user',
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             ) ENGINE=INNODB;";
         $db->pdo->exec($query);
         $query =
@@ -23,7 +27,7 @@ class m0001_initial
     public function down()
     {
         $db = Application::$app->db;
-        $query = "DROP TABLE hospital";
+        $query = "DROP TABLE users";
         $db->pdo->exec($query);
     }
 }

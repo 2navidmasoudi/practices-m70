@@ -10,14 +10,8 @@ class m0005_doctors
         $query =
             "CREATE TABLE doctors (
                 id INT AUTO_INCREMENT PRIMARY KEY,
-                username VARCHAR(255) NOT NULL,
-                password VARCHAR(255) NOT NULL,
-                status TINYINT NOT NULL DEFAULT 0,
-                firstname VARCHAR(255),
-                lastname VARCHAR(255),
-                phone VARCHAR(255),
-                email VARCHAR(255),
-                instagram VARCHAR(255),
+                user_id INT NOT NULL,
+                unit_id INT,
                 twitter VARCHAR(255),
                 blog VARCHAR(255),
                 address TEXT,
@@ -28,9 +22,7 @@ class m0005_doctors
                 visit_price BIGINT,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                picture_id INT,
-                unit_id INT,
-                FOREIGN KEY (picture_id) REFERENCES pictures(id),
+                FOREIGN KEY (user_id) REFERENCES users(id),
                 FOREIGN KEY (unit_id) REFERENCES units(id)
             ) ENGINE=INNODB;";
         $db->pdo->exec($query);
