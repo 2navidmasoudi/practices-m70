@@ -53,7 +53,46 @@ class AuthController extends Controller
         $response->redirect('/');
     }
 
-    public function register(Request $request)
+    public function register(Request $request, Response $response)
     {
+        if ($request->isPost()) {
+            $data = $request->getBody();
+
+            Validation::make()->data($data)->rules($this->registerRules())->validate();
+
+            if (Error::getInstance()->hasError()) {
+                // dd(Error::getInstance()->getErrors());
+                return $this->render('register', ['errors' => Error::getInstance()]);
+            }
+
+            unset($data['password-confirmation']);
+            $result = User::Do()->create($data);
+            dd($result);
+            if ($result !== false) {
+                $response->redirect('/login');
+            } else {
+                Error::getInstance()->addError('register', "Username already exists");
+            }
+        }
+        return $this->render('register', ['errors' => Error::getInstance()]);
+    }
+
+    public function registerRules()
+    {
+        return [
+            'username' => [
+                'required',
+                'username',
+                ['minLen', 4],
+                ['maxLen', 20]
+            ],
+            'password' => [
+                'required',
+                'alphanumeric',
+                'confirmation',
+                ['minLen', 5],
+                ['maxLen', 20]
+            ],
+        ];
     }
 }

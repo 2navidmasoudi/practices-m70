@@ -34,12 +34,6 @@ class Validation
         return $this;
     }
 
-    public function files(array $files): Validation
-    {
-        $this->files = $files;
-        return $this;
-    }
-
     public function validate()
     {
         foreach ($this->rules as $param => $conditions) {
@@ -154,17 +148,20 @@ class Validation
             );
     }
 
-    // private function confirmation(string $param) {
-    //     if (!array_key_exists($param . '-confirmation', $this->data)) {
-    //         Error::getInstance()->addError($param,
-    //             "your $param must be confirmed",
-    //         );
-    //         return;
-    //     }
+    private function confirmation(string $param)
+    {
+        if (!array_key_exists($param . '-confirmation', $this->data)) {
+            Error::getInstance()->addError(
+                $param,
+                "your $param must be confirmed",
+            );
+            return;
+        }
 
-    //     if ($this->data[$param . '-confirmation'] != $this->data[$param])
-    //         Error::getInstance()->addError($param . "-confirmation",
-    //             "$param doesn't match $param confirmation",
-    //         );
-    // }
+        if ($this->data[$param . '-confirmation'] != $this->data[$param])
+            Error::getInstance()->addError(
+                $param . "-confirmation",
+                "$param doesn't match $param confirmation",
+            );
+    }
 }
