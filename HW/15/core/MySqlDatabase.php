@@ -49,7 +49,7 @@ class MySqlDatabase implements DatabaseInterface
         $this->query =
             "INSERT INTO " . $this->table .
             "(" . implode(",", array_keys($fields)) . ") " .
-            "VALUES (" . implode(",", $params) . ")";
+            "VALUES (" . implode(",", $params) . ");";
 
         return $this;
     }
@@ -131,6 +131,6 @@ class MySqlDatabase implements DatabaseInterface
     public function exec(): bool
     {
         $statement = $this->prepare($this->query);
-        return $statement->execute();
+        return $statement->execute($this->fields);
     }
 }

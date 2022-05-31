@@ -41,3 +41,11 @@ function hasProfile()
     }
     return false;
 }
+
+function isConfirmed()
+{
+    if (Auth::getInstance()->isConfirmed()) {
+        return true;
+    }
+    return false;
+}

@@ -67,7 +67,6 @@ class AuthController extends Controller
 
             unset($data['password-confirmation']);
             $result = User::Do()->create($data);
-            dd($result);
             if ($result !== false) {
                 $response->redirect('/login');
             } else {

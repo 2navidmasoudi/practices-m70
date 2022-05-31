@@ -32,3 +32,5 @@ $app->get('/panel/confirm', [PanelController::class, 'confirm']);
 // For Doctors
 $app->get('/panel/work', [PanelController::class, 'work']);
 $app->post('/panel/work', [PanelController::class, 'work']);
+$app->get('/panel/visits', [PanelController::class, 'visits']);
+$app->post('/panel/visits', [PanelController::class, 'visits']);

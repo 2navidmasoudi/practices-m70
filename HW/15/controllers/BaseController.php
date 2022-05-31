@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\core\Controller;
+use app\middlewares\AuthMiddleware;
 use app\core\Request;
 use app\models\Doctor;
 use app\models\Unit;
@@ -22,7 +23,8 @@ class BaseController extends Controller
             $data = $request->getBody();
             $unit_id = $data['unit_id'];
             $search = $data['search'];
-            $doctors = Doctor::do()->filter($unit_id, $search);
+            // $doctors = Doctor::do()->filter($unit_id, $search);
+            $doctors = [];
             return $this->render("home", ['doctors' => $doctors, 'units' => $units, 'unit_id' => $unit_id, 'search' => $search]);
         }
         $doctors = Doctor::do()->all();
@@ -46,6 +48,9 @@ class BaseController extends Controller
     }
     public function profile()
     {
+        if (!AuthMiddleware::check()) {
+            return $this->render('_403');
+        }
         return $this->render('profile');
     }
 }

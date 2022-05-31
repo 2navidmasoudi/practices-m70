@@ -11,6 +11,7 @@ class Auth
     private $user = null;
     private $doctor = null;
     private $profile = null;
+    private $role = null;
 
     private function __construct()
     {
@@ -44,17 +45,17 @@ class Auth
 
     public function isUser()
     {
-        return $this->getRole() == 'user';
+        return $this->getRole() === 'user';
     }
 
     public function isAdmin()
     {
-        return $this->getRole() == 'admin';
+        return $this->getRole() === 'admin';
     }
 
     public function isDoctor()
     {
-        return $this->getRole() == 'doctor';
+        return $this->getRole() === 'doctor';
     }
 
     public function hasProfile()
@@ -74,22 +75,22 @@ class Auth
 
     public function getFirstname(): string
     {
-        return $this->profile->firstname;
+        return $this->profile->firstname ?? null;
     }
 
     public function getLastname(): string
     {
-        return $this->profile->lastname;
+        return $this->profile->lastname ?? null;
     }
 
     public function getEmail(): string
     {
-        return $this->profile->email;
+        return $this->profile->email ?? null;
     }
 
     public function getRole()
     {
-        return $this->user->role;
+        return $this->user->role ?? false;
     }
 
     public function getId()
