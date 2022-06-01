@@ -95,7 +95,7 @@
 
 # 5. What is recourses used for?
 
-روت resource یا منابع شامل تمام view های ما مثل layout و components ها هستند و همچنین یکسری فایل های js و css کامپایل نشده (مانند css اصلی tailwind و js react یا view)
+روت resource یا منابع شامل تمام view های ما مثل layout و components ها هستند و همچنین یکسری فایل های js و css کامپایل نشده (مانند css اصلی tailwind و js react یا vue)
 
 # 6. What is Named routes for?
 
