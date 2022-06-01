@@ -119,5 +119,5 @@ echo route('post.show', ['post' => 1]);
 
 # 7. Make /{cat}/{id}/{title}
 
-راه حل در [routes/web.php](/routes/web.php)
-فایل ها ساخته شده ور [resources/view](/resources/views/)
+راه حل در [routes/web.php](routes/web.php)
+فایل ها ساخته شده ور [resources/view](resources/views/)
