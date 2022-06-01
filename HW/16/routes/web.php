@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/{cat}/{id}/{title}', function ($cat, $id, $title) {
+    return view("$cat/index", compact('id', 'title', 'cat'));
+})
+    ->whereAlpha('title')
+    ->whereNumber('id')
+    ->whereIn('cat', ['sport', 'economy', 'values']);
