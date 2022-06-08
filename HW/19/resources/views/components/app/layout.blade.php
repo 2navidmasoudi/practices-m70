@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>{{ $title ?? 'Carwash' }}</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body>
-    <p class="text-red-600">
-        Home
-    </p>
+<body class="m-3">
+    @isset($error)
+        <x-alert type="error" :error="$error" />
+    @endisset
+    {{ $slot }}
 </body>
 
 </html>

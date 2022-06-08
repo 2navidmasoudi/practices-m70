@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\SiteController;
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// index page
+Route::get('/', [SiteController::class, 'index'])->name('index');
 
-Route::get('home', function () {
-    return view('home');
-})->name('home');
+// All routes for managing tickets:
+// - Create
+// - Show
+// - Edit
+// - Delete
+Route::resource('ticket', TicketController::class);
+
+// Search ticket by phone number and ticket_number
+Route::get('/tracking', [SiteController::class, 'tracking'])
+    ->name('tracking');
+
+// Find ticket by phone number and ticket_number
+Route::post('/tracking', [SiteController::class, 'find']);
